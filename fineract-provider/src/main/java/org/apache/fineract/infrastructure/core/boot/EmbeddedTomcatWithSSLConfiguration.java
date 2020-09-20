@@ -71,12 +71,12 @@ public class EmbeddedTomcatWithSSLConfiguration {
     }
 
     protected String getKeystorePass() {
-        //return "T3kC0mp4yC0r3";
+        // return "T3kC0mp4yC0r3";
         return "123123";
     }
 
     protected Resource getKeystore() {
-        //return new ClassPathResource("/admin.midascore.net.jks");
+        // return new ClassPathResource("/admin.midascore.net.jks");
         return new ClassPathResource("/midascore.net.jks");
     }
 

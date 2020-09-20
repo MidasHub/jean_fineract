@@ -1,4 +1,5 @@
 # Licensed to the Apache Software Foundation (ASF) under one
+# Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements. See the NOTICE file
 # distributed with this work for additional information
 # regarding copyright ownership. The ASF licenses this file
@@ -25,35 +26,17 @@ services:
     image: mysql:5.7
     volumes:
       - ./fineract-db/docker:/docker-entrypoint-initdb.d:Z,ro
+      - ./data:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: R00t3kc0mpay2020
+      MYSQL_ROOT_PASSWORD: mysql
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "--password=R00t3kc0mpay2020" ]
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "--password=mysql" ]
       timeout: 10s
       retries: 10
     ports:
       - "3306:3306"
-  fineract-server:
-    build:
-      context: .
-      target: fineract
-    ports: 
-      - 8443:8443
-    depends_on:
-      - fineractmysql
-    environment:
-      - DRIVERCLASS_NAME=org.drizzle.jdbc.DrizzleDriver
-      - PROTOCOL=jdbc
-      - SUB_PROTOCOL=mysql:thin
-      - fineract_tenants_driver=org.drizzle.jdbc.DrizzleDriver
-      - fineract_tenants_url=jdbc:mysql:thin://fineractmysql:3306/fineract_tenants
-      - fineract_tenants_uid=root
-      - fineract_tenants_pwd=R00t3kc0mpay2020 
-      - FINERACT_DEFAULT_TENANTDB_HOSTNAME=183.91.11.33
-      - FINERACT_DEFAULT_TENANTDB_PORT=3306
-      - FINERACT_DEFAULT_TENANTDB_UID=hanoi
-      - FINERACT_DEFAULT_TENANTDB_PWD=APPtekc0mpay2020
+ 
 
 
 # https://issues.apache.org/jira/browse/FINERACT-762

@@ -35,3 +35,22 @@ components:
 security:
   - basicAuth: []
     tenantid: []
+servers:
+- url: https://app2.midascore.net:8443/fineract-provider/api/v1
+components:
+  securitySchemes:
+    oAuth:
+      type: oauth2
+      description: This API uses OAuth 2 with the implicit grant flow. [More info](https://api.example.com/docs/auth)
+      flows:
+        password:   # <---- OAuth flow(authorizationCode, implicit, password or clientCredentials)
+          authorizationUrl: https://app2.midascore.net:8443/fineract-provider/api/oauth/token
+          scopes:
+            all: all
+    tenantid:        
+      type: apiKey
+      in: header       
+      name: fineract-platform-tenantid 
+security:
+  - oAuth: []
+    tenantid: []
