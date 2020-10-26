@@ -14,10 +14,10 @@ build
 .idea
 .vscode
 catalina.base_IS_UNDEFINED/
+keystore.jks
 bin/
 fineract-provider/src/main/resources/application.properties
 .lock
 fineract-provider/out/
-data/
-data/ib_logfile0
-data/ibdata1
+fineract-provider/config/swagger/config.json
+fineract-provider/config/swagger/fineract-input.yaml

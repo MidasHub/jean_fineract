@@ -22,11 +22,10 @@ RUN apt-get update -qq && apt-get install -y wget
 COPY . fineract
 WORKDIR /fineract
 
-RUN chmod +x ./gradlew
 RUN ./gradlew -PautomatedBuild=true --no-daemon -q -x rat -x test bootJar
 
 WORKDIR /fineract/target
-RUN jar -xf /fineract/build/libs/fineract-provider.jar
+RUN jar -xf /fineract/fineract-provider/build/libs/fineract-provider*.jar
 
 # https://issues.apache.org/jira/browse/LEGAL-462
 # https://issues.apache.org/jira/browse/FINERACT-762

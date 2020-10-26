@@ -71,13 +71,11 @@ public class EmbeddedTomcatWithSSLConfiguration {
     }
 
     protected String getKeystorePass() {
-        // return "T3kC0mp4yC0r3";
-        return "123123";
+        return "openmf";
     }
 
     protected Resource getKeystore() {
-        // return new ClassPathResource("/admin.midascore.net.jks");
-        return new ClassPathResource("/midascore.net.jks");
+        return new ClassPathResource("/keystore.jks");
     }
 
     public File getFile(Resource resource) throws IOException {
