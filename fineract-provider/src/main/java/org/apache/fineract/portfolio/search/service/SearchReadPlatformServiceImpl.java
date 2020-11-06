@@ -77,8 +77,8 @@ public class SearchReadPlatformServiceImpl implements SearchReadPlatformService 
 
         final MapSqlParameterSource params = new MapSqlParameterSource();
         // params.addValue("hierarchy", hierarchy + "%");
-        // fix find client multi office
-        if (currentUser.hasSpecificPermissionTo("READ_OFFICES_CLIENT")) {
+        // fix find client multi office        
+        if (currentUser.hasSpecificPermissionToFindClientAllOffices()) {
             params.addValue("hierarchy", "%%");
         } else {
             params.addValue("hierarchy", hierarchy + "%");
