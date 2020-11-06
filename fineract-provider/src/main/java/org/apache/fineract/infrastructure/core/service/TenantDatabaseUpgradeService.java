@@ -96,10 +96,10 @@ public class TenantDatabaseUpgradeService {
      * Initializes, and if required upgrades (using Flyway) the Tenant DB itself.
      */
     private void upgradeTenantDB() {
-        String dbHostname = getEnvVar("FINERACT_DEFAULT_TENANTDB_HOSTNAME", "203.205.21.236");
-        String dbPort = getEnvVar("FINERACT_DEFAULT_TENANTDB_PORT", "7777");
-        String dbUid = getEnvVar("FINERACT_DEFAULT_TENANTDB_UID", "tiktik");
-        String dbPwd = getEnvVar("FINERACT_DEFAULT_TENANTDB_PWD", "helloTikTik");
+        String dbHostname = getEnvVar("FINERACT_DEFAULT_TENANTDB_HOSTNAME", "localhost");
+        String dbPort = getEnvVar("FINERACT_DEFAULT_TENANTDB_PORT", "3306");
+        String dbUid = getEnvVar("FINERACT_DEFAULT_TENANTDB_UID", "root");
+        String dbPwd = getEnvVar("FINERACT_DEFAULT_TENANTDB_PWD", "mysql");
         String dbConnParams = getEnvVar("FINERACT_DEFAULT_TENANTDB_CONN_PARAMS", "");
         LOG.info("upgradeTenantDB: FINERACT_DEFAULT_TENANTDB_HOSTNAME = {}, FINERACT_DEFAULT_TENANTDB_PORT = {}", dbHostname, dbPort);
 

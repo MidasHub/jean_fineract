@@ -695,4 +695,15 @@ public class AppUser extends AbstractPersistableCustom implements PlatformUser {
     public String toString() {
         return "AppUser [username=" + this.username + ", getId()=" + this.getId() + "]";
     }
+    +
+
+    // fix check SpecificPermission
+    public boolean hasSpecificPermissionToGroupAssociate() {
+        return hasSpecificPermissionTo("ASSOCIATE_CLIENTS_GROUP_ALL_BRANCH");
+    }
+
+    public boolean hasSpecificPermissionToFindClientAllOffices() {
+        return hasSpecificPermissionTo("READ_OFFICES_CLIENT");
+    }
+    //---------------------------------
 }

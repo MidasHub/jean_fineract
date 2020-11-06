@@ -28,6 +28,7 @@ import org.apache.fineract.client.models.PostEntityTypeEntityIdDocumentsResponse
 import org.apache.fineract.client.util.Parts;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import retrofit2.Response;
 
 /**
  * Integration Test for /documents API.
@@ -43,7 +44,7 @@ public class DocumentTest extends IntegrationTest {
 
     @Test
     @Order(1)
-	void retrieveAllDocuments() {
+    void retrieveAllDocuments() {
         assertThat(ok(fineract().documents.retrieveAllDocuments("clients", clientId))).isNotNull();
     }
 
@@ -80,15 +81,18 @@ public class DocumentTest extends IntegrationTest {
     @Test
     @Order(4)
     void downloadFile() throws IOException {
-        ResponseBody r = ok(fineract().documents.downloadFile("clients", clientId, documentId));
-        assertThat(r.contentType()).isEqualTo(MediaType.get("image/jpeg"));
-        assertThat(r.bytes().length).isEqualTo(testFile.length());
-        // NOK: assertThat(r.contentLength()).isEqualTo(testFile.length());
+        Response<ResponseBody> r = okR(fineract().documents.downloadFile("clients", clientId, documentId));
+        try (ResponseBody body = r.body()) {
+            assertThat(body.contentType()).isEqualTo(MediaType.get("image/jpeg"));
+            assertThat(body.bytes().length).isEqualTo(testFile.length());
+            assertThat(body.contentLength()).isEqualTo(-1); // TODO testFile.length()
+        }
+        assertThat(Parts.fileName(r)).hasValue(testFile.getName());
     }
 
     @Test
     @Order(10)
-    void updateDocument() {
+    void updateDocumentWithoutNewUpload() {
         String newName = "Test changed name";
         String newDescription = getClass().getName();
         ok(fineract().documents.updateDocument("clients", clientId, documentId, null, newName, newDescription));

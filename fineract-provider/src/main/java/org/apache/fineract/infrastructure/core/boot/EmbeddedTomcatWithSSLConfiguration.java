@@ -71,11 +71,11 @@ public class EmbeddedTomcatWithSSLConfiguration {
     }
 
     protected String getKeystorePass() {
-        return "openmf";
+        return "123123";
     }
 
     protected Resource getKeystore() {
-        return new ClassPathResource("/keystore.jks");
+        return new ClassPathResource("/uat.tekcompay.com.jks");
     }
 
     public File getFile(Resource resource) throws IOException {

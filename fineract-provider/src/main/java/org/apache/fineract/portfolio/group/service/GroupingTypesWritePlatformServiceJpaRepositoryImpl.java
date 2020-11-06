@@ -19,7 +19,6 @@
 package org.apache.fineract.portfolio.group.service;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -44,6 +43,7 @@ import org.apache.fineract.infrastructure.core.data.CommandProcessingResult;
 import org.apache.fineract.infrastructure.core.data.CommandProcessingResultBuilder;
 import org.apache.fineract.infrastructure.core.exception.GeneralPlatformDomainRuleException;
 import org.apache.fineract.infrastructure.core.exception.PlatformDataIntegrityException;
+import org.apache.fineract.infrastructure.core.service.DateUtils;
 import org.apache.fineract.infrastructure.dataqueries.data.EntityTables;
 import org.apache.fineract.infrastructure.dataqueries.data.StatusEnum;
 import org.apache.fineract.infrastructure.dataqueries.service.EntityDatatableChecksWritePlatformService;
@@ -187,7 +187,7 @@ public class GroupingTypesWritePlatformServiceJpaRepositoryImpl implements Group
             final Set<Group> groupMembers = assembleSetOfChildGroups(officeId, command);
 
             final boolean active = command.booleanPrimitiveValueOfParameterNamed(GroupingTypesApiConstants.activeParamName);
-            LocalDate submittedOnDate = LocalDate.now(ZoneId.systemDefault());
+            LocalDate submittedOnDate = LocalDate.now(DateUtils.getDateTimeZoneOfTenant());
             if (active && submittedOnDate.isAfter(activationDate)) {
                 submittedOnDate = activationDate;
             }
@@ -544,7 +544,7 @@ public class GroupingTypesWritePlatformServiceJpaRepositoryImpl implements Group
         groupForUpdate.updateStaff(staff);
 
         if (inheritStaffForClientAccounts) {
-            LocalDate loanOfficerReassignmentDate = LocalDate.now(ZoneId.systemDefault());
+            LocalDate loanOfficerReassignmentDate = LocalDate.now(DateUtils.getDateTimeZoneOfTenant());
             /*
              * update loan officer for client and update loan officer for clients loans and savings
              */
@@ -654,7 +654,7 @@ public class GroupingTypesWritePlatformServiceJpaRepositoryImpl implements Group
                 throw new InvalidGroupStateTransitionException(groupOrCenter.getGroupLevel().getLevelName(), "close", "loan.not.closed",
                         errorMessage);
             } else if (loanStatus.isClosed()
-                    && loan.getClosedOnDate().after(Date.from(closureDate.atStartOfDay(ZoneId.systemDefault()).toInstant()))) {
+                    && loan.getClosedOnDate().after(Date.from(closureDate.atStartOfDay(DateUtils.getDateTimeZoneOfTenant()).toInstant()))) {
                 final String errorMessage = groupOrCenter.getGroupLevel().getLevelName()
                         + "closureDate cannot be before the loan closedOnDate.";
                 throw new InvalidGroupStateTransitionException(groupOrCenter.getGroupLevel().getLevelName(), "close",
@@ -729,9 +729,16 @@ public class GroupingTypesWritePlatformServiceJpaRepositoryImpl implements Group
             for (final String clientId : clientMembersArray) {
                 final Long id = Long.valueOf(clientId);
                 final Client client = this.clientRepositoryWrapper.findOneWithNotFoundDetection(id);
-                if (!client.isOfficeIdentifiedBy(groupOfficeId)) {
-                    final String errorMessage = "Client with identifier " + clientId + " must have the same office as group.";
-                    throw new InvalidOfficeException("client", "attach.to.group", errorMessage, clientId, groupOfficeId);
+                // if (!client.isOfficeIdentifiedBy(groupOfficeId)) {
+                //     final String errorMessage = "Client with identifier " + clientId + " must have the same office as group.";
+                //     throw new InvalidOfficeException("client", "attach.to.group", errorMessage, clientId, groupOfficeId);
+                // }
+                // if (!currentUser.hasSpecificPermissionTo("ASSOCIATE_CLIENTS_GROUP_ALL_BRANCH")) {
+                if (!currentUser.hasSpecificPermissionToGroupAssociate()) {
+                    if (!client.isOfficeIdentifiedBy(groupOfficeId)) {
+                        final String errorMessage = "Client with identifier " + clientId + " must have the same office as group.";
+                        throw new InvalidOfficeException("client", "attach.to.group", errorMessage, clientId, groupOfficeId);
+                    }
                 }
                 clientMembers.add(client);
             }
