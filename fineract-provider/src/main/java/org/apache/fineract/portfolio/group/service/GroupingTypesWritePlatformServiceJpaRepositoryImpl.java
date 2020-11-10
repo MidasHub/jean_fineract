@@ -734,7 +734,7 @@ public class GroupingTypesWritePlatformServiceJpaRepositoryImpl implements Group
                         final String errorMessage = "Client with identifier " + clientId + " must have the same office as group.";
                         throw new InvalidOfficeException("client", "attach.to.group", errorMessage, clientId, groupOfficeId);
                     }
-                 }
+                }
                 clientMembers.add(client);
             }
         }
