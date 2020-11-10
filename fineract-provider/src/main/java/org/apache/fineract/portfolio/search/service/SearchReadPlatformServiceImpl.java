@@ -76,7 +76,12 @@ public class SearchReadPlatformServiceImpl implements SearchReadPlatformService 
         final SearchMapper rm = new SearchMapper();
 
         final MapSqlParameterSource params = new MapSqlParameterSource();
-        params.addValue("hierarchy", hierarchy + "%");
+        // fix find client multi office
+        if (currentUser.hasSpecificPermissionToFindClientAllOffices()) {
+            params.addValue("hierarchy", "%%");
+        } else {
+            params.addValue("hierarchy", hierarchy + "%");
+        }
         if (searchConditions.getExactMatch()) {
             params.addValue("search", searchConditions.getSearchQuery());
         } else {
