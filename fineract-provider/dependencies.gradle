@@ -27,6 +27,9 @@ dependencies {
     //
     implementation(
             //'ch.vorburger.mariaDB4j:mariaDB4j:2.4.0',
+            //add two new connectors
+            'mysql:mysql-connector-java:8.0.22',
+            'org.mariadb.jdbc:mariadb-java-client:2.7.0',
 
             'org.springframework.boot:spring-boot-starter-web',
             'org.springframework.boot:spring-boot-starter-security',

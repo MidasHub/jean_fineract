@@ -202,7 +202,12 @@ Instructions to run Apache RAT (Release Audit Tool)
 
 Instructions to enable ActiveMQ
 ============
-Messaging configuration is disabled by default. If you want to enable it and register some message listeners, application needs to be started with the proper Spring profile, ie `-Dspring.profiles.active=activeMqEnabled` (or one of the other Spring ways to configure it).
+Messaging configuration is disabled by default. If you want to enable it and register some message listeners, application needs to be started with the proper Spring profile, ie `-Dspring.profiles.active=activeMqEnabled` (or one of the other Spring ways to configure it). 
+Configuration to enable ActiveMQ: 
+1. Go to ./fineract-provider/properties
+2. Depend on the securities method, choose the right 'application.properties' file then Open it.
+3. add 'activeMqEnabled' to the 'spring.profiles.active' and seperate with the existing element by comma ','
+4. To change the activeMQ server end point go to '.\fineract-provider\src\main\java\org\apache\fineract\notification\config\MessagingConfiguration.java' and change the DEFAULT_BROKER_URL variable. or change the 'brokerURL' in 'application.properties' file above
 
 
 Checkstyle and Spotless

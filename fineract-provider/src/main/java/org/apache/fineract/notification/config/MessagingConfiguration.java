@@ -48,15 +48,19 @@ public class MessagingConfiguration {
         return LoggerFactory.getLogger(MessagingConfiguration.class);
     }
 
-    private static final String DEFAULT_BROKER_URL = "tcp://localhost:61616";
+    // private static final String DEFAULT_BROKER_URL = "tcp://localhost:61616";
+    private static final String DEFAULT_BROKER_URL = "tcp://203.205.21.236:61616"; 
+    //Cần check lại chỗ này. để make sure là hệ thống lấy biến mặc định hay biến kahi báo ở file application.properties
 
     @Bean
     public ActiveMQConnectionFactory amqConnectionFactory() {
         ActiveMQConnectionFactory amqConnectionFactory = new ActiveMQConnectionFactory();
         try {
             amqConnectionFactory.setBrokerURL(DEFAULT_BROKER_URL);
+            amqConnectionFactory.setTrustAllPackages(true);
         } catch (Exception e) {
-            amqConnectionFactory.setBrokerURL(this.env.getProperty("brokerUrl"));
+            amqConnectionFactory.setBrokerURL(this.env.getProperty("brokerUrl").toString());
+            amqConnectionFactory.setTrustAllPackages(true);
         }
         return amqConnectionFactory;
     }
@@ -86,7 +90,7 @@ public class MessagingConfiguration {
 
             @Override
             public void onException(JMSException jmse) {
-                loggerBean().error("Network Error: ActiveMQ Broker Unavailable.");
+                loggerBean().error("Network Error: ActiveMQ Broker Unavailable." + jmse); // cài cái biến lỗi để thấy rõ thông tin
                 messageListenerContainer.shutdown();
             }
         });
