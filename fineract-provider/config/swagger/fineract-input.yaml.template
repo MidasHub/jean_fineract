@@ -23,6 +23,7 @@ info:
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 servers:
   - url: https://uat.tekcompay.com/midas/api/v1
+  - url: https://staging-app.midascore.net/midas/api/v1
   - url: https://localhost:9443/midas/api/v1 
 components:
   securitySchemes:
