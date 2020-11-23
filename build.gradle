@@ -96,7 +96,7 @@ allprojects  {
     dependencyManagement {
         imports {
             mavenBom 'org.springframework:spring-framework-bom:5.3.0'
-            mavenBom 'org.springframework.boot:spring-boot-dependencies:2.3.4.RELEASE'
+            mavenBom 'org.springframework.boot:spring-boot-dependencies:2.3.5.RELEASE'
             mavenBom 'org.junit:junit-bom:5.7.0'
         }
 
@@ -128,8 +128,7 @@ allprojects  {
             dependency 'jakarta.validation:jakarta.validation-api:3.0.0'
             dependency 'org.apache.activemq:activemq-broker:5.16.0'
             dependency 'org.apache.bval:org.apache.bval.bundle:2.0.4'
-            dependency 'org.mockito:mockito-core:3.6.0'
-            dependency 'org.mockito:mockito-junit-jupiter:3.6.0'
+
             dependency 'io.github.classgraph:classgraph:4.8.90'
             dependency 'org.awaitility:awaitility:4.0.3'
             dependency 'com.github.spotbugs:spotbugs-annotations:4.1.4'
