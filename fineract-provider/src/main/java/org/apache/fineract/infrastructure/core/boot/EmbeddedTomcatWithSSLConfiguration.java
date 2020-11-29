@@ -30,9 +30,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+//add Enviroment Variables package
+import org.springframework.core.env.Environment;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Configuration
 public class EmbeddedTomcatWithSSLConfiguration {
+
+    // Load enviroment 
+    @Autowired
+    private Environment env;
 
     // https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/html/howto.html#howto-enable-multiple-connectors-in-tomcat
 
@@ -45,7 +52,9 @@ public class EmbeddedTomcatWithSSLConfiguration {
     }
 
     private String getContextPath() {
-        return "/fineract-provider";
+        // return "/fineract-provider"; 
+        // Jean:change context path
+        return "/" + this.env.getProperty("contextPath");
     }
 
     protected Connector createSslConnector() {
@@ -67,15 +76,18 @@ public class EmbeddedTomcatWithSSLConfiguration {
 
     protected int getHTTPSPort() {
         // TODO This shouldn't be hard-coded here, but configurable
-        return 8443;
+        // old code: return 8443;
+        return Integer.parseInt(this.env.getProperty("SSLPort"));
     }
 
     protected String getKeystorePass() {
-        return "openmf";
+        // old code: return "openmf";
+        return this.env.getProperty("keyPass");
     }
 
     protected Resource getKeystore() {
-        return new ClassPathResource("/keystore.jks");
+        //old code: return new ClassPathResource("/keystore.jks");
+        return new ClassPathResource("/jks/" + this.env.getProperty("keySource"));
     }
 
     public File getFile(Resource resource) throws IOException {
