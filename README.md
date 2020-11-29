@@ -46,7 +46,7 @@ Run the following commands:
 Instructions to build the JAR file
 ============
 1. Clone the repository or download and extract the archive file to your local directory.
-2. Run `./gradlew clean bootJar` to build a modern cloud native fully self contained JAR file which will be created at `build/libs` directory.
+2. Run `./gradlew.bat :fineract-provider:spotlessApply` then `./gradlew clean bootJar` to build a modern cloud native fully self contained JAR file which will be created at `build/libs` directory.
 3. Start it using `java -jar build/libs/fineract-provider.jar` (does not require external Tomcat)
 
 The tenants database connection details are configured [via environment variables (as with Docker container)](#instructions-to-run-using-docker-and-docker-compose), e.g. like this:
@@ -59,7 +59,7 @@ The tenants database connection details are configured [via environment variable
 Instructions to build a WAR file
 ============
 1. Clone the repository or download and extract the archive file to your local directory.
-2. Run `./gradlew clean war` to build a traditional WAR file which will be created at `build/libs` directory.
+2. Run `./gradlew.bat :fineract-provider:spotlessApply` then `./gradlew clean war` to build a traditional WAR file which will be created at `build/libs` directory.
 3. Deploy this WAR to your Tomcat v9 Servlet Container.
 
 We recommend using the JAR instead of the WAR file deployment, because it's much easier.

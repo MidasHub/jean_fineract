@@ -24,20 +24,19 @@ import java.net.URL;
 import org.apache.catalina.connector.Connector;
 import org.apache.commons.io.FileUtils;
 import org.apache.coyote.http11.Http11NioProtocol;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-//add Enviroment Variables package
-import org.springframework.core.env.Environment;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Configuration
 public class EmbeddedTomcatWithSSLConfiguration {
 
-    // Load enviroment 
+    // Load enviroment
     @Autowired
     private Environment env;
 
@@ -52,7 +51,7 @@ public class EmbeddedTomcatWithSSLConfiguration {
     }
 
     private String getContextPath() {
-        // return "/fineract-provider"; 
+        // return "/fineract-provider";
         // Jean:change context path
         return "/" + this.env.getProperty("contextPath");
     }
@@ -86,7 +85,7 @@ public class EmbeddedTomcatWithSSLConfiguration {
     }
 
     protected Resource getKeystore() {
-        //old code: return new ClassPathResource("/keystore.jks");
+        // old code: return new ClassPathResource("/keystore.jks");
         return new ClassPathResource("/jks/" + this.env.getProperty("keySource"));
     }
 

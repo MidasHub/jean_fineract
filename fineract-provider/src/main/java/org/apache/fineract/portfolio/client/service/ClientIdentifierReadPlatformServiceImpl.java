@@ -91,7 +91,8 @@ public class ClientIdentifierReadPlatformServiceImpl implements ClientIdentifier
         ClientIdentityMapper() {}
 
         public String schema() {
-            //return "ci.id as id, ci.client_id as clientId, ci.document_type_id as documentTypeId, ci.status as status, ci.document_key as documentKey,"
+            // return "ci.id as id, ci.client_id as clientId, ci.document_type_id as documentTypeId, ci.status as
+            // status, ci.document_key as documentKey,"
             return "ci.id as id, ci.client_id as clientId, ci.document_type_id as documentTypeId, ci.status as status, "
                     + " if ((cv.code_value like 'CC%') or (cv.code_value like 'C-Card%'),"
                     + " concat(left(ci.document_key,8),'-x-',right(ci.document_key,4)),ci.document_key) as documentKey,"
