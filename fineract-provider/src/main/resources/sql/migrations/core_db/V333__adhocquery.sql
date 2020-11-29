@@ -33,7 +33,7 @@ CREATE TABLE `m_adhoc` (
     CONSTRAINT `createdby_id` FOREIGN KEY (`createdby_id`) REFERENCES `m_appuser` (`id`),
     CONSTRAINT `lastmodifiedby_id` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`)
 )
-COLLATE='latin1_swedish_ci'
+COLLATE='utf8mb4_general_ci'
 ENGINE=InnoDB
 ;
 

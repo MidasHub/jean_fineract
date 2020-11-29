@@ -25,7 +25,7 @@ CREATE TABLE `m_meeting` (
     UNIQUE INDEX `unique_calendar_instance_id_meeting_date` (`calendar_instance_id`, `meeting_date`),
     CONSTRAINT `FK_m_calendar_instance_m_meeting` FOREIGN KEY (`calendar_instance_id`) REFERENCES `m_calendar_instance` (`id`)
 )
-COLLATE='latin1_swedish_ci'
+COLLATE='utf8mb4_general_ci'
 ENGINE=InnoDB;
 
 CREATE TABLE `m_client_attendance` (
