@@ -190,7 +190,15 @@ public class ClientReadPlatformServiceImpl implements ClientReadPlatformService 
         }
 
         final String userOfficeHierarchy = this.context.officeHierarchy();
-        final String underHierarchySearchString = userOfficeHierarchy + "%";
+        // Jean: final String underHierarchySearchString = userOfficeHierarchy + "%";
+         // find client all offices
+         final AppUser currentUser = this.context.authenticatedUser();
+         String underHierarchySearchString = userOfficeHierarchy + "%";        
+         if (currentUser.hasSpecificPermissionToFindClientAllOffices()) {
+             underHierarchySearchString = "%%";
+             // final String hierarchy = currentUser.getOffice().getHierarchy();
+         }
+         // --------------------------------------------------------
         final String appUserID = String.valueOf(context.authenticatedUser().getId());
 
         // if (searchParameters.isScopedByOfficeHierarchy()) {
