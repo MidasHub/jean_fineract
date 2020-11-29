@@ -57,8 +57,11 @@ public class MessagingConfiguration {
         ActiveMQConnectionFactory amqConnectionFactory = new ActiveMQConnectionFactory();
         try {
             amqConnectionFactory.setBrokerURL(DEFAULT_BROKER_URL);
+            amqConnectionFactory.setTrustAllPackages(true); //Khi lên Production cần config lại chỗ này
         } catch (Exception e) {
-            amqConnectionFactory.setBrokerURL(this.env.getProperty("brokerUrl"));
+            //old code: amqConnectionFactory.setBrokerURL(this.env.getProperty("brokerUrl"));
+            amqConnectionFactory.setBrokerURL(this.env.getProperty("brokerUrl").toString());
+            amqConnectionFactory.setTrustAllPackages(true);//Khi lên Production cần config lại chỗ này
         }
         return amqConnectionFactory;
     }
