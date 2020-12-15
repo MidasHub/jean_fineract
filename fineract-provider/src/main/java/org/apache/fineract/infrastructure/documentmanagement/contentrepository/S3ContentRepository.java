@@ -22,6 +22,7 @@ import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
@@ -45,6 +46,7 @@ import org.apache.fineract.infrastructure.documentmanagement.exception.ContentMa
 import org.apache.fineract.infrastructure.documentmanagement.exception.DocumentNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.env.Environment;
 
 public class S3ContentRepository implements ContentRepository {
 
@@ -53,9 +55,15 @@ public class S3ContentRepository implements ContentRepository {
     private final String s3BucketName;
     private final AmazonS3 s3Client;
 
+    // Load enviroment
+    @Autowired
+    private final Environment env;
+
     public S3ContentRepository(final String bucketName, final String secretKey, final String accessKey) {
+
         this.s3BucketName = bucketName;
         this.s3Client = AmazonS3ClientBuilder.standard()
+                .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(this.env.getProperty("s3Endpoint"), null))
                 .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey, secretKey))).build();
     }
 
