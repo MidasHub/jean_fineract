@@ -195,7 +195,7 @@ public class ClientReadPlatformServiceImpl implements ClientReadPlatformService 
         final AppUser currentUser = this.context.authenticatedUser();
         String underHierarchySearchString = userOfficeHierarchy + "%";
         if (currentUser.hasSpecificPermissionToFindClientAllOffices()) {
-            underHierarchySearchString = "%%";
+            underHierarchySearchString = ".%";
             // final String hierarchy = currentUser.getOffice().getHierarchy();
         }
         // --------------------------------------------------------

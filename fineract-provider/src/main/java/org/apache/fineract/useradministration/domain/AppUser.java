@@ -710,11 +710,28 @@ public class AppUser extends AbstractPersistableCustom implements PlatformUser {
 
     // Jean: fix check SpecificPermission
     public boolean hasSpecificPermissionToGroupAssociate() {
-        return hasSpecificPermissionTo("ASSOCIATE_CLIENTS_GROUP_ALL_BRANCH");
+        //return hasSpecificPermissionTo("ASSOCIATE_CLIENTS_GROUP_ALL_BRANCH");
+        boolean match = false;
+        for (final Role role : this.roles) {
+            if (role.hasPermissionTo("ASSOCIATE_CLIENTS_GROUP_ALL_BRANCH")) {
+                match = true;
+                break;
+            }
+        }
+        return match;
     }
 
     public boolean hasSpecificPermissionToFindClientAllOffices() {
-        return hasSpecificPermissionTo("READ_OFFICES_CLIENT");
+        //return hasSpecificPermissionTo("READ_OFFICES_CLIENT");
+        
+        boolean match = false;
+        for (final Role role : this.roles) {
+            if (role.hasPermissionTo("READ_OFFICES_CLIENT")) {
+                match = true;
+                break;
+            }
+        }
+        return match;
     }
     // ---------------------------------
 }

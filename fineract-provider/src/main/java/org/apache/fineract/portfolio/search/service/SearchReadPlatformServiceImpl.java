@@ -79,7 +79,7 @@ public class SearchReadPlatformServiceImpl implements SearchReadPlatformService 
         // Jean: params.addValue("hierarchy", hierarchy + "%");
         // fix find client multi office
         if (currentUser.hasSpecificPermissionToFindClientAllOffices()) {
-            params.addValue("hierarchy", "%%");
+            params.addValue("hierarchy", ".%");
         } else {
             params.addValue("hierarchy", hierarchy + "%");
         }
