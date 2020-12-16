@@ -54,13 +54,14 @@ public class MessagingConfiguration {
 
     @Bean
     public ActiveMQConnectionFactory amqConnectionFactory() {
+        String endPoint = this.env.getProperty("brokerUrl");
         ActiveMQConnectionFactory amqConnectionFactory = new ActiveMQConnectionFactory();
         try {
             amqConnectionFactory.setBrokerURL(DEFAULT_BROKER_URL);
             amqConnectionFactory.setTrustAllPackages(true); // Khi lên Production cần config lại chỗ này
         } catch (Exception e) {
             // old code: amqConnectionFactory.setBrokerURL(this.env.getProperty("brokerUrl"));
-            amqConnectionFactory.setBrokerURL(this.env.getProperty("brokerUrl").toString());
+            amqConnectionFactory.setBrokerURL(endPoint);
             amqConnectionFactory.setTrustAllPackages(true);// Khi lên Production cần config lại chỗ này
         }
         return amqConnectionFactory;

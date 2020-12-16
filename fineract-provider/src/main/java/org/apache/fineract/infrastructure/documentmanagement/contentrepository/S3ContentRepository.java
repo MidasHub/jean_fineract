@@ -46,6 +46,7 @@ import org.apache.fineract.infrastructure.documentmanagement.exception.ContentMa
 import org.apache.fineract.infrastructure.documentmanagement.exception.DocumentNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 
 public class S3ContentRepository implements ContentRepository {
@@ -57,13 +58,14 @@ public class S3ContentRepository implements ContentRepository {
 
     // Load enviroment
     @Autowired
-    private final Environment env;
+    private Environment env;
 
     public S3ContentRepository(final String bucketName, final String secretKey, final String accessKey) {
 
+        String endPoint = this.env.getProperty("s3Endpoint");
         this.s3BucketName = bucketName;
         this.s3Client = AmazonS3ClientBuilder.standard()
-                .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(this.env.getProperty("s3Endpoint"), null))
+                .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(endPoint, null))
                 .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey, secretKey))).build();
     }
 
