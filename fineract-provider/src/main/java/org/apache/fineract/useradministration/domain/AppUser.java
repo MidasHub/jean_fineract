@@ -716,5 +716,12 @@ public class AppUser extends AbstractPersistableCustom implements PlatformUser {
     public boolean hasSpecificPermissionToFindClientAllOffices() {
         return hasPermissionTo("READ_OFFICES_CLIENT");
     }
+
+    public boolean hasSpecificPermissionToFindGroupAllOffices() {
+        return hasPermissionTo("READ_OFFICES_GROUP");
+    }
+    public boolean hasSpecificPermissionToFindCenterAllOffices() {
+        return hasPermissionTo("READ_OFFICES_CENTER");
+    }
     // ---------------------------------
 }

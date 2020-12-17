@@ -454,7 +454,13 @@ public class CenterReadPlatformServiceImpl implements CenterReadPlatformService 
 
         try {
             final AppUser currentUser = this.context.authenticatedUser();
-            final String hierarchy = currentUser.getOffice().getHierarchy();
+            //final String hierarchy = currentUser.getOffice().getHierarchy();
+            //Jean fix: 
+            String hierarchy = currentUser.getOffice().getHierarchy();
+            if (currentUser.hasSpecificPermissionToFindCenterAllOffices()){
+                hierarchy = '.'
+            }
+            //----------------------------------------------------
             final String hierarchySearchString = hierarchy + "%";
 
             final String sql = "select " + this.centerMapper.schema() + " where g.id = ? and o.hierarchy like ?";
