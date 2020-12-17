@@ -314,7 +314,13 @@ public class ClientReadPlatformServiceImpl implements ClientReadPlatformService 
     public ClientData retrieveOne(final Long clientId) {
         try {
             final String hierarchy = this.context.officeHierarchy();
-            final String hierarchySearchString = hierarchy + "%";
+            String hierarchySearchString = hierarchy + "%";
+            // Jean: check if have permission to view all client
+            final AppUser currentUser = this.context.authenticatedUser();
+            if (currentUser.hasSpecificPermissionToFindClientAllOffices()) {
+                hierarchySearchString = ".%";
+            }
+            ;
 
             final String sql = "select " + this.clientMapper.schema()
                     + " where ( o.hierarchy like ? or transferToOffice.hierarchy like ?) and c.id = ?";
@@ -358,7 +364,12 @@ public class ClientReadPlatformServiceImpl implements ClientReadPlatformService 
 
         final AppUser currentUser = this.context.authenticatedUser();
         final String hierarchy = currentUser.getOffice().getHierarchy();
-        final String hierarchySearchString = hierarchy + "%";
+        String hierarchySearchString = hierarchy + "%";
+        // Jean: check if have permission to view all client
+        if (currentUser.hasSpecificPermissionToFindClientAllOffices()) {
+            hierarchySearchString = ".%";
+        }
+        ;
 
         final String sql = "select " + this.membersOfGroupMapper.schema() + " where o.hierarchy like ? and pgc.group_id = ?";
 
@@ -370,7 +381,12 @@ public class ClientReadPlatformServiceImpl implements ClientReadPlatformService 
 
         final AppUser currentUser = this.context.authenticatedUser();
         final String hierarchy = currentUser.getOffice().getHierarchy();
-        final String hierarchySearchString = hierarchy + "%";
+        String hierarchySearchString = hierarchy + "%";
+        // Jean: check if have permission to view all client
+        if (currentUser.hasSpecificPermissionToFindClientAllOffices()) {
+            hierarchySearchString = ".%";
+        }
+        ;
 
         final String sql = "select " + this.membersOfGroupMapper.schema()
                 + " where o.hierarchy like ? and pgc.group_id = ? and c.status_enum = ? ";
@@ -559,7 +575,12 @@ public class ClientReadPlatformServiceImpl implements ClientReadPlatformService 
 
         final AppUser currentUser = this.context.authenticatedUser();
         final String hierarchy = currentUser.getOffice().getHierarchy();
-        final String hierarchySearchString = hierarchy + "%";
+        String hierarchySearchString = hierarchy + "%";
+        // Jean: check if have permission to view all client
+        if (currentUser.hasSpecificPermissionToFindClientAllOffices()) {
+            hierarchySearchString = ".%";
+        }
+        ;
 
         final String sql = "select " + this.membersOfGroupMapper.schema()
                 + " left join m_group g on pgc.group_id=g.id where o.hierarchy like ? and g.parent_id = ? and c.status_enum = ? group by c.id";
