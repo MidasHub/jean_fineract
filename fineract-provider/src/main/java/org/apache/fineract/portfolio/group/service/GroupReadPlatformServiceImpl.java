@@ -140,14 +140,14 @@ public class GroupReadPlatformServiceImpl implements GroupReadPlatformService {
 
         this.paginationParametersDataValidator.validateParameterValues(parameters, supportedOrderByValues, "audits");
         final AppUser currentUser = this.context.authenticatedUser();
-        //final String hierarchy = currentUser.getOffice().getHierarchy();
-        //Jean fix: 
-        String hierarchy = currentUser.getOffice().getHierarchy();
-        if (currentUser.hasSpecificPermissionToFindGroupAllOffices()){
-            hierarchy = '.'
+        final String hierarchy = currentUser.getOffice().getHierarchy();
+        String hierarchySearchString = hierarchy + "%";
+        // Jean fix:
+
+        if (currentUser.hasSpecificPermissionToFindGroupAllOffices()) {
+            hierarchySearchString = ".%";
         }
-        //----------------------------------------------------
-        final String hierarchySearchString = hierarchy + "%";
+        // ----------------------------------------------------
 
         final StringBuilder sqlBuilder = new StringBuilder(200);
         sqlBuilder.append("select SQL_CALC_FOUND_ROWS ");
@@ -177,15 +177,14 @@ public class GroupReadPlatformServiceImpl implements GroupReadPlatformService {
     @Override
     public Collection<GroupGeneralData> retrieveAll(SearchParameters searchParameters, final PaginationParameters parameters) {
         final AppUser currentUser = this.context.authenticatedUser();
-        //final String hierarchy = currentUser.getOffice().getHierarchy();
-        //Jean fix: 
-        String hierarchy = currentUser.getOffice().getHierarchy();
-        if (currentUser.hasSpecificPermissionToFindGroupAllOffices()){
-            hierarchy = '.'
+        final String hierarchy = currentUser.getOffice().getHierarchy();
+        String hierarchySearchString = hierarchy + "%";
+        // Jean fix:
+
+        if (currentUser.hasSpecificPermissionToFindGroupAllOffices()) {
+            hierarchySearchString = ".%";
         }
-        //----------------------------------------------------
-        
-        final String hierarchySearchString = hierarchy + "%";
+        // ----------------------------------------------------
 
         final StringBuilder sqlBuilder = new StringBuilder(200);
         sqlBuilder.append("select ");
@@ -246,14 +245,13 @@ public class GroupReadPlatformServiceImpl implements GroupReadPlatformService {
 
         try {
             final AppUser currentUser = this.context.authenticatedUser();
-            //final String hierarchy = currentUser.getOffice().getHierarchy();
-            //Jean fix: 
-            String hierarchy = currentUser.getOffice().getHierarchy();
-            if (currentUser.hasSpecificPermissionToFindGroupAllOffices()){
-                hierarchy = '.'
+            final String hierarchy = currentUser.getOffice().getHierarchy();
+            String hierarchySearchString = hierarchy + "%";
+            // Jean fix:
+            if (currentUser.hasSpecificPermissionToFindGroupAllOffices()) {
+                hierarchySearchString = ".%";
             }
-            //----------------------------------------------------
-            final String hierarchySearchString = hierarchy + "%";
+            // ----------------------------------------------------
 
             final String sql = "select " + this.allGroupTypesDataMapper.schema() + " where g.id = ? and o.hierarchy like ?";
             return this.jdbcTemplate.queryForObject(sql, this.allGroupTypesDataMapper, new Object[] { groupId, hierarchySearchString });
