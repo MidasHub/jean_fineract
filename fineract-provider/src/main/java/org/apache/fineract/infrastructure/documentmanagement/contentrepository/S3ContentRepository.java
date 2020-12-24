@@ -63,6 +63,10 @@ public class S3ContentRepository implements ContentRepository {
     public S3ContentRepository(final String bucketName, final String secretKey, final String accessKey) {
 
         String endPoint = this.env.getProperty("s3Endpoint");
+        if (endPoint.isBlank() || endPoint == null) {
+            endPoint = "https://s3.cloud.cmctelecom.vn";
+        }
+        ;
         this.s3BucketName = bucketName;
         this.s3Client = AmazonS3ClientBuilder.standard()
                 .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(endPoint, null))

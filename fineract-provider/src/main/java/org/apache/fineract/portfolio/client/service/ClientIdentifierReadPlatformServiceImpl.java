@@ -52,8 +52,12 @@ public class ClientIdentifierReadPlatformServiceImpl implements ClientIdentifier
 
         final AppUser currentUser = this.context.authenticatedUser();
         final String hierarchy = currentUser.getOffice().getHierarchy();
-        final String hierarchySearchString = hierarchy + "%";
-
+        String hierarchySearchString = hierarchy + "%";
+        // Jean : add permission for show identifier when query by user that not the same office
+        if (currentUser.hasSpecificPermissionToFindClientAllOffices()) {
+            hierarchySearchString = ".%";
+        }
+        // -------------------------------------------------------------------------------------
         final ClientIdentityMapper rm = new ClientIdentityMapper();
 
         String sql = "select " + rm.schema();
@@ -68,8 +72,12 @@ public class ClientIdentifierReadPlatformServiceImpl implements ClientIdentifier
         try {
             final AppUser currentUser = this.context.authenticatedUser();
             final String hierarchy = currentUser.getOffice().getHierarchy();
-            final String hierarchySearchString = hierarchy + "%";
-
+            String hierarchySearchString = hierarchy + "%";
+            // Jean : add permission for show identifier when query by user that not the same office
+            if (currentUser.hasSpecificPermissionToFindClientAllOffices()) {
+                hierarchySearchString = ".%";
+            }
+            // -------------------------------------------------------------------------------------
             final ClientIdentityMapper rm = new ClientIdentityMapper();
 
             String sql = "select " + rm.schema();

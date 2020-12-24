@@ -183,7 +183,9 @@ public class StandingInstructionReadPlatformServiceImpl implements StandingInstr
 
         // defaults
         final LocalDate transferDate = DateUtils.getLocalDateOfTenant();
-        Collection<OfficeData> toOfficeOptions = fromOfficeOptions;
+        // Collection<OfficeData> toOfficeOptions = fromOfficeOptions;
+        // Sửa thành lấy tất cả các chi nhánh , không có searchParams nên set là null
+        Collection<OfficeData> toOfficeOptions = this.officeReadPlatformService.retrieveAllOffices(true, null);
         Collection<ClientData> toClientOptions = null;
 
         if (toAccountId != null && fromAccount != null) {

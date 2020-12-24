@@ -158,7 +158,9 @@ public class AccountTransfersReadPlatformServiceImpl implements AccountTransfers
 
         // defaults
         final LocalDate transferDate = DateUtils.getLocalDateOfTenant();
-        Collection<OfficeData> toOfficeOptions = fromOfficeOptions;
+        // Collection<OfficeData> toOfficeOptions = fromOfficeOptions;
+        // Sửa thành lấy tất cả các chi nhánh , không có searchParams nên set là null
+        Collection<OfficeData> toOfficeOptions = this.officeReadPlatformService.retrieveAllOffices(true, null);
         Collection<ClientData> toClientOptions = null;
 
         if (toAccountId != null && fromAccount != null) {
@@ -178,7 +180,9 @@ public class AccountTransfersReadPlatformServiceImpl implements AccountTransfers
 
         if (mostRelevantToOfficeId != null) {
             toOffice = this.officeReadPlatformService.retrieveOffice(mostRelevantToOfficeId);
-            toOfficeOptions = this.officeReadPlatformService.retrieveAllOfficesForDropdown();
+            // toOfficeOptions = this.officeReadPlatformService.retrieveAllOfficesForDropdown();
+            // Sửa thành lấy tất cả các chi nhánh , không có searchParams nên set là null
+            toOfficeOptions = this.officeReadPlatformService.retrieveAllOffices(true, null);
 
             toClientOptions = this.clientReadPlatformService.retrieveAllForLookupByOfficeId(mostRelevantToOfficeId);
             if (toClientOptions != null && toClientOptions.size() == 1) {
