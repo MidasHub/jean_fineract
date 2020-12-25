@@ -64,7 +64,7 @@ public class S3ContentRepository implements ContentRepository {
 
         // String endPoint = this.env.getProperty("s3Endpoint");
         // if (endPoint.isBlank() || endPoint == null) {
-        //     endPoint = "https://s3.cloud.cmctelecom.vn";
+        // endPoint = "https://s3.cloud.cmctelecom.vn";
         // }
         // ;
         this.s3BucketName = bucketName;
