@@ -25,6 +25,7 @@ import org.apache.catalina.connector.Connector;
 import org.apache.commons.io.FileUtils;
 import org.apache.coyote.http11.Http11NioProtocol;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
@@ -46,14 +47,30 @@ public class EmbeddedTomcatWithSSLConfiguration {
     public ServletWebServerFactory servletContainer() {
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
         tomcat.setContextPath(getContextPath());
+        tomcat.addAdditionalTomcatConnectors(redirectConnector());
         tomcat.addAdditionalTomcatConnectors(createSslConnector());
         return tomcat;
     }
+
+    @Value("${SSLPort}") // Defined in application.properties file
+    int httpPort;
+
+    // @Value("${server.port}") // Defined in application.properties file
+    // int httpsPort;
 
     private String getContextPath() {
         // return "/fineract-provider";
         // Jean:change context path
         return "/" + this.env.getProperty("contextPath");
+    }
+
+    private Connector redirectConnector() {
+        Connector connector = new Connector(TomcatServletWebServerFactory.DEFAULT_PROTOCOL);
+        connector.setScheme("http");
+        connector.setPort(8081);
+        connector.setSecure(false);
+        connector.setRedirectPort(getHTTPSPort());
+        return connector;
     }
 
     protected Connector createSslConnector() {
