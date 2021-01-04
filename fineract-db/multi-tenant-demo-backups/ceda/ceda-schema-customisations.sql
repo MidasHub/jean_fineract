@@ -203,7 +203,7 @@ CREATE TABLE `client additional data` (
   `Last visited on` date NOT NULL,
   PRIMARY KEY (`client_id`),
   CONSTRAINT `FK_client_additional_data` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `impact measurement`;
 CREATE TABLE `impact measurement` (
@@ -217,7 +217,7 @@ CREATE TABLE `impact measurement` (
   `Number of Jobs Created` BIGINT DEFAULT NULL,
   PRIMARY KEY (`loan_id`),
   CONSTRAINT `FK_impact measurement` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `loan additional data`;
 CREATE TABLE `loan additional data` (
@@ -232,7 +232,7 @@ CREATE TABLE `loan additional data` (
   `Guarantor telephone number` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`loan_id`),
   CONSTRAINT `FK_loan_additional_data` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- datatables mapping
 INSERT INTO `x_registered_table`

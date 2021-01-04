@@ -26,7 +26,7 @@ CREATE TABLE `m_template` (
   `type` INT DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unq_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `m_templatemappers`;
 CREATE TABLE `m_templatemappers` (
@@ -35,7 +35,7 @@ CREATE TABLE `m_templatemappers` (
   `mapperorder` INT DEFAULT NULL,
   `mappervalue` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `m_template_m_templatemappers`;
 CREATE TABLE `m_template_m_templatemappers` (
@@ -44,7 +44,7 @@ CREATE TABLE `m_template_m_templatemappers` (
   UNIQUE KEY `mappers_id` (`mappers_id`),
   KEY (`mappers_id`),
   KEY (`m_template_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `m_permission` (`grouping`, `code`, `entity_name`, `action_name`, `can_maker_checker`)
 VALUES ('organistion', 'DELETE_TEMPLATE', 'TEMPLATE', 'DELETE', 0),

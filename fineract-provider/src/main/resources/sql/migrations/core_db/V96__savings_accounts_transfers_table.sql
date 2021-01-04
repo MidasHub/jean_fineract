@@ -72,4 +72,4 @@ CREATE TABLE `m_savings_account_transfer` (
   CONSTRAINT `FKTRAN000000010` FOREIGN KEY (`to_loan_transaction_id`) REFERENCES `m_loan_transaction` (`id`),
   CONSTRAINT `FKTRAN000000011` FOREIGN KEY (`from_loan_account_id`) REFERENCES `m_loan` (`id`),
   CONSTRAINT `FKTRAN000000012` FOREIGN KEY (`from_loan_transaction_id`) REFERENCES `m_loan_transaction` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

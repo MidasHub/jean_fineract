@@ -22,7 +22,7 @@ CREATE TABLE `c_cache` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `cache_type_enum` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 INSERT INTO `c_cache`

@@ -28,4 +28,4 @@ CREATE TABLE `m_loan_paid_in_advance` (
   `total_in_advance_derived` decimal(19,6) NOT NULL DEFAULT '0.000000',
   PRIMARY KEY (`loan_id`),
   CONSTRAINT `m_loan_paid_in_advance_ibfk_1` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

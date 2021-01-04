@@ -33,7 +33,7 @@ CREATE TABLE `stretchy_report_tmp` (
   `use_report` tinyint DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `report_name_UNIQUE` (`report_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 insert into stretchy_report_tmp
 (id, report_name, report_type, report_subtype, report_category,
@@ -57,7 +57,7 @@ CREATE TABLE `stretchy_parameter_tmp` (
   `parent_id` INT DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`parameter_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 insert into stretchy_parameter_tmp
 (id, parameter_name, parameter_variable, parameter_label, parameter_displayType, parameter_FormatType,
@@ -73,7 +73,7 @@ CREATE TABLE `stretchy_report_parameter_tmp` (
   `report_parameter_name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `report_id_name_UNIQUE` (`report_id`,`report_parameter_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 insert into stretchy_report_parameter_tmp(report_id, parameter_id, report_parameter_name)
 select report_id, parameter_id, report_parameter_name

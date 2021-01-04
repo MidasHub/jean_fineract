@@ -26,7 +26,7 @@ CREATE TABLE `m_creditbureau` (
   `implementationKey` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique impl` (`name`,`product`,`country`,`implementationKey`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 CREATE TABLE `m_organisation_creditbureau` (
@@ -38,7 +38,7 @@ CREATE TABLE `m_organisation_creditbureau` (
   UNIQUE KEY `morgcb` (`alias`,`creditbureau_id`),
   KEY `orgcb_cbfk` (`creditbureau_id`),
   CONSTRAINT `orgcb_cbfk` FOREIGN KEY (`creditbureau_id`) REFERENCES `m_creditbureau` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -53,7 +53,7 @@ CREATE TABLE `m_creditbureau_configuration` (
   UNIQUE KEY `mcbconfig` (`configkey`,`organisation_creditbureau_id`),
   KEY `cbConfigfk1` (`organisation_creditbureau_id`),
   CONSTRAINT `cbConfigfk1` FOREIGN KEY (`organisation_creditbureau_id`) REFERENCES `m_organisation_creditbureau` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -72,7 +72,7 @@ CREATE TABLE `m_creditbureau_loanproduct_mapping` (
   KEY `fk_cb_lp2` (`loan_product_id`),
   CONSTRAINT `cblpfk2` FOREIGN KEY (`organisation_creditbureau_id`) REFERENCES `m_organisation_creditbureau` (`id`),
   CONSTRAINT `fk_cb_lp2` FOREIGN KEY (`loan_product_id`) REFERENCES `m_product_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 --  modify `m_portfolio_command_source` command

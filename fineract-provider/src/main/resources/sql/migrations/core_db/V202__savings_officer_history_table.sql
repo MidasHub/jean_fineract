@@ -32,7 +32,7 @@ CREATE TABLE `m_savings_officer_assignment_history` (
   KEY `fk_m_savings_officer_assignment_history_0002` (`savings_officer_id`),
   CONSTRAINT `fk_m_savings_officer_assignment_history_0001` FOREIGN KEY (`account_id`) REFERENCES `m_savings_account` (`id`),
   CONSTRAINT `fk_m_savings_officer_assignment_history_0002` FOREIGN KEY (`savings_officer_id`) REFERENCES `m_staff` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 insert into m_permission (`grouping`,code,entity_name,action_name) values ('portfolio','REMOVESAVINGSOFFICER_SAVINGSACCOUNT','SAVINGSACCOUNT','REMOVESAVINGSOFFICER');
 insert into m_permission (`grouping`,code,entity_name,action_name) values ('portfolio','UPDATESAVINGSOFFICER_SAVINGSACCOUNT','SAVINGSACCOUNT','UPDATESAVINGSOFFICER');

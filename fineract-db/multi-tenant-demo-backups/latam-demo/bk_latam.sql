@@ -26,7 +26,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES UTF8MB4 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -40,7 +40,7 @@
 
 DROP TABLE IF EXISTS `acc_gl_account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `acc_gl_account` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE `acc_gl_account` (
   UNIQUE KEY `acc_gl_code` (`gl_code`),
   KEY `FK_ACC_0000000001` (`parent_id`),
   CONSTRAINT `FK_ACC_0000000001` FOREIGN KEY (`parent_id`) REFERENCES `acc_gl_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,7 +73,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `acc_gl_closure`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `acc_gl_closure` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `office_id` BIGINT NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE `acc_gl_closure` (
   CONSTRAINT `FK_acc_gl_closure_m_appuser` FOREIGN KEY (`createdby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_acc_gl_closure_m_appuser_2` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_acc_gl_closure_m_office` FOREIGN KEY (`office_id`) REFERENCES `m_office` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +110,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `acc_gl_journal_entry`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `acc_gl_journal_entry` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `account_id` BIGINT NOT NULL,
@@ -140,7 +140,7 @@ CREATE TABLE `acc_gl_journal_entry` (
   CONSTRAINT `FK_acc_gl_journal_entry_m_appuser` FOREIGN KEY (`createdby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_acc_gl_journal_entry_m_appuser_2` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_acc_gl_journal_entry_m_office` FOREIGN KEY (`office_id`) REFERENCES `m_office` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,7 +158,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `acc_product_mapping`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `acc_product_mapping` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `gl_account_id` BIGINT DEFAULT NULL,
@@ -166,7 +166,7 @@ CREATE TABLE `acc_product_mapping` (
   `product_type` SMALLINT DEFAULT NULL,
   `financial_account_type` SMALLINT DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,13 +184,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `c_configuration`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `c_configuration` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   `enabled` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,7 +209,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `extra_client_details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `extra_client_details` (
   `client_id` BIGINT NOT NULL,
   `Business Description` varchar(100) DEFAULT NULL,
@@ -221,7 +221,7 @@ CREATE TABLE `extra_client_details` (
   `Comment` text,
   PRIMARY KEY (`client_id`),
   CONSTRAINT `FK_latam_extra_client_details` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +239,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `extra_family_details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `extra_family_details` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `client_id` BIGINT NOT NULL,
@@ -251,7 +251,7 @@ CREATE TABLE `extra_family_details` (
   PRIMARY KEY (`id`),
   KEY `FK_Extra Family Details Data_1` (`client_id`),
   CONSTRAINT `FK_latam_family_details` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -269,7 +269,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `extra_loan_details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `extra_loan_details` (
   `loan_id` BIGINT NOT NULL,
   `Business Description` varchar(100) DEFAULT NULL,
@@ -281,7 +281,7 @@ CREATE TABLE `extra_loan_details` (
   `Comment` text,
   PRIMARY KEY (`loan_id`),
   CONSTRAINT `FK_latam_extra_loan_details` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -299,7 +299,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_appuser`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_appuser` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `is_deleted` tinyint NOT NULL DEFAULT '0',
@@ -318,7 +318,7 @@ CREATE TABLE `m_appuser` (
   UNIQUE KEY `username_org` (`username`),
   KEY `FKB3D587CE0DD567A` (`office_id`),
   CONSTRAINT `FKB3D587CE0DD567A` FOREIGN KEY (`office_id`) REFERENCES `m_office` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -337,7 +337,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_appuser_role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_appuser_role` (
   `appuser_id` BIGINT NOT NULL,
   `role_id` BIGINT NOT NULL,
@@ -346,7 +346,7 @@ CREATE TABLE `m_appuser_role` (
   KEY `FK7662CE5915CEC7AB` (`role_id`),
   CONSTRAINT `FK7662CE5915CEC7AB` FOREIGN KEY (`role_id`) REFERENCES `m_role` (`id`),
   CONSTRAINT `FK7662CE59B4100309` FOREIGN KEY (`appuser_id`) REFERENCES `m_appuser` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -365,7 +365,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_charge`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_charge` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
@@ -379,7 +379,7 @@ CREATE TABLE `m_charge` (
   `is_deleted` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -397,7 +397,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_client`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_client` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `account_no` varchar(20) NOT NULL,
@@ -416,7 +416,7 @@ CREATE TABLE `m_client` (
   UNIQUE KEY `external_id` (`external_id`),
   KEY `FKCE00CAB3E0DD567A` (`office_id`),
   CONSTRAINT `FKCE00CAB3E0DD567A` FOREIGN KEY (`office_id`) REFERENCES `m_office` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -434,7 +434,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_client_identifier`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_client_identifier` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `client_id` BIGINT NOT NULL,
@@ -452,7 +452,7 @@ CREATE TABLE `m_client_identifier` (
   KEY `FK_m_client_document_m_code_value` (`document_type_id`),
   CONSTRAINT `FK_m_client_document_m_client` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`),
   CONSTRAINT `FK_m_client_document_m_code_value` FOREIGN KEY (`document_type_id`) REFERENCES `m_code_value` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -470,14 +470,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_code`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_code` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `code_name` varchar(100) DEFAULT NULL,
   `is_system_defined` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `code_name` (`code_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -496,7 +496,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_code_value`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_code_value` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `code_id` INT NOT NULL,
@@ -506,7 +506,7 @@ CREATE TABLE `m_code_value` (
   UNIQUE KEY `code_value` (`code_id`,`code_value`),
   KEY `FKCFCEA42640BE071Z` (`code_id`),
   CONSTRAINT `FKCFCEA42640BE071Z` FOREIGN KEY (`code_id`) REFERENCES `m_code` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -525,7 +525,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_currency`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_currency` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `code` varchar(3) NOT NULL,
@@ -535,7 +535,7 @@ CREATE TABLE `m_currency` (
   `internationalized_name_code` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -554,7 +554,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_deposit_account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_deposit_account` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `is_deleted` tinyint NOT NULL DEFAULT '0',
@@ -605,7 +605,7 @@ CREATE TABLE `m_deposit_account` (
   CONSTRAINT `FKKW0000000000001` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`),
   CONSTRAINT `FKKW0000000000002` FOREIGN KEY (`product_id`) REFERENCES `m_product_deposit` (`id`),
   CONSTRAINT `FKKW0000000000003` FOREIGN KEY (`renewed_account_id`) REFERENCES `m_deposit_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -623,7 +623,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_deposit_account_transaction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_deposit_account_transaction` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `deposit_account_id` BIGINT NOT NULL,
@@ -638,7 +638,7 @@ CREATE TABLE `m_deposit_account_transaction` (
   KEY `FKKW00000000000006` (`contra_id`),
   CONSTRAINT `FKKW00000000000005` FOREIGN KEY (`deposit_account_id`) REFERENCES `m_deposit_account` (`id`),
   CONSTRAINT `FKKW00000000000006` FOREIGN KEY (`contra_id`) REFERENCES `m_deposit_account_transaction` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -656,7 +656,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_document`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_document` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `parent_entity_type` varchar(50) NOT NULL,
@@ -668,7 +668,7 @@ CREATE TABLE `m_document` (
   `description` varchar(1000) DEFAULT NULL,
   `location` varchar(500) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -686,7 +686,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_fund`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_fund` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -694,7 +694,7 @@ CREATE TABLE `m_fund` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `fund_name_org` (`name`),
   UNIQUE KEY `fund_externalid_org` (`external_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -712,7 +712,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_group`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_group` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `office_id` BIGINT NOT NULL,
@@ -724,7 +724,7 @@ CREATE TABLE `m_group` (
   UNIQUE KEY `external_id` (`external_id`),
   KEY `office_id` (`office_id`),
   CONSTRAINT `m_group_ibfk_1` FOREIGN KEY (`office_id`) REFERENCES `m_office` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -742,7 +742,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_group_client`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_group_client` (
   `group_id` BIGINT NOT NULL,
   `client_id` BIGINT NOT NULL,
@@ -750,7 +750,7 @@ CREATE TABLE `m_group_client` (
   KEY `client_id` (`client_id`),
   CONSTRAINT `m_group_client_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `m_group` (`id`),
   CONSTRAINT `m_group_client_ibfk_2` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -768,7 +768,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_guarantor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_guarantor` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `loan_id` BIGINT NOT NULL,
@@ -789,7 +789,7 @@ CREATE TABLE `m_guarantor` (
   PRIMARY KEY (`id`),
   KEY `FK_m_guarantor_m_loan` (`loan_id`),
   CONSTRAINT `FK_m_guarantor_m_loan` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -807,7 +807,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_loan`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_loan` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `account_no` varchar(20) NOT NULL,
@@ -870,7 +870,7 @@ CREATE TABLE `m_loan` (
   CONSTRAINT `FK_loan_ltp_strategy` FOREIGN KEY (`loan_transaction_strategy_id`) REFERENCES `ref_loan_transaction_processing_strategy` (`id`),
   CONSTRAINT `FK_m_loan_m_staff` FOREIGN KEY (`loan_officer_id`) REFERENCES `m_staff` (`id`),
   CONSTRAINT `m_loan_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `m_group` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -888,7 +888,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_loan_charge`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_loan_charge` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `loan_id` BIGINT NOT NULL,
@@ -910,7 +910,7 @@ CREATE TABLE `m_loan_charge` (
   KEY `m_loan_charge_ibfk_2` (`loan_id`),
   CONSTRAINT `m_loan_charge_ibfk_1` FOREIGN KEY (`charge_id`) REFERENCES `m_charge` (`id`),
   CONSTRAINT `m_loan_charge_ibfk_2` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -928,7 +928,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_loan_officer_assignment_history`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_loan_officer_assignment_history` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `loan_id` BIGINT NOT NULL,
@@ -944,7 +944,7 @@ CREATE TABLE `m_loan_officer_assignment_history` (
   KEY `fk_m_loan_officer_assignment_history_0002` (`loan_officer_id`),
   CONSTRAINT `fk_m_loan_officer_assignment_history_0001` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`),
   CONSTRAINT `fk_m_loan_officer_assignment_history_0002` FOREIGN KEY (`loan_officer_id`) REFERENCES `m_staff` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -962,7 +962,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_loan_repayment_schedule`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_loan_repayment_schedule` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `loan_id` BIGINT NOT NULL,
@@ -992,7 +992,7 @@ CREATE TABLE `m_loan_repayment_schedule` (
   PRIMARY KEY (`id`),
   KEY `FK488B92AA40BE0710` (`loan_id`),
   CONSTRAINT `FK488B92AA40BE0710` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1010,7 +1010,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_loan_transaction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_loan_transaction` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `loan_id` BIGINT NOT NULL,
@@ -1031,7 +1031,7 @@ CREATE TABLE `m_loan_transaction` (
   KEY `FKCFCEA426FC69F3F1` (`contra_id`),
   CONSTRAINT `FKCFCEA42640BE0710` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`),
   CONSTRAINT `FKCFCEA426FC69F3F1` FOREIGN KEY (`contra_id`) REFERENCES `m_loan_transaction` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1049,7 +1049,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_note`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_note` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `client_id` BIGINT NOT NULL,
@@ -1078,7 +1078,7 @@ CREATE TABLE `m_note` (
   CONSTRAINT `FK7C970897179A0CB` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`),
   CONSTRAINT `FK7C970898F889C3F` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_m_note_m_deposit_account` FOREIGN KEY (`deposit_account_id`) REFERENCES `m_deposit_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1096,7 +1096,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_office`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_office` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `parent_id` BIGINT DEFAULT NULL,
@@ -1109,7 +1109,7 @@ CREATE TABLE `m_office` (
   UNIQUE KEY `externalid_org` (`external_id`),
   KEY `FK2291C477E2551DCC` (`parent_id`),
   CONSTRAINT `FK2291C477E2551DCC` FOREIGN KEY (`parent_id`) REFERENCES `m_office` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1128,7 +1128,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_office_transaction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_office_transaction` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `from_office_id` BIGINT DEFAULT NULL,
@@ -1143,7 +1143,7 @@ CREATE TABLE `m_office_transaction` (
   KEY `FK1E37728B783C5C25` (`from_office_id`),
   CONSTRAINT `FK1E37728B783C5C25` FOREIGN KEY (`from_office_id`) REFERENCES `m_office` (`id`),
   CONSTRAINT `FK1E37728B93C6C1B6` FOREIGN KEY (`to_office_id`) REFERENCES `m_office` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1161,7 +1161,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_organisation_currency`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_organisation_currency` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `code` varchar(3) NOT NULL,
@@ -1170,7 +1170,7 @@ CREATE TABLE `m_organisation_currency` (
   `display_symbol` varchar(10) DEFAULT NULL,
   `internationalized_name_code` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1189,7 +1189,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_permission`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_permission` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `grouping` varchar(45) DEFAULT NULL,
@@ -1199,7 +1199,7 @@ CREATE TABLE `m_permission` (
   `can_maker_checker` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=237 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=237 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1218,7 +1218,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_portfolio_command_source`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_portfolio_command_source` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `action_name` varchar(50) NOT NULL,
@@ -1249,7 +1249,7 @@ CREATE TABLE `m_portfolio_command_source` (
   KEY `loan_id` (`office_id`),
   CONSTRAINT `FK_m_checker_m_appuser` FOREIGN KEY (`checker_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_m_maker_m_appuser` FOREIGN KEY (`maker_id`) REFERENCES `m_appuser` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1267,7 +1267,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_product_deposit`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_product_deposit` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -1302,7 +1302,7 @@ CREATE TABLE `m_product_deposit` (
   KEY `FKJPW0000000000004` (`lastmodifiedby_id`),
   CONSTRAINT `FKJPX0000000000003` FOREIGN KEY (`createdby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FKJPX0000000000004` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1320,7 +1320,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_product_loan`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_product_loan` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `currency_code` varchar(3) NOT NULL,
@@ -1346,7 +1346,7 @@ CREATE TABLE `m_product_loan` (
   KEY `FK_ltp_strategy` (`loan_transaction_strategy_id`),
   CONSTRAINT `FKA6A8A7D77240145` FOREIGN KEY (`fund_id`) REFERENCES `m_fund` (`id`),
   CONSTRAINT `FK_ltp_strategy` FOREIGN KEY (`loan_transaction_strategy_id`) REFERENCES `ref_loan_transaction_processing_strategy` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1364,7 +1364,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_product_loan_charge`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_product_loan_charge` (
   `product_loan_id` BIGINT NOT NULL,
   `charge_id` BIGINT NOT NULL,
@@ -1372,7 +1372,7 @@ CREATE TABLE `m_product_loan_charge` (
   KEY `charge_id` (`charge_id`),
   CONSTRAINT `m_product_loan_charge_ibfk_1` FOREIGN KEY (`charge_id`) REFERENCES `m_charge` (`id`),
   CONSTRAINT `m_product_loan_charge_ibfk_2` FOREIGN KEY (`product_loan_id`) REFERENCES `m_product_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1390,7 +1390,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_product_savings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_product_savings` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -1423,7 +1423,7 @@ CREATE TABLE `m_product_savings` (
   KEY `FKJPW0000000000004` (`lastmodifiedby_id`),
   CONSTRAINT `FKJPW0000000000003` FOREIGN KEY (`createdby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FKJPW0000000000004` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1441,13 +1441,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_role` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `description` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1466,7 +1466,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_role_permission`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_role_permission` (
   `role_id` BIGINT NOT NULL,
   `permission_id` BIGINT NOT NULL,
@@ -1475,7 +1475,7 @@ CREATE TABLE `m_role_permission` (
   KEY `FK8DEDB048103B544B` (`permission_id`),
   CONSTRAINT `FK8DEDB048103B544B` FOREIGN KEY (`permission_id`) REFERENCES `m_permission` (`id`),
   CONSTRAINT `FK8DEDB04815CEC7AB` FOREIGN KEY (`role_id`) REFERENCES `m_role` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1494,7 +1494,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_saving_account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_saving_account` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `is_deleted` tinyint NOT NULL DEFAULT '0',
@@ -1546,7 +1546,7 @@ CREATE TABLE `m_saving_account` (
   KEY `FKSA0000000000002` (`product_id`),
   CONSTRAINT `FKSA0000000000001` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`),
   CONSTRAINT `FKSA0000000000002` FOREIGN KEY (`product_id`) REFERENCES `m_product_savings` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1564,7 +1564,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_saving_account_transaction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_saving_account_transaction` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `saving_account_id` BIGINT NOT NULL,
@@ -1581,7 +1581,7 @@ CREATE TABLE `m_saving_account_transaction` (
   KEY `FKSAT0000000002` (`contra_id`),
   CONSTRAINT `FKSAT0000000001` FOREIGN KEY (`saving_account_id`) REFERENCES `m_saving_account` (`id`),
   CONSTRAINT `FKSAT0000000002` FOREIGN KEY (`contra_id`) REFERENCES `m_saving_account_transaction` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1599,7 +1599,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_saving_schedule`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_saving_schedule` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `saving_account_id` BIGINT NOT NULL,
@@ -1617,7 +1617,7 @@ CREATE TABLE `m_saving_schedule` (
   PRIMARY KEY (`id`),
   KEY `FKSS00000000001` (`saving_account_id`),
   CONSTRAINT `FKSS00000000001` FOREIGN KEY (`saving_account_id`) REFERENCES `m_saving_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1635,7 +1635,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `m_staff`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `m_staff` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `is_loan_officer` tinyint NOT NULL DEFAULT '0',
@@ -1647,7 +1647,7 @@ CREATE TABLE `m_staff` (
   UNIQUE KEY `display_name` (`display_name`),
   KEY `FK_m_staff_m_office` (`office_id`),
   CONSTRAINT `FK_m_staff_m_office` FOREIGN KEY (`office_id`) REFERENCES `m_office` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1665,7 +1665,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `r_enum_value`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `r_enum_value` (
   `enum_name` varchar(100) NOT NULL,
   `enum_id` INT NOT NULL,
@@ -1674,7 +1674,7 @@ CREATE TABLE `r_enum_value` (
   PRIMARY KEY (`enum_name`,`enum_id`),
   UNIQUE KEY `enum_message_property` (`enum_name`,`enum_message_property`),
   UNIQUE KEY `enum_value` (`enum_name`,`enum_value`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1693,7 +1693,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ref_loan_transaction_processing_strategy`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ref_loan_transaction_processing_strategy` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `code` varchar(100) DEFAULT NULL,
@@ -1704,7 +1704,7 @@ CREATE TABLE `ref_loan_transaction_processing_strategy` (
   `lastmodified_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ltp_strategy_code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1723,11 +1723,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `rpt_sequence`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rpt_sequence` (
   `id` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1745,7 +1745,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `stretchy_parameter`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `stretchy_parameter` (
   `parameter_id` INT NOT NULL AUTO_INCREMENT,
   `parameter_name` varchar(45) NOT NULL,
@@ -1760,7 +1760,7 @@ CREATE TABLE `stretchy_parameter` (
   `parameter_sql` text,
   PRIMARY KEY (`parameter_id`),
   UNIQUE KEY `name_UNIQUE` (`parameter_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1779,7 +1779,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `stretchy_report`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `stretchy_report` (
   `report_id` INT NOT NULL AUTO_INCREMENT,
   `report_name` varchar(100) NOT NULL,
@@ -1792,7 +1792,7 @@ CREATE TABLE `stretchy_report` (
   `use_report` tinyint DEFAULT '0',
   PRIMARY KEY (`report_id`),
   UNIQUE KEY `report_name_UNIQUE` (`report_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1811,14 +1811,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `stretchy_report_parameter`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `stretchy_report_parameter` (
   `report_id` INT NOT NULL,
   `parameter_id` INT NOT NULL,
   `report_parameter_name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`report_id`,`parameter_id`),
   UNIQUE KEY `report_id_name_UNIQUE` (`report_id`,`report_parameter_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1837,12 +1837,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `x_registered_table`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = UTF8MB4 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `x_registered_table` (
   `registered_table_name` varchar(50) NOT NULL,
   `application_table_name` varchar(50) NOT NULL,
   PRIMARY KEY (`registered_table_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

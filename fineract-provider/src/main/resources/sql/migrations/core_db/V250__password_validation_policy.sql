@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `m_password_validation_policy` (
   `description` text NOT NULL,
   `active` TINYINT NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
 
 
 INSERT INTO `m_password_validation_policy` (

@@ -80,7 +80,7 @@ CREATE TABLE `extra_client_details` (
   `Comment` text,
   PRIMARY KEY (`client_id`),
   CONSTRAINT `FK_extra_client_details` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `extra_family_details`;
 CREATE TABLE `extra_family_details` (
@@ -94,7 +94,7 @@ CREATE TABLE `extra_family_details` (
   PRIMARY KEY (`id`),
   KEY `FK_Extra Family Details Data_1` (`client_id`),
   CONSTRAINT `FK_family_details` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `extra_loan_details`;
 CREATE TABLE `extra_loan_details` (
@@ -108,7 +108,7 @@ CREATE TABLE `extra_loan_details` (
   `Comment` text,
   PRIMARY KEY (`loan_id`),
   CONSTRAINT `FK_extra_loan_details` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- datatables mapping
 INSERT INTO `x_registered_table`

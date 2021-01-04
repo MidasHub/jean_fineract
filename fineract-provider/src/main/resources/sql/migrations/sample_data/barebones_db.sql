@@ -25,7 +25,7 @@
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES UTF8MB4 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `acc_accounting_rule` (
   CONSTRAINT `FK_acc_accounting_rule_acc_gl_account_credit` FOREIGN KEY (`credit_account_id`) REFERENCES `acc_gl_account` (`id`),
   CONSTRAINT `FK_acc_accounting_rule_acc_gl_account_debit` FOREIGN KEY (`debit_account_id`) REFERENCES `acc_gl_account` (`id`),
   CONSTRAINT `FK_acc_accounting_rule_m_office` FOREIGN KEY (`office_id`) REFERENCES `m_office` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.acc_accounting_rule: ~0 rows (approximately)
 /*!40000 ALTER TABLE `acc_accounting_rule` DISABLE KEYS */;
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `acc_gl_account` (
   KEY `FKGLACC000000002` (`tag_id`),
   CONSTRAINT `FKGLACC000000002` FOREIGN KEY (`tag_id`) REFERENCES `m_code_value` (`id`),
   CONSTRAINT `FK_ACC_0000000001` FOREIGN KEY (`parent_id`) REFERENCES `acc_gl_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.acc_gl_account: ~0 rows (approximately)
 /*!40000 ALTER TABLE `acc_gl_account` DISABLE KEYS */;
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `acc_gl_closure` (
   CONSTRAINT `FK_acc_gl_closure_m_appuser` FOREIGN KEY (`createdby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_acc_gl_closure_m_appuser_2` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_acc_gl_closure_m_office` FOREIGN KEY (`office_id`) REFERENCES `m_office` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.acc_gl_closure: ~0 rows (approximately)
 /*!40000 ALTER TABLE `acc_gl_closure` DISABLE KEYS */;
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `acc_gl_financial_activity_account` (
   UNIQUE KEY `financial_activity_type` (`financial_activity_type`),
   KEY `FK_office_mapping_acc_gl_account` (`gl_account_id`),
   CONSTRAINT `FK_office_mapping_acc_gl_account` FOREIGN KEY (`gl_account_id`) REFERENCES `acc_gl_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.acc_gl_financial_activity_account: ~0 rows (approximately)
 /*!40000 ALTER TABLE `acc_gl_financial_activity_account` DISABLE KEYS */;
@@ -178,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `acc_gl_journal_entry` (
   CONSTRAINT `FK_acc_gl_journal_entry_m_payment_detail` FOREIGN KEY (`payment_details_id`) REFERENCES `m_payment_detail` (`id`),
   CONSTRAINT `FK_acc_gl_journal_entry_m_savings_account_transaction` FOREIGN KEY (`savings_transaction_id`) REFERENCES `m_savings_account_transaction` (`id`),
   CONSTRAINT `FK_acc_gl_journal_entry_m_share_account_transaction` FOREIGN KEY (`share_transaction_id`) REFERENCES `m_share_account_transactions` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.acc_gl_journal_entry: ~0 rows (approximately)
 /*!40000 ALTER TABLE `acc_gl_journal_entry` DISABLE KEYS */;
@@ -200,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `acc_product_mapping` (
   KEY `FK_acc_product_mapping_m_payment_type` (`payment_type`),
   CONSTRAINT `FK_acc_product_mapping_m_charge` FOREIGN KEY (`charge_id`) REFERENCES `m_charge` (`id`),
   CONSTRAINT `FK_acc_product_mapping_m_payment_type` FOREIGN KEY (`payment_type`) REFERENCES `m_payment_type` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.acc_product_mapping: ~0 rows (approximately)
 /*!40000 ALTER TABLE `acc_product_mapping` DISABLE KEYS */;
@@ -220,7 +220,7 @@ CREATE TABLE IF NOT EXISTS `acc_rule_tags` (
   KEY `FK_m_code_value_id` (`tag_id`),
   CONSTRAINT `FK_acc_accounting_rule_id` FOREIGN KEY (`acc_rule_id`) REFERENCES `acc_accounting_rule` (`id`),
   CONSTRAINT `FK_m_code_value_id` FOREIGN KEY (`tag_id`) REFERENCES `m_code_value` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.acc_rule_tags: ~0 rows (approximately)
 /*!40000 ALTER TABLE `acc_rule_tags` DISABLE KEYS */;
@@ -235,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `c_account_number_format` (
   `prefix_type_enum` SMALLINT DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `account_type_enum` (`account_type_enum`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.c_account_number_format: ~0 rows (approximately)
 /*!40000 ALTER TABLE `c_account_number_format` DISABLE KEYS */;
@@ -248,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `c_cache` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `cache_type_enum` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.c_cache: ~0 rows (approximately)
 /*!40000 ALTER TABLE `c_cache` DISABLE KEYS */;
@@ -269,7 +269,7 @@ CREATE TABLE IF NOT EXISTS `c_configuration` (
   `description` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.c_configuration: ~27 rows (approximately)
 /*!40000 ALTER TABLE `c_configuration` DISABLE KEYS */;
@@ -311,7 +311,7 @@ CREATE TABLE IF NOT EXISTS `c_external_service` (
   `name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.c_external_service: ~3 rows (approximately)
 /*!40000 ALTER TABLE `c_external_service` DISABLE KEYS */;
@@ -330,7 +330,7 @@ CREATE TABLE IF NOT EXISTS `c_external_service_properties` (
   `external_service_id` BIGINT NOT NULL,
   KEY `FK_c_external_service_properties_c_external_service` (`external_service_id`),
   CONSTRAINT `FK_c_external_service_properties_c_external_service` FOREIGN KEY (`external_service_id`) REFERENCES `c_external_service` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.c_external_service_properties: ~12 rows (approximately)
 /*!40000 ALTER TABLE `c_external_service_properties` DISABLE KEYS */;
@@ -370,7 +370,7 @@ CREATE TABLE IF NOT EXISTS `job` (
   `scheduler_group` SMALLINT NOT NULL DEFAULT '0',
   `is_misfired` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.job: ~26 rows (approximately)
 /*!40000 ALTER TABLE `job` DISABLE KEYS */;
@@ -419,7 +419,7 @@ CREATE TABLE IF NOT EXISTS `job_run_history` (
   PRIMARY KEY (`id`),
   KEY `scheduledjobsFK` (`job_id`),
   CONSTRAINT `scheduledjobsFK` FOREIGN KEY (`job_id`) REFERENCES `job` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.job_run_history: ~0 rows (approximately)
 /*!40000 ALTER TABLE `job_run_history` DISABLE KEYS */;
@@ -437,7 +437,7 @@ CREATE TABLE IF NOT EXISTS `mix_taxonomy` (
   `description` varchar(1000) DEFAULT NULL,
   `need_mapping` tinyint DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.mix_taxonomy: ~48 rows (approximately)
 /*!40000 ALTER TABLE `mix_taxonomy` DISABLE KEYS */;
@@ -502,7 +502,7 @@ CREATE TABLE IF NOT EXISTS `mix_taxonomy_mapping` (
   `last_update_date` datetime DEFAULT NULL,
   `currency` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.mix_taxonomy_mapping: ~0 rows (approximately)
 /*!40000 ALTER TABLE `mix_taxonomy_mapping` DISABLE KEYS */;
@@ -519,7 +519,7 @@ CREATE TABLE IF NOT EXISTS `mix_xbrl_namespace` (
   `url` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNQUE` (`prefix`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.mix_xbrl_namespace: ~7 rows (approximately)
 /*!40000 ALTER TABLE `mix_xbrl_namespace` DISABLE KEYS */;
@@ -564,7 +564,7 @@ CREATE TABLE IF NOT EXISTS `m_account_transfer_details` (
   CONSTRAINT `FK_m_account_transfer_details_to_loan_account` FOREIGN KEY (`to_loan_account_id`) REFERENCES `m_loan` (`id`),
   CONSTRAINT `FK_m_account_transfer_details_to_office` FOREIGN KEY (`to_office_id`) REFERENCES `m_office` (`id`),
   CONSTRAINT `FK_m_account_transfer_details_to_savings_account` FOREIGN KEY (`to_savings_account_id`) REFERENCES `m_savings_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_account_transfer_details: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_account_transfer_details` DISABLE KEYS */;
@@ -593,7 +593,7 @@ CREATE TABLE IF NOT EXISTS `m_account_transfer_standing_instructions` (
   UNIQUE KEY `name` (`name`),
   KEY `FK_m_standing_instructions_account_transfer_details` (`account_transfer_details_id`),
   CONSTRAINT `FK_m_standing_instructions_account_transfer_details` FOREIGN KEY (`account_transfer_details_id`) REFERENCES `m_account_transfer_details` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_account_transfer_standing_instructions: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_account_transfer_standing_instructions` DISABLE KEYS */;
@@ -612,7 +612,7 @@ CREATE TABLE IF NOT EXISTS `m_account_transfer_standing_instructions_history` (
   PRIMARY KEY (`id`),
   KEY `FK_m_account_transfer_standing_instructions_history` (`standing_instruction_id`),
   CONSTRAINT `FK_m_account_transfer_standing_instructions_m_history` FOREIGN KEY (`standing_instruction_id`) REFERENCES `m_account_transfer_standing_instructions` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_account_transfer_standing_instructions_history: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_account_transfer_standing_instructions_history` DISABLE KEYS */;
@@ -646,7 +646,7 @@ CREATE TABLE IF NOT EXISTS `m_account_transfer_transaction` (
   CONSTRAINT `FK_m_account_transfer_transaction_from_m_savings_transaction` FOREIGN KEY (`from_savings_transaction_id`) REFERENCES `m_savings_account_transaction` (`id`),
   CONSTRAINT `FK_m_account_transfer_transaction_to_m_loan_transaction` FOREIGN KEY (`to_loan_transaction_id`) REFERENCES `m_loan_transaction` (`id`),
   CONSTRAINT `FK_m_account_transfer_transaction_to_m_savings_transaction` FOREIGN KEY (`to_savings_transaction_id`) REFERENCES `m_savings_account_transaction` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_account_transfer_transaction: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_account_transfer_transaction` DISABLE KEYS */;
@@ -678,7 +678,7 @@ CREATE TABLE IF NOT EXISTS `m_address` (
   KEY `address_fields_codefk2` (`country_id`),
   CONSTRAINT `address_fields_codefk1` FOREIGN KEY (`state_province_id`) REFERENCES `m_code_value` (`id`),
   CONSTRAINT `address_fields_codefk2` FOREIGN KEY (`country_id`) REFERENCES `m_code_value` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_address: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_address` DISABLE KEYS */;
@@ -712,7 +712,7 @@ CREATE TABLE IF NOT EXISTS `m_appuser` (
   KEY `last_time_password_updated` (`last_time_password_updated`),
   CONSTRAINT `FKB3D587CE0DD567A` FOREIGN KEY (`office_id`) REFERENCES `m_office` (`id`),
   CONSTRAINT `fk_m_appuser_002` FOREIGN KEY (`staff_id`) REFERENCES `m_staff` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_appuser: ~2 rows (approximately)
 /*!40000 ALTER TABLE `m_appuser` DISABLE KEYS */;
@@ -749,7 +749,7 @@ CREATE TABLE IF NOT EXISTS `m_appuser_role` (
   KEY `FK7662CE5915CEC7AB` (`role_id`),
   CONSTRAINT `FK7662CE5915CEC7AB` FOREIGN KEY (`role_id`) REFERENCES `m_role` (`id`),
   CONSTRAINT `FK7662CE59B4100309` FOREIGN KEY (`appuser_id`) REFERENCES `m_appuser` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_appuser_role: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_appuser_role` DISABLE KEYS */;
@@ -780,7 +780,7 @@ CREATE TABLE IF NOT EXISTS `m_calendar` (
   `lastmodified_date` datetime DEFAULT NULL,
   `meeting_time` time DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_calendar: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_calendar` DISABLE KEYS */;
@@ -807,7 +807,7 @@ CREATE TABLE IF NOT EXISTS `m_calendar_history` (
   PRIMARY KEY (`id`),
   KEY `FK_m_calendar_m_calendar_history` (`calendar_id`),
   CONSTRAINT `FK_m_calendar_m_calendar_history` FOREIGN KEY (`calendar_id`) REFERENCES `m_calendar` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_calendar_history: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_calendar_history` DISABLE KEYS */;
@@ -824,7 +824,7 @@ CREATE TABLE IF NOT EXISTS `m_calendar_instance` (
   PRIMARY KEY (`id`),
   KEY `FK_m_calendar_m_calendar_instance` (`calendar_id`),
   CONSTRAINT `FK_m_calendar_m_calendar_instance` FOREIGN KEY (`calendar_id`) REFERENCES `m_calendar` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_calendar_instance: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_calendar_instance` DISABLE KEYS */;
@@ -848,7 +848,7 @@ CREATE TABLE IF NOT EXISTS `m_cashiers` (
   KEY `IK_m_cashiers_m_teller` (`teller_id`),
   CONSTRAINT `FK_m_cashiers_m_staff` FOREIGN KEY (`staff_id`) REFERENCES `m_staff` (`id`),
   CONSTRAINT `FK_m_cashiers_m_teller` FOREIGN KEY (`teller_id`) REFERENCES `m_tellers` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_cashiers: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_cashiers` DISABLE KEYS */;
@@ -871,7 +871,7 @@ CREATE TABLE IF NOT EXISTS `m_cashier_transactions` (
   PRIMARY KEY (`id`),
   KEY `IK_m_teller_transactions_m_cashier` (`cashier_id`),
   CONSTRAINT `FK_m_teller_transactions_m_cashiers` FOREIGN KEY (`cashier_id`) REFERENCES `m_cashiers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_cashier_transactions: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_cashier_transactions` DISABLE KEYS */;
@@ -906,7 +906,7 @@ CREATE TABLE IF NOT EXISTS `m_charge` (
   KEY `FK_m_charge_m_tax_group` (`tax_group_id`),
   CONSTRAINT `FK_m_charge_acc_gl_account` FOREIGN KEY (`income_or_liability_account_id`) REFERENCES `acc_gl_account` (`id`),
   CONSTRAINT `FK_m_charge_m_tax_group` FOREIGN KEY (`tax_group_id`) REFERENCES `m_tax_group` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_charge: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_charge` DISABLE KEYS */;
@@ -988,7 +988,7 @@ CREATE TABLE IF NOT EXISTS `m_client` (
   CONSTRAINT `FK_m_client_type_m_code_value` FOREIGN KEY (`client_type_cv_id`) REFERENCES `m_code_value` (`id`),
   CONSTRAINT `FK_m_client_type_m_code_value_withdraw` FOREIGN KEY (`withdraw_reason_cv_id`) REFERENCES `m_code_value` (`id`),
   CONSTRAINT `FK_m_client_type_mcode_value_reject` FOREIGN KEY (`reject_reason_cv_id`) REFERENCES `m_code_value` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_client: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_client` DISABLE KEYS */;
@@ -1009,7 +1009,7 @@ CREATE TABLE IF NOT EXISTS `m_client_address` (
   KEY `clientaddressfk` (`client_id`),
   CONSTRAINT `address_codefk` FOREIGN KEY (`address_type_id`) REFERENCES `m_code_value` (`id`),
   CONSTRAINT `clientaddressfk` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_client_address: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_client_address` DISABLE KEYS */;
@@ -1028,7 +1028,7 @@ CREATE TABLE IF NOT EXISTS `m_client_attendance` (
   KEY `FK_m_meeting_m_client_attendance` (`meeting_id`),
   CONSTRAINT `FK_m_client_m_client_attendance` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`),
   CONSTRAINT `FK_m_meeting_m_client_attendance` FOREIGN KEY (`meeting_id`) REFERENCES `m_meeting` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_client_attendance: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_client_attendance` DISABLE KEYS */;
@@ -1059,7 +1059,7 @@ CREATE TABLE IF NOT EXISTS `m_client_charge` (
   KEY `FK_m_client_charge_m_charge` (`charge_id`),
   CONSTRAINT `FK_m_client_charge_m_charge` FOREIGN KEY (`charge_id`) REFERENCES `m_charge` (`id`),
   CONSTRAINT `FK_m_client_charge_m_client` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_client_charge: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_client_charge` DISABLE KEYS */;
@@ -1078,7 +1078,7 @@ CREATE TABLE IF NOT EXISTS `m_client_charge_paid_by` (
   KEY `FK_m_client_charge_paid_by_m_client_charge` (`client_charge_id`),
   CONSTRAINT `FK_m_client_charge_paid_by_m_client_charge` FOREIGN KEY (`client_charge_id`) REFERENCES `m_client_charge` (`id`),
   CONSTRAINT `FK_m_client_charge_paid_by_m_client_transaction` FOREIGN KEY (`client_transaction_id`) REFERENCES `m_client_transaction` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_client_charge_paid_by: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_client_charge_paid_by` DISABLE KEYS */;
@@ -1106,7 +1106,7 @@ CREATE TABLE IF NOT EXISTS `m_client_identifier` (
   KEY `FK_m_client_document_m_code_value` (`document_type_id`),
   CONSTRAINT `FK_m_client_document_m_client` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`),
   CONSTRAINT `FK_m_client_document_m_code_value` FOREIGN KEY (`document_type_id`) REFERENCES `m_code_value` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_client_identifier: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_client_identifier` DISABLE KEYS */;
@@ -1127,7 +1127,7 @@ CREATE TABLE IF NOT EXISTS `m_client_non_person` (
   UNIQUE KEY `client_id` (`client_id`),
   KEY `FK_client_id` (`client_id`),
   CONSTRAINT `FK_client_id` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_client_non_person: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_client_non_person` DISABLE KEYS */;
@@ -1155,7 +1155,7 @@ CREATE TABLE IF NOT EXISTS `m_client_transaction` (
   KEY `FK_m_client_transaction_m_appuser` (`appuser_id`),
   CONSTRAINT `FK_m_client_transaction_m_appuser` FOREIGN KEY (`appuser_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_m_client_transaction_m_client` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_client_transaction: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_client_transaction` DISABLE KEYS */;
@@ -1170,7 +1170,7 @@ CREATE TABLE IF NOT EXISTS `m_code` (
   `is_system_defined` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `code_name` (`code_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_code: ~28 rows (approximately)
 /*!40000 ALTER TABLE `m_code` DISABLE KEYS */;
@@ -1221,7 +1221,7 @@ CREATE TABLE IF NOT EXISTS `m_code_value` (
   UNIQUE KEY `code_value` (`code_id`,`code_value`),
   KEY `FKCFCEA42640BE071Z` (`code_id`),
   CONSTRAINT `FKCFCEA42640BE071Z` FOREIGN KEY (`code_id`) REFERENCES `m_code` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_code_value: ~13 rows (approximately)
 /*!40000 ALTER TABLE `m_code_value` DISABLE KEYS */;
@@ -1254,7 +1254,7 @@ CREATE TABLE IF NOT EXISTS `m_currency` (
   `internationalized_name_code` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_currency: ~163 rows (approximately)
 /*!40000 ALTER TABLE `m_currency` DISABLE KEYS */;
@@ -1438,7 +1438,7 @@ CREATE TABLE IF NOT EXISTS `m_deposit_account_on_hold_transaction` (
   PRIMARY KEY (`id`),
   KEY `FK_deposit_on_hold_transaction_m_savings_account` (`savings_account_id`),
   CONSTRAINT `FK_deposit_on_hold_transaction_m_savings_account` FOREIGN KEY (`savings_account_id`) REFERENCES `m_savings_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_deposit_account_on_hold_transaction: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_deposit_account_on_hold_transaction` DISABLE KEYS */;
@@ -1460,7 +1460,7 @@ CREATE TABLE IF NOT EXISTS `m_deposit_account_recurring_detail` (
   PRIMARY KEY (`id`),
   KEY `FKDARD00000000000001` (`savings_account_id`),
   CONSTRAINT `FKDARD00000000000001` FOREIGN KEY (`savings_account_id`) REFERENCES `m_savings_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_deposit_account_recurring_detail: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_deposit_account_recurring_detail` DISABLE KEYS */;
@@ -1492,7 +1492,7 @@ CREATE TABLE IF NOT EXISTS `m_deposit_account_term_and_preclosure` (
   PRIMARY KEY (`id`),
   KEY `FKDATP00000000000001` (`savings_account_id`),
   CONSTRAINT `FKDATP00000000000001` FOREIGN KEY (`savings_account_id`) REFERENCES `m_savings_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_deposit_account_term_and_preclosure: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_deposit_account_term_and_preclosure` DISABLE KEYS */;
@@ -1508,7 +1508,7 @@ CREATE TABLE IF NOT EXISTS `m_deposit_product_interest_rate_chart` (
   KEY `FKDPIRC00000000000002` (`interest_rate_chart_id`),
   CONSTRAINT `FKDPIRC00000000000001` FOREIGN KEY (`deposit_product_id`) REFERENCES `m_savings_product` (`id`),
   CONSTRAINT `FKDPIRC00000000000002` FOREIGN KEY (`interest_rate_chart_id`) REFERENCES `m_interest_rate_chart` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_deposit_product_interest_rate_chart: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_deposit_product_interest_rate_chart` DISABLE KEYS */;
@@ -1526,7 +1526,7 @@ CREATE TABLE IF NOT EXISTS `m_deposit_product_recurring_detail` (
   PRIMARY KEY (`id`),
   KEY `FKDPRD00000000000001` (`savings_product_id`),
   CONSTRAINT `FKDPRD00000000000001` FOREIGN KEY (`savings_product_id`) REFERENCES `m_savings_product` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_deposit_product_recurring_detail: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_deposit_product_recurring_detail` DISABLE KEYS */;
@@ -1553,7 +1553,7 @@ CREATE TABLE IF NOT EXISTS `m_deposit_product_term_and_preclosure` (
   PRIMARY KEY (`id`),
   KEY `FKDPTP00000000000001` (`savings_product_id`),
   CONSTRAINT `FKDPTP00000000000001` FOREIGN KEY (`savings_product_id`) REFERENCES `m_savings_product` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_deposit_product_term_and_preclosure: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_deposit_product_term_and_preclosure` DISABLE KEYS */;
@@ -1574,7 +1574,7 @@ CREATE TABLE IF NOT EXISTS `m_document` (
   `location` varchar(500) NOT NULL DEFAULT '0',
   `storage_type_enum` SMALLINT DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_document: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_document` DISABLE KEYS */;
@@ -1595,7 +1595,7 @@ CREATE TABLE IF NOT EXISTS `m_entity_datatable_check` (
   KEY `x_registered_table_name` (`x_registered_table_name`),
   KEY `product_id` (`product_id`),
   CONSTRAINT `m_entity_datatable_check_ibfk_1` FOREIGN KEY (`x_registered_table_name`) REFERENCES `x_registered_table` (`registered_table_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_entity_datatable_check: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_entity_datatable_check` DISABLE KEYS */;
@@ -1611,7 +1611,7 @@ CREATE TABLE IF NOT EXISTS `m_entity_relation` (
   `code_name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `from_entity_type_to_entity_type_code_name` (`from_entity_type`,`to_entity_type`,`code_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_entity_relation: ~5 rows (approximately)
 /*!40000 ALTER TABLE `m_entity_relation` DISABLE KEYS */;
@@ -1638,7 +1638,7 @@ CREATE TABLE IF NOT EXISTS `m_entity_to_entity_access` (
   KEY `IDX_OFFICE` (`entity_type`,`entity_id`),
   KEY `FK_access_type_code_m_code_value` (`access_type_code_value_id`),
   CONSTRAINT `FK_access_type_code_m_code_value` FOREIGN KEY (`access_type_code_value_id`) REFERENCES `m_code_value` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_entity_to_entity_access: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_entity_to_entity_access` DISABLE KEYS */;
@@ -1657,7 +1657,7 @@ CREATE TABLE IF NOT EXISTS `m_entity_to_entity_mapping` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `rel_id_from_id_to_id` (`rel_id`,`from_id`,`to_id`),
   CONSTRAINT `FK__rel_id_m_entity_relation_id` FOREIGN KEY (`rel_id`) REFERENCES `m_entity_relation` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_entity_to_entity_mapping: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_entity_to_entity_mapping` DISABLE KEYS */;
@@ -1675,7 +1675,7 @@ CREATE TABLE IF NOT EXISTS `m_field_configuration` (
   `is_mandatory` TINYINT NOT NULL,
   `validation_regex` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_field_configuration: ~18 rows (approximately)
 /*!40000 ALTER TABLE `m_field_configuration` DISABLE KEYS */;
@@ -1714,7 +1714,7 @@ CREATE TABLE IF NOT EXISTS `m_floating_rates` (
   `lastmodified_date` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unq_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_floating_rates: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_floating_rates` DISABLE KEYS */;
@@ -1737,7 +1737,7 @@ CREATE TABLE IF NOT EXISTS `m_floating_rates_periods` (
   PRIMARY KEY (`id`),
   KEY `FK_mappings_m_floating_rates` (`floating_rates_id`),
   CONSTRAINT `FK_mappings_m_floating_rates` FOREIGN KEY (`floating_rates_id`) REFERENCES `m_floating_rates` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_floating_rates_periods: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_floating_rates_periods` DISABLE KEYS */;
@@ -1753,7 +1753,7 @@ CREATE TABLE IF NOT EXISTS `m_fund` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `fund_name_org` (`name`),
   UNIQUE KEY `fund_externalid_org` (`external_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_fund: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_fund` DISABLE KEYS */;
@@ -1794,7 +1794,7 @@ CREATE TABLE IF NOT EXISTS `m_group` (
   CONSTRAINT `FK_m_group_m_staff` FOREIGN KEY (`staff_id`) REFERENCES `m_staff` (`id`),
   CONSTRAINT `Parent_Id_reference` FOREIGN KEY (`parent_id`) REFERENCES `m_group` (`id`),
   CONSTRAINT `m_group_ibfk_1` FOREIGN KEY (`office_id`) REFERENCES `m_office` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_group: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_group` DISABLE KEYS */;
@@ -1810,7 +1810,7 @@ CREATE TABLE IF NOT EXISTS `m_group_client` (
   KEY `client_id` (`client_id`),
   CONSTRAINT `m_group_client_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `m_group` (`id`),
   CONSTRAINT `m_group_client_ibfk_2` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_group_client: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_group_client` DISABLE KEYS */;
@@ -1829,7 +1829,7 @@ CREATE TABLE IF NOT EXISTS `m_group_level` (
   PRIMARY KEY (`id`),
   KEY `Parent_levelId_reference` (`parent_id`),
   CONSTRAINT `Parent_levelId_reference` FOREIGN KEY (`parent_id`) REFERENCES `m_group_level` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_group_level: ~2 rows (approximately)
 /*!40000 ALTER TABLE `m_group_level` DISABLE KEYS */;
@@ -1854,7 +1854,7 @@ CREATE TABLE IF NOT EXISTS `m_group_roles` (
   CONSTRAINT `FKGroupRoleClientId` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`),
   CONSTRAINT `FKGroupRoleGroupId` FOREIGN KEY (`group_id`) REFERENCES `m_group` (`id`),
   CONSTRAINT `FK_grouprole_m_codevalue` FOREIGN KEY (`role_cv_id`) REFERENCES `m_code_value` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_group_roles: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_group_roles` DISABLE KEYS */;
@@ -1887,7 +1887,7 @@ CREATE TABLE IF NOT EXISTS `m_guarantor` (
   KEY `FK_m_guarantor_m_code_value` (`client_reln_cv_id`),
   CONSTRAINT `FK_m_guarantor_m_code_value` FOREIGN KEY (`client_reln_cv_id`) REFERENCES `m_code_value` (`id`),
   CONSTRAINT `FK_m_guarantor_m_loan` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_guarantor: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_guarantor` DISABLE KEYS */;
@@ -1910,7 +1910,7 @@ CREATE TABLE IF NOT EXISTS `m_guarantor_funding_details` (
   KEY `FK_m_guarantor_fund_details_account_associations_id` (`account_associations_id`),
   CONSTRAINT `FK_m_guarantor_fund_details_account_associations_id` FOREIGN KEY (`account_associations_id`) REFERENCES `m_portfolio_account_associations` (`id`),
   CONSTRAINT `FK_m_guarantor_fund_details_m_guarantor` FOREIGN KEY (`guarantor_id`) REFERENCES `m_guarantor` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_guarantor_funding_details: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_guarantor_funding_details` DISABLE KEYS */;
@@ -1932,7 +1932,7 @@ CREATE TABLE IF NOT EXISTS `m_guarantor_transaction` (
   CONSTRAINT `FK_guarantor_transaction_guarantor_fund_detail` FOREIGN KEY (`guarantor_fund_detail_id`) REFERENCES `m_guarantor_funding_details` (`id`),
   CONSTRAINT `FK_guarantor_transaction_m_deposit_account_on_hold_transaction` FOREIGN KEY (`deposit_on_hold_transaction_id`) REFERENCES `m_deposit_account_on_hold_transaction` (`id`),
   CONSTRAINT `FK_guarantor_transaction_m_loan_transaction` FOREIGN KEY (`loan_transaction_id`) REFERENCES `m_loan_transaction` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_guarantor_transaction: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_guarantor_transaction` DISABLE KEYS */;
@@ -1952,7 +1952,7 @@ CREATE TABLE IF NOT EXISTS `m_holiday` (
   `description` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `holiday_name` (`name`,`from_date`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_holiday: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_holiday` DISABLE KEYS */;
@@ -1969,7 +1969,7 @@ CREATE TABLE IF NOT EXISTS `m_holiday_office` (
   KEY `m_office_id_ibfk_2` (`office_id`),
   CONSTRAINT `m_holiday_id_ibfk_1` FOREIGN KEY (`holiday_id`) REFERENCES `m_holiday` (`id`),
   CONSTRAINT `m_office_id_ibfk_2` FOREIGN KEY (`office_id`) REFERENCES `m_office` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_holiday_office: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_holiday_office` DISABLE KEYS */;
@@ -1993,7 +1993,7 @@ CREATE TABLE IF NOT EXISTS `m_hook` (
   KEY `fk_ugd_template_id` (`ugd_template_id`),
   CONSTRAINT `fk_template_id` FOREIGN KEY (`template_id`) REFERENCES `m_hook_templates` (`id`),
   CONSTRAINT `fk_ugd_template_id` FOREIGN KEY (`ugd_template_id`) REFERENCES `m_template` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_hook: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_hook` DISABLE KEYS */;
@@ -2011,7 +2011,7 @@ CREATE TABLE IF NOT EXISTS `m_hook_configuration` (
   PRIMARY KEY (`id`),
   KEY `fk_hook_id_idx` (`hook_id`),
   CONSTRAINT `fk_hook_id_cfg` FOREIGN KEY (`hook_id`) REFERENCES `m_hook` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_hook_configuration: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_hook_configuration` DISABLE KEYS */;
@@ -2028,7 +2028,7 @@ CREATE TABLE IF NOT EXISTS `m_hook_registered_events` (
   PRIMARY KEY (`id`),
   KEY `fk_hook_id_idx` (`hook_id`),
   CONSTRAINT `fk_hook_idc` FOREIGN KEY (`hook_id`) REFERENCES `m_hook` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_hook_registered_events: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_hook_registered_events` DISABLE KEYS */;
@@ -2047,7 +2047,7 @@ CREATE TABLE IF NOT EXISTS `m_hook_schema` (
   PRIMARY KEY (`id`),
   KEY `fk_hook_template_id_idx` (`hook_template_id`),
   CONSTRAINT `fk_hook_template_id` FOREIGN KEY (`hook_template_id`) REFERENCES `m_hook_templates` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_hook_schema: ~7 rows (approximately)
 /*!40000 ALTER TABLE `m_hook_schema` DISABLE KEYS */;
@@ -2068,7 +2068,7 @@ CREATE TABLE IF NOT EXISTS `m_hook_templates` (
   `id` SMALLINT NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_hook_templates: ~2 rows (approximately)
 /*!40000 ALTER TABLE `m_hook_templates` DISABLE KEYS */;
@@ -2085,7 +2085,7 @@ CREATE TABLE IF NOT EXISTS `m_image` (
   `location` varchar(500) DEFAULT NULL,
   `storage_type_enum` SMALLINT DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_image: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_image` DISABLE KEYS */;
@@ -2106,7 +2106,7 @@ CREATE TABLE IF NOT EXISTS `m_interest_incentives` (
   PRIMARY KEY (`id`),
   KEY `FK_m_interest_incentives_m_interest_rate_slab` (`interest_rate_slab_id`),
   CONSTRAINT `FK_m_interest_incentives_m_interest_rate_slab` FOREIGN KEY (`interest_rate_slab_id`) REFERENCES `m_interest_rate_slab` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_interest_incentives: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_interest_incentives` DISABLE KEYS */;
@@ -2123,7 +2123,7 @@ CREATE TABLE IF NOT EXISTS `m_interest_rate_chart` (
   `end_date` date DEFAULT NULL,
   `is_primary_grouping_by_amount` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_interest_rate_chart: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_interest_rate_chart` DISABLE KEYS */;
@@ -2146,7 +2146,7 @@ CREATE TABLE IF NOT EXISTS `m_interest_rate_slab` (
   PRIMARY KEY (`id`),
   KEY `FKIRS00000000000001` (`interest_rate_chart_id`),
   CONSTRAINT `FKIRS00000000000001` FOREIGN KEY (`interest_rate_chart_id`) REFERENCES `m_interest_rate_chart` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_interest_rate_slab: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_interest_rate_slab` DISABLE KEYS */;
@@ -2292,7 +2292,7 @@ CREATE TABLE IF NOT EXISTS `m_loan` (
   CONSTRAINT `FK_withdrawnon_userid` FOREIGN KEY (`withdrawnon_userid`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_writeoffreason_m_loan_m_code_value` FOREIGN KEY (`writeoff_reason_cv_id`) REFERENCES `m_code_value` (`id`),
   CONSTRAINT `m_loan_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `m_group` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan` DISABLE KEYS */;
@@ -2330,7 +2330,7 @@ CREATE TABLE IF NOT EXISTS `m_loanproduct_provisioning_entry` (
   CONSTRAINT `m_loanproduct_provisioning_entry_ibfk_6` FOREIGN KEY (`category_id`) REFERENCES `m_provision_category` (`id`),
   CONSTRAINT `m_loanproduct_provisioning_entry_ibfk_7` FOREIGN KEY (`liability_account`) REFERENCES `acc_gl_account` (`id`),
   CONSTRAINT `m_loanproduct_provisioning_entry_ibfk_8` FOREIGN KEY (`expense_account`) REFERENCES `acc_gl_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loanproduct_provisioning_entry: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loanproduct_provisioning_entry` DISABLE KEYS */;
@@ -2348,7 +2348,7 @@ CREATE TABLE IF NOT EXISTS `m_loanproduct_provisioning_mapping` (
   KEY `criteria_id` (`criteria_id`),
   CONSTRAINT `m_loanproduct_provisioning_mapping_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `m_product_loan` (`id`),
   CONSTRAINT `m_loanproduct_provisioning_mapping_ibfk_2` FOREIGN KEY (`criteria_id`) REFERENCES `m_provisioning_criteria` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loanproduct_provisioning_mapping: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loanproduct_provisioning_mapping` DISABLE KEYS */;
@@ -2367,7 +2367,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_arrears_aging` (
   `overdue_since_date_derived` date DEFAULT NULL,
   PRIMARY KEY (`loan_id`),
   CONSTRAINT `m_loan_arrears_aging_ibfk_1` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_arrears_aging: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_arrears_aging` DISABLE KEYS */;
@@ -2403,7 +2403,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_charge` (
   KEY `m_loan_charge_ibfk_2` (`loan_id`),
   CONSTRAINT `m_loan_charge_ibfk_1` FOREIGN KEY (`charge_id`) REFERENCES `m_charge` (`id`),
   CONSTRAINT `m_loan_charge_ibfk_2` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_charge: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_charge` DISABLE KEYS */;
@@ -2423,7 +2423,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_charge_paid_by` (
   KEY `FK__m_loan_charge` (`loan_charge_id`),
   CONSTRAINT `FK__m_loan_charge` FOREIGN KEY (`loan_charge_id`) REFERENCES `m_loan_charge` (`id`),
   CONSTRAINT `FK__m_loan_transaction` FOREIGN KEY (`loan_transaction_id`) REFERENCES `m_loan_transaction` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_charge_paid_by: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_charge_paid_by` DISABLE KEYS */;
@@ -2443,7 +2443,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_collateral` (
   KEY `FK_collateral_code_value` (`type_cv_id`),
   CONSTRAINT `FK_collateral_code_value` FOREIGN KEY (`type_cv_id`) REFERENCES `m_code_value` (`id`),
   CONSTRAINT `FK_collateral_m_loan` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_collateral: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_collateral` DISABLE KEYS */;
@@ -2461,7 +2461,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_disbursement_detail` (
   PRIMARY KEY (`id`),
   KEY `FK_loan_disbursement_detail_loan_id` (`loan_id`),
   CONSTRAINT `FK_loan_disbursement_detail_loan_id` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_disbursement_detail: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_disbursement_detail` DISABLE KEYS */;
@@ -2488,7 +2488,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_installment_charge` (
   KEY `FK_loan_schedule_id_charge_schedule` (`loan_schedule_id`),
   CONSTRAINT `FK_loan_charge_id_charge_schedule` FOREIGN KEY (`loan_charge_id`) REFERENCES `m_loan_charge` (`id`),
   CONSTRAINT `FK_loan_schedule_id_charge_schedule` FOREIGN KEY (`loan_schedule_id`) REFERENCES `m_loan_repayment_schedule` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_installment_charge: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_installment_charge` DISABLE KEYS */;
@@ -2505,7 +2505,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_interest_recalculation_additional_details` (
   PRIMARY KEY (`id`),
   KEY `FK_additional_details_repayment_schedule_id` (`loan_repayment_schedule_id`),
   CONSTRAINT `FK_additional_details_repayment_schedule_id` FOREIGN KEY (`loan_repayment_schedule_id`) REFERENCES `m_loan_repayment_schedule` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_interest_recalculation_additional_details: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_interest_recalculation_additional_details` DISABLE KEYS */;
@@ -2529,7 +2529,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_officer_assignment_history` (
   KEY `fk_m_loan_officer_assignment_history_0002` (`loan_officer_id`),
   CONSTRAINT `fk_m_loan_officer_assignment_history_0001` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`),
   CONSTRAINT `fk_m_loan_officer_assignment_history_0002` FOREIGN KEY (`loan_officer_id`) REFERENCES `m_staff` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_officer_assignment_history: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_officer_assignment_history` DISABLE KEYS */;
@@ -2548,7 +2548,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_overdue_installment_charge` (
   KEY `FK_m_loan_overdue_installment_charge_m_loan_repayment_schedule` (`loan_schedule_id`),
   CONSTRAINT `FK_m_loan_overdue_installment_charge_m_loan_charge` FOREIGN KEY (`loan_charge_id`) REFERENCES `m_loan_charge` (`id`),
   CONSTRAINT `FK_m_loan_overdue_installment_charge_m_loan_repayment_schedule` FOREIGN KEY (`loan_schedule_id`) REFERENCES `m_loan_repayment_schedule` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_overdue_installment_charge: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_overdue_installment_charge` DISABLE KEYS */;
@@ -2566,7 +2566,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_paid_in_advance` (
   `total_in_advance_derived` decimal(19,6) NOT NULL DEFAULT '0.000000',
   PRIMARY KEY (`loan_id`),
   CONSTRAINT `m_loan_paid_in_advance_ibfk_1` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_paid_in_advance: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_paid_in_advance` DISABLE KEYS */;
@@ -2640,7 +2640,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_repayment_schedule` (
   PRIMARY KEY (`id`),
   KEY `FK488B92AA40BE0710` (`loan_id`),
   CONSTRAINT `FK488B92AA40BE0710` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_repayment_schedule: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_repayment_schedule` DISABLE KEYS */;
@@ -2670,7 +2670,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_repayment_schedule_history` (
   KEY `loan_reschedule_request_id` (`loan_reschedule_request_id`),
   CONSTRAINT `m_loan_repayment_schedule_history_ibfk_1` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`),
   CONSTRAINT `m_loan_repayment_schedule_history_ibfk_2` FOREIGN KEY (`loan_reschedule_request_id`) REFERENCES `m_loan_reschedule_request` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_repayment_schedule_history: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_repayment_schedule_history` DISABLE KEYS */;
@@ -2705,7 +2705,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_reschedule_request` (
   CONSTRAINT `m_loan_reschedule_request_ibfk_3` FOREIGN KEY (`submitted_by_user_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `m_loan_reschedule_request_ibfk_4` FOREIGN KEY (`approved_by_user_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `m_loan_reschedule_request_ibfk_5` FOREIGN KEY (`rejected_by_user_id`) REFERENCES `m_appuser` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_reschedule_request: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_reschedule_request` DISABLE KEYS */;
@@ -2723,7 +2723,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_reschedule_request_term_variations_mapping` (
   KEY `FK__m_loan_term_variations` (`loan_term_variations_id`),
   CONSTRAINT `FK__m_loan_reschedule_request` FOREIGN KEY (`loan_reschedule_request_id`) REFERENCES `m_loan_reschedule_request` (`id`),
   CONSTRAINT `FK__m_loan_term_variations` FOREIGN KEY (`loan_term_variations_id`) REFERENCES `m_loan_term_variations` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_reschedule_request_term_variations_mapping: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_reschedule_request_term_variations_mapping` DISABLE KEYS */;
@@ -2746,7 +2746,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_term_variations` (
   PRIMARY KEY (`id`),
   KEY `FK_loan_id_m_loan_id` (`loan_id`),
   CONSTRAINT `FK_loan_id_m_loan_id` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_term_variations: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_term_variations` DISABLE KEYS */;
@@ -2768,7 +2768,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_topup` (
   CONSTRAINT `m_loan_topup_FK_account_transfer_details_id` FOREIGN KEY (`account_transfer_details_id`) REFERENCES `m_account_transfer_details` (`id`),
   CONSTRAINT `m_loan_topup_FK_closure_loan_id` FOREIGN KEY (`closure_loan_id`) REFERENCES `m_loan` (`id`),
   CONSTRAINT `m_loan_topup_FK_loan_id` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_topup: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_topup` DISABLE KEYS */;
@@ -2786,7 +2786,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_tranche_charges` (
   KEY `FK_m_loan_tranche_charges_m_charge` (`charge_id`),
   CONSTRAINT `FK_m_loan_tranche_charges_m_charge` FOREIGN KEY (`charge_id`) REFERENCES `m_charge` (`id`),
   CONSTRAINT `FK_m_loan_tranche_charges_m_loan` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_tranche_charges: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_tranche_charges` DISABLE KEYS */;
@@ -2804,7 +2804,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_tranche_disbursement_charge` (
   KEY `FK_m_loan_tranche_disbursement_charge_m_loan_disbursement_detail` (`disbursement_detail_id`),
   CONSTRAINT `FK_m_loan_tranche_disbursement_charge_m_loan_charge` FOREIGN KEY (`loan_charge_id`) REFERENCES `m_loan_charge` (`id`),
   CONSTRAINT `FK_m_loan_tranche_disbursement_charge_m_loan_disbursement_detail` FOREIGN KEY (`disbursement_detail_id`) REFERENCES `m_loan_disbursement_detail` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_tranche_disbursement_charge: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_tranche_disbursement_charge` DISABLE KEYS */;
@@ -2842,7 +2842,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_transaction` (
   CONSTRAINT `FKCFCEA42640BE0710` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`),
   CONSTRAINT `FK_m_loan_transaction_m_office` FOREIGN KEY (`office_id`) REFERENCES `m_office` (`id`),
   CONSTRAINT `FK_m_loan_transaction_m_payment_detail` FOREIGN KEY (`payment_detail_id`) REFERENCES `m_payment_detail` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_transaction: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_transaction` DISABLE KEYS */;
@@ -2865,7 +2865,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_transaction_repayment_schedule_mapping` (
   KEY `FK_mappings_m_loan_repayment_schedule` (`loan_repayment_schedule_id`),
   CONSTRAINT `FK_mappings_m_loan_repayment_schedule` FOREIGN KEY (`loan_repayment_schedule_id`) REFERENCES `m_loan_repayment_schedule` (`id`),
   CONSTRAINT `FK_mappings_m_loan_transaction` FOREIGN KEY (`loan_transaction_id`) REFERENCES `m_loan_transaction` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_transaction_repayment_schedule_mapping: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_transaction_repayment_schedule_mapping` DISABLE KEYS */;
@@ -2893,7 +2893,7 @@ CREATE TABLE IF NOT EXISTS `m_mandatory_savings_schedule` (
   PRIMARY KEY (`id`),
   KEY `FKMSS0000000001` (`savings_account_id`),
   CONSTRAINT `FKMSS0000000001` FOREIGN KEY (`savings_account_id`) REFERENCES `m_savings_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_mandatory_savings_schedule: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_mandatory_savings_schedule` DISABLE KEYS */;
@@ -2948,7 +2948,7 @@ CREATE TABLE IF NOT EXISTS `m_note` (
   CONSTRAINT `FK7C970898F889C3F` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_m_note_m_group` FOREIGN KEY (`group_id`) REFERENCES `m_group` (`id`),
   CONSTRAINT `FK_savings_account_id` FOREIGN KEY (`savings_account_id`) REFERENCES `m_savings_account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_note: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_note` DISABLE KEYS */;
@@ -2969,7 +2969,7 @@ CREATE TABLE IF NOT EXISTS `m_office` (
   UNIQUE KEY `externalid_org` (`external_id`),
   KEY `FK2291C477E2551DCC` (`parent_id`),
   CONSTRAINT `FK2291C477E2551DCC` FOREIGN KEY (`parent_id`) REFERENCES `m_office` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_office: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_office` DISABLE KEYS */;
@@ -2994,7 +2994,7 @@ CREATE TABLE IF NOT EXISTS `m_office_transaction` (
   KEY `FK1E37728B783C5C25` (`from_office_id`),
   CONSTRAINT `FK1E37728B783C5C25` FOREIGN KEY (`from_office_id`) REFERENCES `m_office` (`id`),
   CONSTRAINT `FK1E37728B93C6C1B6` FOREIGN KEY (`to_office_id`) REFERENCES `m_office` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_office_transaction: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_office_transaction` DISABLE KEYS */;
@@ -3012,7 +3012,7 @@ CREATE TABLE IF NOT EXISTS `m_organisation_currency` (
   `display_symbol` varchar(10) DEFAULT NULL,
   `internationalized_name_code` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_organisation_currency: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_organisation_currency` DISABLE KEYS */;
@@ -3030,7 +3030,7 @@ CREATE TABLE IF NOT EXISTS `m_password_validation_policy` (
   `active` TINYINT NOT NULL DEFAULT '0',
   `key` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_password_validation_policy: ~2 rows (approximately)
 /*!40000 ALTER TABLE `m_password_validation_policy` DISABLE KEYS */;
@@ -3053,7 +3053,7 @@ CREATE TABLE IF NOT EXISTS `m_payment_detail` (
   PRIMARY KEY (`id`),
   KEY `FK_m_payment_detail_m_payment_type` (`payment_type_id`),
   CONSTRAINT `FK_m_payment_detail_m_payment_type` FOREIGN KEY (`payment_type_id`) REFERENCES `m_payment_type` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_payment_detail: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_payment_detail` DISABLE KEYS */;
@@ -3069,7 +3069,7 @@ CREATE TABLE IF NOT EXISTS `m_payment_type` (
   `is_cash_payment` tinyint DEFAULT '0',
   `order_position` INT NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_payment_type: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_payment_type` DISABLE KEYS */;
@@ -3087,7 +3087,7 @@ CREATE TABLE IF NOT EXISTS `m_permission` (
   `can_maker_checker` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=767 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=767 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_permission: ~744 rows (approximately)
 /*!40000 ALTER TABLE `m_permission` DISABLE KEYS */;
@@ -3858,7 +3858,7 @@ CREATE TABLE IF NOT EXISTS `m_portfolio_account_associations` (
   CONSTRAINT `account_association_savings_fk` FOREIGN KEY (`savings_account_id`) REFERENCES `m_savings_account` (`id`),
   CONSTRAINT `linked_loan_fk` FOREIGN KEY (`linked_loan_account_id`) REFERENCES `m_loan` (`id`),
   CONSTRAINT `linked_savings_fk` FOREIGN KEY (`linked_savings_account_id`) REFERENCES `m_savings_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_portfolio_account_associations: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_portfolio_account_associations` DISABLE KEYS */;
@@ -3901,7 +3901,7 @@ CREATE TABLE IF NOT EXISTS `m_portfolio_command_source` (
   KEY `loan_id` (`office_id`),
   CONSTRAINT `FK_m_checker_m_appuser` FOREIGN KEY (`checker_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_m_maker_m_appuser` FOREIGN KEY (`maker_id`) REFERENCES `m_appuser` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_portfolio_command_source: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_portfolio_command_source` DISABLE KEYS */;
@@ -3974,7 +3974,7 @@ CREATE TABLE IF NOT EXISTS `m_product_loan` (
   KEY `FK_ltp_strategy` (`loan_transaction_strategy_id`),
   CONSTRAINT `FKA6A8A7D77240145` FOREIGN KEY (`fund_id`) REFERENCES `m_fund` (`id`),
   CONSTRAINT `FK_ltp_strategy` FOREIGN KEY (`loan_transaction_strategy_id`) REFERENCES `ref_loan_transaction_processing_strategy` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_product_loan: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_product_loan` DISABLE KEYS */;
@@ -3990,7 +3990,7 @@ CREATE TABLE IF NOT EXISTS `m_product_loan_charge` (
   KEY `charge_id` (`charge_id`),
   CONSTRAINT `m_product_loan_charge_ibfk_1` FOREIGN KEY (`charge_id`) REFERENCES `m_charge` (`id`),
   CONSTRAINT `m_product_loan_charge_ibfk_2` FOREIGN KEY (`product_loan_id`) REFERENCES `m_product_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_product_loan_charge: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_product_loan_charge` DISABLE KEYS */;
@@ -4013,7 +4013,7 @@ CREATE TABLE IF NOT EXISTS `m_product_loan_configurable_attributes` (
   PRIMARY KEY (`id`),
   KEY `fk_m_product_loan_configurable_attributes_0001` (`loan_product_id`),
   CONSTRAINT `fk_m_product_loan_configurable_attributes_0001` FOREIGN KEY (`loan_product_id`) REFERENCES `m_product_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_product_loan_configurable_attributes: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_product_loan_configurable_attributes` DISABLE KEYS */;
@@ -4036,7 +4036,7 @@ CREATE TABLE IF NOT EXISTS `m_product_loan_floating_rates` (
   KEY `FK_mappings_m_floating_rates_id` (`floating_rates_id`),
   CONSTRAINT `FK_mappings_m_floating_rates_id` FOREIGN KEY (`floating_rates_id`) REFERENCES `m_floating_rates` (`id`),
   CONSTRAINT `FK_mappings_m_product_loan_id` FOREIGN KEY (`loan_product_id`) REFERENCES `m_product_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_product_loan_floating_rates: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_product_loan_floating_rates` DISABLE KEYS */;
@@ -4054,7 +4054,7 @@ CREATE TABLE IF NOT EXISTS `m_product_loan_guarantee_details` (
   PRIMARY KEY (`id`),
   KEY `FK_guarantee_details_loan_product` (`loan_product_id`),
   CONSTRAINT `FK_guarantee_details_loan_product` FOREIGN KEY (`loan_product_id`) REFERENCES `m_product_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_product_loan_guarantee_details: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_product_loan_guarantee_details` DISABLE KEYS */;
@@ -4102,7 +4102,7 @@ CREATE TABLE IF NOT EXISTS `m_product_loan_variable_installment_config` (
   PRIMARY KEY (`id`),
   KEY `FK_mappings_m_variable_product_loan_id` (`loan_product_id`),
   CONSTRAINT `FK_mappings_m_variable_product_loan_id` FOREIGN KEY (`loan_product_id`) REFERENCES `m_product_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_product_loan_variable_installment_config: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_product_loan_variable_installment_config` DISABLE KEYS */;
@@ -4123,7 +4123,7 @@ CREATE TABLE IF NOT EXISTS `m_product_loan_variations_borrower_cycle` (
   PRIMARY KEY (`id`),
   KEY `borrower_cycle_loan_product_FK` (`loan_product_id`),
   CONSTRAINT `borrower_cycle_loan_product_FK` FOREIGN KEY (`loan_product_id`) REFERENCES `m_product_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_product_loan_variations_borrower_cycle: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_product_loan_variations_borrower_cycle` DISABLE KEYS */;
@@ -4141,7 +4141,7 @@ CREATE TABLE IF NOT EXISTS `m_product_mix` (
   KEY `FK_m_product_mix_restricted_product_id_to_m_product_loan` (`restricted_product_id`),
   CONSTRAINT `FK_m_product_mix_product_id_to_m_product_loan` FOREIGN KEY (`product_id`) REFERENCES `m_product_loan` (`id`),
   CONSTRAINT `FK_m_product_mix_restricted_product_id_to_m_product_loan` FOREIGN KEY (`restricted_product_id`) REFERENCES `m_product_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_product_mix: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_product_mix` DISABLE KEYS */;
@@ -4163,7 +4163,7 @@ CREATE TABLE IF NOT EXISTS `m_provisioning_criteria` (
   KEY `lastmodifiedby_id` (`lastmodifiedby_id`),
   CONSTRAINT `m_provisioning_criteria_ibfk_1` FOREIGN KEY (`createdby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `m_provisioning_criteria_ibfk_2` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_provisioning_criteria: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_provisioning_criteria` DISABLE KEYS */;
@@ -4190,7 +4190,7 @@ CREATE TABLE IF NOT EXISTS `m_provisioning_criteria_definition` (
   CONSTRAINT `m_provisioning_criteria_definition_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `m_provision_category` (`id`),
   CONSTRAINT `m_provisioning_criteria_definition_ibfk_3` FOREIGN KEY (`liability_account`) REFERENCES `acc_gl_account` (`id`),
   CONSTRAINT `m_provisioning_criteria_definition_ibfk_4` FOREIGN KEY (`expense_account`) REFERENCES `acc_gl_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_provisioning_criteria_definition: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_provisioning_criteria_definition` DISABLE KEYS */;
@@ -4211,7 +4211,7 @@ CREATE TABLE IF NOT EXISTS `m_provisioning_history` (
   KEY `lastmodifiedby_id` (`lastmodifiedby_id`),
   CONSTRAINT `m_provisioning_history_ibfk_1` FOREIGN KEY (`createdby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `m_provisioning_history_ibfk_2` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_provisioning_history: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_provisioning_history` DISABLE KEYS */;
@@ -4226,7 +4226,7 @@ CREATE TABLE IF NOT EXISTS `m_provision_category` (
   `description` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `category_name` (`category_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_provision_category: ~4 rows (approximately)
 /*!40000 ALTER TABLE `m_provision_category` DISABLE KEYS */;
@@ -4275,7 +4275,7 @@ CREATE TABLE IF NOT EXISTS `m_report_mailing_job` (
   CONSTRAINT `m_report_mailing_job_ibfk_2` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `m_report_mailing_job_ibfk_3` FOREIGN KEY (`stretchy_report_id`) REFERENCES `stretchy_report` (`id`),
   CONSTRAINT `m_report_mailing_job_ibfk_4` FOREIGN KEY (`run_as_userid`) REFERENCES `m_appuser` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_report_mailing_job: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_report_mailing_job` DISABLE KEYS */;
@@ -4290,7 +4290,7 @@ CREATE TABLE IF NOT EXISTS `m_report_mailing_job_configuration` (
   `value` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_report_mailing_job_configuration: ~4 rows (approximately)
 /*!40000 ALTER TABLE `m_report_mailing_job_configuration` DISABLE KEYS */;
@@ -4315,7 +4315,7 @@ CREATE TABLE IF NOT EXISTS `m_report_mailing_job_run_history` (
   PRIMARY KEY (`id`),
   KEY `job_id` (`job_id`),
   CONSTRAINT `m_report_mailing_job_run_history_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `m_report_mailing_job` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_report_mailing_job_run_history: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_report_mailing_job_run_history` DISABLE KEYS */;
@@ -4331,7 +4331,7 @@ CREATE TABLE IF NOT EXISTS `m_role` (
   `is_disabled` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `unq_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_role: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_role` DISABLE KEYS */;
@@ -4350,7 +4350,7 @@ CREATE TABLE IF NOT EXISTS `m_role_permission` (
   KEY `FK8DEDB048103B544B` (`permission_id`),
   CONSTRAINT `FK8DEDB048103B544B` FOREIGN KEY (`permission_id`) REFERENCES `m_permission` (`id`),
   CONSTRAINT `FK8DEDB04815CEC7AB` FOREIGN KEY (`role_id`) REFERENCES `m_role` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_role_permission: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_role_permission` DISABLE KEYS */;
@@ -4433,7 +4433,7 @@ CREATE TABLE IF NOT EXISTS `m_savings_account` (
   CONSTRAINT `FKSA00000000000002` FOREIGN KEY (`group_id`) REFERENCES `m_group` (`id`),
   CONSTRAINT `FKSA00000000000003` FOREIGN KEY (`product_id`) REFERENCES `m_savings_product` (`id`),
   CONSTRAINT `FK_savings_account_tax_group` FOREIGN KEY (`tax_group_id`) REFERENCES `m_tax_group` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_savings_account: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_savings_account` DISABLE KEYS */;
@@ -4469,7 +4469,7 @@ CREATE TABLE IF NOT EXISTS `m_savings_account_charge` (
   KEY `m_savings_account_charge_ibfk_2` (`savings_account_id`),
   CONSTRAINT `m_savings_account_charge_ibfk_1` FOREIGN KEY (`charge_id`) REFERENCES `m_charge` (`id`),
   CONSTRAINT `m_savings_account_charge_ibfk_2` FOREIGN KEY (`savings_account_id`) REFERENCES `m_savings_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_savings_account_charge: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_savings_account_charge` DISABLE KEYS */;
@@ -4488,7 +4488,7 @@ CREATE TABLE IF NOT EXISTS `m_savings_account_charge_paid_by` (
   KEY `FK__m_savings_account_charge` (`savings_account_charge_id`),
   CONSTRAINT `FK__m_savings_account_charge` FOREIGN KEY (`savings_account_charge_id`) REFERENCES `m_savings_account_charge` (`id`),
   CONSTRAINT `FK__m_savings_account_transaction` FOREIGN KEY (`savings_account_transaction_id`) REFERENCES `m_savings_account_transaction` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_savings_account_charge_paid_by: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_savings_account_charge_paid_by` DISABLE KEYS */;
@@ -4508,7 +4508,7 @@ CREATE TABLE IF NOT EXISTS `m_savings_account_interest_rate_chart` (
   PRIMARY KEY (`id`),
   KEY `FKSAIRC00000000000001` (`savings_account_id`),
   CONSTRAINT `FKSAIRC00000000000001` FOREIGN KEY (`savings_account_id`) REFERENCES `m_savings_account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_savings_account_interest_rate_chart: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_savings_account_interest_rate_chart` DISABLE KEYS */;
@@ -4531,7 +4531,7 @@ CREATE TABLE IF NOT EXISTS `m_savings_account_interest_rate_slab` (
   PRIMARY KEY (`id`),
   KEY `FKSAIRS00000000000001` (`savings_account_interest_rate_chart_id`),
   CONSTRAINT `FKSAIRS00000000000001` FOREIGN KEY (`savings_account_interest_rate_chart_id`) REFERENCES `m_savings_account_interest_rate_chart` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_savings_account_interest_rate_slab: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_savings_account_interest_rate_slab` DISABLE KEYS */;
@@ -4564,7 +4564,7 @@ CREATE TABLE IF NOT EXISTS `m_savings_account_transaction` (
   CONSTRAINT `FKSAT0000000001` FOREIGN KEY (`savings_account_id`) REFERENCES `m_savings_account` (`id`),
   CONSTRAINT `FK_m_savings_account_transaction_m_office` FOREIGN KEY (`office_id`) REFERENCES `m_office` (`id`),
   CONSTRAINT `FK_m_savings_account_transaction_m_payment_detail` FOREIGN KEY (`payment_detail_id`) REFERENCES `m_payment_detail` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_savings_account_transaction: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_savings_account_transaction` DISABLE KEYS */;
@@ -4583,7 +4583,7 @@ CREATE TABLE IF NOT EXISTS `m_savings_account_transaction_tax_details` (
   KEY `FK_savings_account_transaction_tax_details_tax_component` (`tax_component_id`),
   CONSTRAINT `FK_savings_account_transaction_tax_details_savings_transaction` FOREIGN KEY (`savings_transaction_id`) REFERENCES `m_savings_account_transaction` (`id`),
   CONSTRAINT `FK_savings_account_transaction_tax_details_tax_component` FOREIGN KEY (`tax_component_id`) REFERENCES `m_tax_component` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_savings_account_transaction_tax_details: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_savings_account_transaction_tax_details` DISABLE KEYS */;
@@ -4604,7 +4604,7 @@ CREATE TABLE IF NOT EXISTS `m_savings_interest_incentives` (
   PRIMARY KEY (`id`),
   KEY `FK_m_savings_interest_incentives_m_savings_interest_rate_slab` (`deposit_account_interest_rate_slab_id`),
   CONSTRAINT `FK_m_savings_interest_incentives_m_savings_interest_rate_slab` FOREIGN KEY (`deposit_account_interest_rate_slab_id`) REFERENCES `m_savings_account_interest_rate_slab` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_savings_interest_incentives: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_savings_interest_incentives` DISABLE KEYS */;
@@ -4628,7 +4628,7 @@ CREATE TABLE IF NOT EXISTS `m_savings_officer_assignment_history` (
   KEY `fk_m_savings_officer_assignment_history_0002` (`savings_officer_id`),
   CONSTRAINT `fk_m_savings_officer_assignment_history_0001` FOREIGN KEY (`account_id`) REFERENCES `m_savings_account` (`id`),
   CONSTRAINT `fk_m_savings_officer_assignment_history_0002` FOREIGN KEY (`savings_officer_id`) REFERENCES `m_staff` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_savings_officer_assignment_history: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_savings_officer_assignment_history` DISABLE KEYS */;
@@ -4676,7 +4676,7 @@ CREATE TABLE IF NOT EXISTS `m_savings_product` (
   UNIQUE KEY `sp_unq_short_name` (`short_name`),
   KEY `FK_savings_product_tax_group` (`tax_group_id`),
   CONSTRAINT `FK_savings_product_tax_group` FOREIGN KEY (`tax_group_id`) REFERENCES `m_tax_group` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_savings_product: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_savings_product` DISABLE KEYS */;
@@ -4692,7 +4692,7 @@ CREATE TABLE IF NOT EXISTS `m_savings_product_charge` (
   KEY `charge_id` (`charge_id`),
   CONSTRAINT `m_savings_product_charge_ibfk_1` FOREIGN KEY (`charge_id`) REFERENCES `m_charge` (`id`),
   CONSTRAINT `m_savings_product_charge_ibfk_2` FOREIGN KEY (`savings_product_id`) REFERENCES `m_savings_product` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_savings_product_charge: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_savings_product_charge` DISABLE KEYS */;
@@ -4713,7 +4713,7 @@ CREATE TABLE IF NOT EXISTS `m_selfservice_beneficiaries_tpt` (
   `is_active` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`,`app_user_id`,`is_active`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_selfservice_beneficiaries_tpt: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_selfservice_beneficiaries_tpt` DISABLE KEYS */;
@@ -4731,7 +4731,7 @@ CREATE TABLE IF NOT EXISTS `m_selfservice_user_client_mapping` (
   KEY `m_selfservice_client_id` (`client_id`),
   CONSTRAINT `m_selfservice_appuser_id` FOREIGN KEY (`appuser_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `m_selfservice_client_id` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_selfservice_user_client_mapping: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_selfservice_user_client_mapping` DISABLE KEYS */;
@@ -4790,7 +4790,7 @@ CREATE TABLE IF NOT EXISTS `m_share_account` (
   CONSTRAINT `m_share_account_ibfk_7` FOREIGN KEY (`closed_userid`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `m_share_account_ibfk_8` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `m_share_account_ibfk_9` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_share_account: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_share_account` DISABLE KEYS */;
@@ -4824,7 +4824,7 @@ CREATE TABLE IF NOT EXISTS `m_share_account_charge` (
   KEY `m_share_account_charge_ibfk_2` (`account_id`),
   CONSTRAINT `m_share_account_charge_ibfk_1` FOREIGN KEY (`charge_id`) REFERENCES `m_charge` (`id`),
   CONSTRAINT `m_share_account_charge_ibfk_2` FOREIGN KEY (`account_id`) REFERENCES `m_share_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_share_account_charge: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_share_account_charge` DISABLE KEYS */;
@@ -4843,7 +4843,7 @@ CREATE TABLE IF NOT EXISTS `m_share_account_charge_paid_by` (
   KEY `m_share_account_transactions_charge_mapping_ibfk2` (`charge_transaction_id`),
   CONSTRAINT `m_share_account_transactions_charge_mapping_ibfk1` FOREIGN KEY (`share_transaction_id`) REFERENCES `m_share_account_transactions` (`id`),
   CONSTRAINT `m_share_account_transactions_charge_mapping_ibfk2` FOREIGN KEY (`charge_transaction_id`) REFERENCES `m_share_account_charge` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_share_account_charge_paid_by: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_share_account_charge_paid_by` DISABLE KEYS */;
@@ -4864,7 +4864,7 @@ CREATE TABLE IF NOT EXISTS `m_share_account_dividend_details` (
   KEY `FK_m_share_account_dividend_details_account_id` (`account_id`),
   CONSTRAINT `FK_m_share_account_dividend_details_account_id` FOREIGN KEY (`account_id`) REFERENCES `m_share_account` (`id`),
   CONSTRAINT `FK_m_share_account_dividend_details_dividend_pay_out_id` FOREIGN KEY (`dividend_pay_out_id`) REFERENCES `m_share_product_dividend_pay_out` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_share_account_dividend_details: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_share_account_dividend_details` DISABLE KEYS */;
@@ -4888,7 +4888,7 @@ CREATE TABLE IF NOT EXISTS `m_share_account_transactions` (
   PRIMARY KEY (`id`),
   KEY `m_share_account_purchased_shares_ibfk_1` (`account_id`),
   CONSTRAINT `m_share_account_purchased_shares_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `m_share_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_share_account_transactions: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_share_account_transactions` DISABLE KEYS */;
@@ -4932,7 +4932,7 @@ CREATE TABLE IF NOT EXISTS `m_share_product` (
   KEY `m_share_product_ibfk_2` (`lastmodifiedby_id`),
   CONSTRAINT `m_share_product_ibfk_1` FOREIGN KEY (`createdby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `m_share_product_ibfk_2` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_share_product: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_share_product` DISABLE KEYS */;
@@ -4948,7 +4948,7 @@ CREATE TABLE IF NOT EXISTS `m_share_product_charge` (
   KEY `m_share_product_charge_ibfk_1` (`charge_id`),
   CONSTRAINT `m_share_product_charge_ibfk_1` FOREIGN KEY (`charge_id`) REFERENCES `m_charge` (`id`),
   CONSTRAINT `m_share_product_charge_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `m_share_product` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_share_product_charge: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_share_product_charge` DISABLE KEYS */;
@@ -4975,7 +4975,7 @@ CREATE TABLE IF NOT EXISTS `m_share_product_dividend_pay_out` (
   CONSTRAINT `FK_m_share_product_dividend_pay_out_createdby_id` FOREIGN KEY (`createdby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_m_share_product_dividend_pay_out_lastmodifiedby_id` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_m_share_product_dividend_pay_out_product_id` FOREIGN KEY (`product_id`) REFERENCES `m_share_product` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_share_product_dividend_pay_out: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_share_product_dividend_pay_out` DISABLE KEYS */;
@@ -4992,7 +4992,7 @@ CREATE TABLE IF NOT EXISTS `m_share_product_market_price` (
   PRIMARY KEY (`id`),
   KEY `m_share_product_market_price_ibfk_1` (`product_id`),
   CONSTRAINT `m_share_product_market_price_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `m_share_product` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_share_product_market_price: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_share_product_market_price` DISABLE KEYS */;
@@ -5023,7 +5023,7 @@ CREATE TABLE IF NOT EXISTS `m_staff` (
   KEY `FK_m_staff_m_image` (`image_id`),
   CONSTRAINT `FK_m_staff_m_image` FOREIGN KEY (`image_id`) REFERENCES `m_image` (`id`),
   CONSTRAINT `FK_m_staff_m_office` FOREIGN KEY (`office_id`) REFERENCES `m_office` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_staff: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_staff` DISABLE KEYS */;
@@ -5047,7 +5047,7 @@ CREATE TABLE IF NOT EXISTS `m_staff_assignment_history` (
   KEY `FK_m_staff_assignment_history_m_staff` (`staff_id`),
   CONSTRAINT `FK_m_staff_assignment_history_centre_id_m_group` FOREIGN KEY (`centre_id`) REFERENCES `m_group` (`id`),
   CONSTRAINT `FK_m_staff_assignment_history_m_staff` FOREIGN KEY (`staff_id`) REFERENCES `m_staff` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_staff_assignment_history: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_staff_assignment_history` DISABLE KEYS */;
@@ -5065,7 +5065,7 @@ CREATE TABLE IF NOT EXISTS `m_surveys` (
   `valid_from` datetime DEFAULT NULL,
   `valid_to` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_surveys: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_surveys` DISABLE KEYS */;
@@ -5084,7 +5084,7 @@ CREATE TABLE IF NOT EXISTS `m_survey_components` (
   PRIMARY KEY (`id`),
   KEY `survey_id` (`survey_id`),
   CONSTRAINT `m_survey_components_ibfk_1` FOREIGN KEY (`survey_id`) REFERENCES `m_surveys` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_survey_components: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_survey_components` DISABLE KEYS */;
@@ -5104,7 +5104,7 @@ CREATE TABLE IF NOT EXISTS `m_survey_lookup_tables` (
   PRIMARY KEY (`id`),
   KEY `survey_id` (`survey_id`),
   CONSTRAINT `m_survey_lookup_tables_ibfk_1` FOREIGN KEY (`survey_id`) REFERENCES `m_surveys` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_survey_lookup_tables: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_survey_lookup_tables` DISABLE KEYS */;
@@ -5124,7 +5124,7 @@ CREATE TABLE IF NOT EXISTS `m_survey_questions` (
   PRIMARY KEY (`id`),
   KEY `survey_id` (`survey_id`),
   CONSTRAINT `m_survey_questions_ibfk_1` FOREIGN KEY (`survey_id`) REFERENCES `m_surveys` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_survey_questions: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_survey_questions` DISABLE KEYS */;
@@ -5142,7 +5142,7 @@ CREATE TABLE IF NOT EXISTS `m_survey_responses` (
   PRIMARY KEY (`id`),
   KEY `question_id` (`question_id`),
   CONSTRAINT `m_survey_responses_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `m_survey_questions` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_survey_responses: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_survey_responses` DISABLE KEYS */;
@@ -5171,7 +5171,7 @@ CREATE TABLE IF NOT EXISTS `m_survey_scorecards` (
   CONSTRAINT `m_survey_scorecards_ibfk_3` FOREIGN KEY (`response_id`) REFERENCES `m_survey_responses` (`id`),
   CONSTRAINT `m_survey_scorecards_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `m_survey_scorecards_ibfk_5` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_survey_scorecards: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_survey_scorecards` DISABLE KEYS */;
@@ -5202,7 +5202,7 @@ CREATE TABLE IF NOT EXISTS `m_tax_component` (
   CONSTRAINT `FK_tax_component_credit_gl_account` FOREIGN KEY (`credit_account_id`) REFERENCES `acc_gl_account` (`id`),
   CONSTRAINT `FK_tax_component_debit_gl_account` FOREIGN KEY (`debit_account_id`) REFERENCES `acc_gl_account` (`id`),
   CONSTRAINT `FK_tax_component_lastmodifiedby` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_tax_component: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_tax_component` DISABLE KEYS */;
@@ -5228,7 +5228,7 @@ CREATE TABLE IF NOT EXISTS `m_tax_component_history` (
   CONSTRAINT `FK_tax_component_history_createdby` FOREIGN KEY (`createdby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_tax_component_history_lastmodifiedby` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_tax_component_history_tax_component_id` FOREIGN KEY (`tax_component_id`) REFERENCES `m_tax_component` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_tax_component_history: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_tax_component_history` DISABLE KEYS */;
@@ -5249,7 +5249,7 @@ CREATE TABLE IF NOT EXISTS `m_tax_group` (
   KEY `FK_tax_group_lastmodifiedby` (`lastmodifiedby_id`),
   CONSTRAINT `FK_tax_group_createdby` FOREIGN KEY (`createdby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_tax_group_lastmodifiedby` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_tax_group: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_tax_group` DISABLE KEYS */;
@@ -5277,7 +5277,7 @@ CREATE TABLE IF NOT EXISTS `m_tax_group_mappings` (
   CONSTRAINT `FK_tax_group_mappings_lastmodifiedby` FOREIGN KEY (`lastmodifiedby_id`) REFERENCES `m_appuser` (`id`),
   CONSTRAINT `FK_tax_group_mappings_tax_component` FOREIGN KEY (`tax_component_id`) REFERENCES `m_tax_component` (`id`),
   CONSTRAINT `FK_tax_group_mappings_tax_group` FOREIGN KEY (`tax_group_id`) REFERENCES `m_tax_group` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_tax_group_mappings: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_tax_group_mappings` DISABLE KEYS */;
@@ -5304,7 +5304,7 @@ CREATE TABLE IF NOT EXISTS `m_tellers` (
   CONSTRAINT `FK_m_tellers_gl_account_credit_account_id` FOREIGN KEY (`credit_account_id`) REFERENCES `acc_gl_account` (`id`),
   CONSTRAINT `FK_m_tellers_gl_account_debit_account_id` FOREIGN KEY (`debit_account_id`) REFERENCES `acc_gl_account` (`id`),
   CONSTRAINT `FK_m_tellers_m_office` FOREIGN KEY (`office_id`) REFERENCES `m_office` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_tellers: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_tellers` DISABLE KEYS */;
@@ -5315,13 +5315,13 @@ CREATE TABLE IF NOT EXISTS `m_tellers` (
 DROP TABLE IF EXISTS `m_template`;
 CREATE TABLE IF NOT EXISTS `m_template` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET UTF8MB4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `text` longtext CHARACTER SET UTF8MB4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `text` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `entity` INT DEFAULT NULL,
   `type` INT DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unq_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_template: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_template` DISABLE KEYS */;
@@ -5332,11 +5332,11 @@ CREATE TABLE IF NOT EXISTS `m_template` (
 DROP TABLE IF EXISTS `m_templatemappers`;
 CREATE TABLE IF NOT EXISTS `m_templatemappers` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
-  `mapperkey` varchar(255) CHARACTER SET UTF8MB4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mapperkey` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mapperorder` INT DEFAULT NULL,
-  `mappervalue` varchar(255) CHARACTER SET UTF8MB4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mappervalue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_templatemappers: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_templatemappers` DISABLE KEYS */;
@@ -5351,7 +5351,7 @@ CREATE TABLE IF NOT EXISTS `m_template_m_templatemappers` (
   UNIQUE KEY `mappers_id` (`mappers_id`),
   KEY `mappers_id_2` (`mappers_id`),
   KEY `m_template_id` (`m_template_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_template_m_templatemappers: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_template_m_templatemappers` DISABLE KEYS */;
@@ -5367,7 +5367,7 @@ CREATE TABLE IF NOT EXISTS `m_working_days` (
   `extend_term_daily_repayments` tinyint DEFAULT '0',
   `extend_term_holiday_repayment` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_working_days: ~1 rows (approximately)
 /*!40000 ALTER TABLE `m_working_days` DISABLE KEYS */;
@@ -5386,7 +5386,7 @@ CREATE TABLE IF NOT EXISTS `oauth_access_token` (
   `client_id` varchar(256) DEFAULT NULL,
   `authentication` blob,
   `refresh_token` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.oauth_access_token: ~0 rows (approximately)
 /*!40000 ALTER TABLE `oauth_access_token` DISABLE KEYS */;
@@ -5408,7 +5408,7 @@ CREATE TABLE IF NOT EXISTS `oauth_client_details` (
   `additional_information` varchar(4096) DEFAULT NULL,
   `autoapprove` bit(1) DEFAULT NULL,
   PRIMARY KEY (`client_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.oauth_client_details: ~0 rows (approximately)
 /*!40000 ALTER TABLE `oauth_client_details` DISABLE KEYS */;
@@ -5423,7 +5423,7 @@ CREATE TABLE IF NOT EXISTS `oauth_refresh_token` (
   `token_id` varchar(256) DEFAULT NULL,
   `token` blob,
   `authentication` blob
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.oauth_refresh_token: ~0 rows (approximately)
 /*!40000 ALTER TABLE `oauth_refresh_token` DISABLE KEYS */;
@@ -5437,7 +5437,7 @@ CREATE TABLE IF NOT EXISTS `ppi_likelihoods` (
   `code` varchar(100) NOT NULL,
   `name` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.ppi_likelihoods: ~0 rows (approximately)
 /*!40000 ALTER TABLE `ppi_likelihoods` DISABLE KEYS */;
@@ -5452,7 +5452,7 @@ CREATE TABLE IF NOT EXISTS `ppi_likelihoods_ppi` (
   `ppi_name` varchar(250) NOT NULL,
   `enabled` INT NOT NULL DEFAULT '100',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.ppi_likelihoods_ppi: ~0 rows (approximately)
 /*!40000 ALTER TABLE `ppi_likelihoods_ppi` DISABLE KEYS */;
@@ -5466,7 +5466,7 @@ CREATE TABLE IF NOT EXISTS `ppi_scores` (
   `score_from` INT NOT NULL,
   `score_to` INT NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.ppi_scores: ~20 rows (approximately)
 /*!40000 ALTER TABLE `ppi_scores` DISABLE KEYS */;
@@ -5503,7 +5503,7 @@ CREATE TABLE IF NOT EXISTS `ref_loan_transaction_processing_strategy` (
   `sort_order` INT DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ltp_strategy_code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.ref_loan_transaction_processing_strategy: ~7 rows (approximately)
 /*!40000 ALTER TABLE `ref_loan_transaction_processing_strategy` DISABLE KEYS */;
@@ -5523,7 +5523,7 @@ DROP TABLE IF EXISTS `rpt_sequence`;
 CREATE TABLE IF NOT EXISTS `rpt_sequence` (
   `id` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.rpt_sequence: ~0 rows (approximately)
 /*!40000 ALTER TABLE `rpt_sequence` DISABLE KEYS */;
@@ -5541,7 +5541,7 @@ CREATE TABLE IF NOT EXISTS `r_enum_value` (
   PRIMARY KEY (`enum_name`,`enum_id`),
   UNIQUE KEY `enum_message_property` (`enum_name`,`enum_message_property`),
   UNIQUE KEY `enum_value` (`enum_name`,`enum_value`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.r_enum_value: ~159 rows (approximately)
 /*!40000 ALTER TABLE `r_enum_value` DISABLE KEYS */;
@@ -5716,7 +5716,7 @@ CREATE TABLE IF NOT EXISTS `scheduler_detail` (
   `execute_misfired_jobs` tinyint NOT NULL DEFAULT '1',
   `reset_scheduler_on_bootup` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.scheduler_detail: ~0 rows (approximately)
 /*!40000 ALTER TABLE `scheduler_detail` DISABLE KEYS */;
@@ -5743,7 +5743,7 @@ CREATE TABLE IF NOT EXISTS `schema_version` (
   KEY `schema_version_vr_idx` (`version_rank`),
   KEY `schema_version_ir_idx` (`installed_rank`),
   KEY `schema_version_s_idx` (`success`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.schema_version: ~337 rows (approximately)
 /*!40000 ALTER TABLE `schema_version` DISABLE KEYS */;
@@ -6114,7 +6114,7 @@ CREATE TABLE IF NOT EXISTS `sms_campaign` (
   PRIMARY KEY (`id`),
   KEY `report_id` (`report_id`),
   CONSTRAINT `sms_campaign_ibfk_1` FOREIGN KEY (`report_id`) REFERENCES `stretchy_report` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.sms_campaign: ~0 rows (approximately)
 /*!40000 ALTER TABLE `sms_campaign` DISABLE KEYS */;
@@ -6144,7 +6144,7 @@ CREATE TABLE IF NOT EXISTS `sms_messages_outbound` (
   CONSTRAINT `FKCLIENT00000001` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`),
   CONSTRAINT `FKGROUP000000001` FOREIGN KEY (`group_id`) REFERENCES `m_group` (`id`),
   CONSTRAINT `FKSTAFF000000001` FOREIGN KEY (`staff_id`) REFERENCES `m_staff` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.sms_messages_outbound: ~0 rows (approximately)
 /*!40000 ALTER TABLE `sms_messages_outbound` DISABLE KEYS */;
@@ -6170,7 +6170,7 @@ CREATE TABLE IF NOT EXISTS `stretchy_parameter` (
   UNIQUE KEY `name_UNIQUE` (`parameter_name`),
   KEY `fk_stretchy_parameter_001_idx` (`parent_id`),
   CONSTRAINT `fk_stretchy_parameter_001` FOREIGN KEY (`parent_id`) REFERENCES `stretchy_parameter` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1023 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=1023 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.stretchy_parameter: ~32 rows (approximately)
 /*!40000 ALTER TABLE `stretchy_parameter` DISABLE KEYS */;
@@ -6224,7 +6224,7 @@ CREATE TABLE IF NOT EXISTS `stretchy_report` (
   `use_report` tinyint DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `report_name_UNIQUE` (`report_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=188 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=188 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.stretchy_report: ~115 rows (approximately)
 /*!40000 ALTER TABLE `stretchy_report` DISABLE KEYS */;
@@ -6360,7 +6360,7 @@ CREATE TABLE IF NOT EXISTS `stretchy_report_parameter` (
   KEY `fk_report_parameter_002_idx` (`parameter_id`),
   CONSTRAINT `fk_report_parameter_001` FOREIGN KEY (`report_id`) REFERENCES `stretchy_report` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_report_parameter_002` FOREIGN KEY (`parameter_id`) REFERENCES `stretchy_parameter` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=522 DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB AUTO_INCREMENT=522 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.stretchy_report_parameter: ~415 rows (approximately)
 /*!40000 ALTER TABLE `stretchy_report_parameter` DISABLE KEYS */;
@@ -6790,7 +6790,7 @@ CREATE TABLE IF NOT EXISTS `x_registered_table` (
   `application_table_name` varchar(50) NOT NULL,
   `category` INT NOT NULL DEFAULT '100',
   PRIMARY KEY (`registered_table_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.x_registered_table: ~0 rows (approximately)
 /*!40000 ALTER TABLE `x_registered_table` DISABLE KEYS */;
@@ -6805,7 +6805,7 @@ CREATE TABLE IF NOT EXISTS `x_table_column_code_mappings` (
   PRIMARY KEY (`column_alias_name`),
   KEY `FK_x_code_id` (`code_id`),
   CONSTRAINT `FK_x_code_id` FOREIGN KEY (`code_id`) REFERENCES `m_code` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.x_table_column_code_mappings: ~0 rows (approximately)
 /*!40000 ALTER TABLE `x_table_column_code_mappings` DISABLE KEYS */;

@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `m_hook_templates` (
   `id` SMALLINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB DEFAULT CHARSET=UTF8MB4;
+ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `m_hook` (
   CONSTRAINT `fk_template_id`
     FOREIGN KEY (`template_id`)
     REFERENCES `m_hook_templates` (`id`))
-ENGINE = InnoDB DEFAULT CHARSET=UTF8MB4;
+ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `m_hook_schema` (
   CONSTRAINT `fk_hook_template_id`
     FOREIGN KEY (`hook_template_id`)
     REFERENCES `m_hook_templates` (`id`))
-ENGINE = InnoDB DEFAULT CHARSET=UTF8MB4;
+ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `m_hook_registered_events` (
   CONSTRAINT `fk_hook_idc`
     FOREIGN KEY (`hook_id`)
     REFERENCES `m_hook` (`id`))
-ENGINE = InnoDB DEFAULT CHARSET=UTF8MB4;
+ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `m_hook_configuration` (
   CONSTRAINT `fk_hook_id_cfg`
     FOREIGN KEY (`hook_id`)
     REFERENCES `m_hook` (`id`))
-ENGINE = InnoDB DEFAULT CHARSET=UTF8MB4;
+ENGINE = InnoDB DEFAULT CHARSET=utf8mb4;
 
 insert into `m_permission` (`grouping`, `code`, `entity_name`, `action_name`, `can_maker_checker`)
 VALUES ('configuration', 'CREATE_HOOK', 'HOOK', 'CREATE', 0);

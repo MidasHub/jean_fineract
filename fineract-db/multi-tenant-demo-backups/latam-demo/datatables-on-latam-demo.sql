@@ -29,7 +29,7 @@ CREATE TABLE `latam_extra_client_details` (
   `Comment` text,
   PRIMARY KEY (`client_id`),
   CONSTRAINT `FK_latam_extra_client_details` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `latam_family_details`;
 CREATE TABLE `latam_family_details` (
@@ -43,7 +43,7 @@ CREATE TABLE `latam_family_details` (
   PRIMARY KEY (`id`),
   KEY `FK_Extra Family Details Data_1` (`client_id`),
   CONSTRAINT `FK_latam_family_details` FOREIGN KEY (`client_id`) REFERENCES `m_client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `latam_extra_loan_details`;
 CREATE TABLE `latam_extra_loan_details` (
@@ -57,7 +57,7 @@ CREATE TABLE `latam_extra_loan_details` (
   `Comment` text,
   PRIMARY KEY (`loan_id`),
   CONSTRAINT `FK_latam_extra_loan_details` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 INSERT INTO `mifostenant-latam`.`m_code` (`code_name`, `is_system_defined`) VALUES ('Gender', 1);

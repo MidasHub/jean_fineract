@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `m_interest_rate_chart` (
   `from_date` date NOT NULL,
   `end_date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 CREATE TABLE IF NOT EXISTS `m_interest_rate_slab` (
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `m_interest_rate_slab` (
   PRIMARY KEY (`id`),
   KEY `FKIRS00000000000001` (`interest_rate_chart_id`),
   CONSTRAINT `FKIRS00000000000001` FOREIGN KEY (`interest_rate_chart_id`) REFERENCES `m_interest_rate_chart` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `m_deposit_product_interest_rate_chart` (
   `deposit_product_id` BIGINT NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `m_deposit_product_interest_rate_chart` (
   KEY `FKDPIRC00000000000002` (`interest_rate_chart_id`),
   CONSTRAINT `FKDPIRC00000000000001` FOREIGN KEY (`deposit_product_id`) REFERENCES `m_savings_product` (`id`),
   CONSTRAINT `FKDPIRC00000000000002` FOREIGN KEY (`interest_rate_chart_id`) REFERENCES `m_interest_rate_chart` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 CREATE TABLE IF NOT EXISTS `m_deposit_product_term_and_preclosure` (
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `m_deposit_product_term_and_preclosure` (
   PRIMARY KEY (`id`),
   KEY `FKDPTP00000000000001` (`savings_product_id`),
   CONSTRAINT `FKDPTP00000000000001` FOREIGN KEY (`savings_product_id`) REFERENCES `m_savings_product` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 CREATE TABLE IF NOT EXISTS `m_deposit_product_recurring_detail` (
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `m_deposit_product_recurring_detail` (
   PRIMARY KEY (`id`),
   KEY `FKDPRD00000000000001` (`savings_product_id`),
   CONSTRAINT `FKDPRD00000000000001` FOREIGN KEY (`savings_product_id`) REFERENCES `m_savings_product` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `m_savings_account_interest_rate_chart` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `m_savings_account_interest_rate_chart` (
   PRIMARY KEY (`id`),
   KEY `FKSAIRC00000000000001` (`savings_account_id`),
   CONSTRAINT `FKSAIRC00000000000001` FOREIGN KEY (`savings_account_id`) REFERENCES `m_savings_account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `m_savings_account_interest_rate_slab` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `m_savings_account_interest_rate_slab` (
   PRIMARY KEY (`id`),
   KEY `FKSAIRS00000000000001` (`savings_account_interest_rate_chart_id`),
   CONSTRAINT `FKSAIRS00000000000001` FOREIGN KEY (`savings_account_interest_rate_chart_id`) REFERENCES `m_savings_account_interest_rate_chart` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `m_deposit_account_recurring_detail` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `m_deposit_account_recurring_detail` (
   PRIMARY KEY (`id`),
   KEY `FKDARD00000000000001` (`savings_account_id`),
   CONSTRAINT `FKDARD00000000000001` FOREIGN KEY (`savings_account_id`) REFERENCES `m_savings_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `m_deposit_account_term_and_preclosure` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `m_deposit_account_term_and_preclosure` (
   PRIMARY KEY (`id`),
   KEY `FKDATP00000000000001` (`savings_account_id`),
   CONSTRAINT `FKDATP00000000000001` FOREIGN KEY (`savings_account_id`) REFERENCES `m_savings_account` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 ALTER TABLE `m_savings_product`

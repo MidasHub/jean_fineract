@@ -40,7 +40,7 @@ CREATE TABLE `m_savings_account_charge` (
     CONSTRAINT `m_savings_account_charge_ibfk_1` FOREIGN KEY (`charge_id`) REFERENCES `m_charge` (`id`),
     CONSTRAINT `m_savings_account_charge_ibfk_2` FOREIGN KEY (`savings_account_id`) REFERENCES `m_savings_account` (`id`)
 )
-ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 CREATE TABLE `m_savings_product_charge` (
@@ -51,7 +51,7 @@ CREATE TABLE `m_savings_product_charge` (
     CONSTRAINT `m_savings_product_charge_ibfk_1` FOREIGN KEY (`charge_id`) REFERENCES `m_charge` (`id`),
     CONSTRAINT `m_savings_product_charge_ibfk_2` FOREIGN KEY (`savings_product_id`) REFERENCES `m_savings_product` (`id`)
 )
-ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 

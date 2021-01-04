@@ -31,7 +31,7 @@ CREATE TABLE `mix_taxonomy` (
   `description` varchar(1000) DEFAULT NULL,
   `need_mapping` tinyint DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `mix_taxonomy` WRITE;
 
@@ -98,7 +98,7 @@ CREATE TABLE `mix_taxonomy_mapping` (
   `last_update_date` datetime DEFAULT NULL,
   `currency` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `mix_taxonomy_mapping` WRITE;
 
@@ -116,7 +116,7 @@ CREATE TABLE `mix_xbrl_namespace` (
   `url` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNQUE` (`prefix`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `mix_xbrl_namespace` WRITE;
 
