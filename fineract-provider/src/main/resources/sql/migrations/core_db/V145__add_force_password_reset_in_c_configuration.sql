@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `m_appuser_previous_password` (
   `password` varchar(255) NOT NULL,
   `removal_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
 
 ALTER TABLE m_appuser_previous_password
 ADD FOREIGN KEY (user_id) REFERENCES m_appuser(id);

@@ -356,10 +356,10 @@ CREATE TABLE IF NOT EXISTS `job` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `display_name` varchar(100) NOT NULL,
-  `cron_expression` varchar(20) CHARACTER SET latin1 NOT NULL,
+  `cron_expression` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
   `create_time` datetime NOT NULL,
   `task_priority` SMALLINT NOT NULL DEFAULT '5',
-  `group_name` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `group_name` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
   `previous_run_start_time` datetime DEFAULT NULL,
   `next_run_time` datetime DEFAULT NULL,
   `job_key` varchar(500) DEFAULT NULL,
@@ -412,7 +412,7 @@ CREATE TABLE IF NOT EXISTS `job_run_history` (
   `version` BIGINT NOT NULL,
   `start_time` datetime NOT NULL,
   `end_time` datetime NOT NULL,
-  `status` varchar(10) CHARACTER SET latin1 NOT NULL,
+  `status` varchar(10) CHARACTER SET utf8mb4 NOT NULL,
   `error_message` text,
   `trigger_type` varchar(25) NOT NULL,
   `error_log` text,
@@ -732,7 +732,7 @@ CREATE TABLE IF NOT EXISTS `m_appuser_previous_password` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `m_appuser_previous_password_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `m_appuser` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_appuser_previous_password: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_appuser_previous_password` DISABLE KEYS */;
@@ -2595,7 +2595,7 @@ CREATE TABLE IF NOT EXISTS `m_loan_recalculation_details` (
   PRIMARY KEY (`id`),
   KEY `FK_m_loan_m_loan_recalculation_details` (`loan_id`),
   CONSTRAINT `FK_m_loan_m_loan_recalculation_details` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_loan_recalculation_details: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_loan_recalculation_details` DISABLE KEYS */;
@@ -2909,7 +2909,7 @@ CREATE TABLE IF NOT EXISTS `m_meeting` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_calendar_instance_id_meeting_date` (`calendar_instance_id`,`meeting_date`),
   CONSTRAINT `FK_m_calendar_instance_m_meeting` FOREIGN KEY (`calendar_instance_id`) REFERENCES `m_calendar_instance` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_meeting: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_meeting` DISABLE KEYS */;
@@ -4085,7 +4085,7 @@ CREATE TABLE IF NOT EXISTS `m_product_loan_recalculation_details` (
   PRIMARY KEY (`id`),
   KEY `FK_m_product_loan_m_product_loan_recalculation_details` (`product_id`),
   CONSTRAINT `FK_m_product_loan_m_product_loan_recalculation_details` FOREIGN KEY (`product_id`) REFERENCES `m_product_loan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fineract_default.m_product_loan_recalculation_details: ~0 rows (approximately)
 /*!40000 ALTER TABLE `m_product_loan_recalculation_details` DISABLE KEYS */;

@@ -35,7 +35,7 @@ CREATE TABLE `m_product_loan_recalculation_details` (
     PRIMARY KEY (`id`),
     CONSTRAINT `FK_m_product_loan_m_product_loan_recalculation_details` FOREIGN KEY (`product_id`) REFERENCES `m_product_loan` (`id`)
 )
-COLLATE='latin1_swedish_ci'
+COLLATE='utf8mb4_general_ci'
 ENGINE=InnoDB;
 
 CREATE TABLE `m_loan_recalculation_details` (
@@ -46,5 +46,5 @@ CREATE TABLE `m_loan_recalculation_details` (
     PRIMARY KEY (`id`),
     CONSTRAINT `FK_m_loan_m_loan_recalculation_details` FOREIGN KEY (`loan_id`) REFERENCES `m_loan` (`id`)
 )
-COLLATE='latin1_swedish_ci'
+COLLATE='utf8mb4_general_ci'
 ENGINE=InnoDB;
