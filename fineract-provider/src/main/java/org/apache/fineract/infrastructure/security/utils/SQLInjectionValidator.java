@@ -35,7 +35,9 @@ public final class SQLInjectionValidator {
 
     private static final String[] COMMENTS = { "--", "({", "/*", "#" };
 
-    private static final String SQL_PATTERN = "[a-zA-Z_=,\\-'!><.?\"`% ()0-9*\n\r]*";
+    // private static final String SQL_PATTERN = "[a-zA-Z_=,\\-'!><.?\"`% ()0-9*\n\r]*";
+
+    private static final String SQL_PATTERN = "[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ_=,\\-'!><.?\"`% ()0-9*\n\r]*";
 
     public static void validateSQLInput(final String sqlSearch) {
         if (StringUtils.isBlank(sqlSearch)) {
@@ -118,6 +120,7 @@ public final class SQLInjectionValidator {
             throw new SQLInjectionException();
         }
 
+        // Jean: Đoạn này check pattern của biến sqlSearch
         Pattern pattern = Pattern.compile(SQL_PATTERN);
         Matcher matcher = pattern.matcher(sqlSearch);
         if (!matcher.matches()) {

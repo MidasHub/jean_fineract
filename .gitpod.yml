@@ -29,9 +29,8 @@ ports:
 - port: 8009
   onOpen: ignore
 - port: 8080
-- port: 8081
   onOpen: ignore
-- port: 8443
+- port: 9443
 tasks:
 - command: |
       # NB MySQL on GitPod.io is currently quite slow.

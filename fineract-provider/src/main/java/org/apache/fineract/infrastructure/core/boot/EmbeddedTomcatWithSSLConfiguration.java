@@ -47,7 +47,7 @@ public class EmbeddedTomcatWithSSLConfiguration {
     public ServletWebServerFactory servletContainer() {
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
         tomcat.setContextPath(getContextPath());
-        tomcat.addAdditionalTomcatConnectors(redirectConnector());
+        // tomcat.addAdditionalTomcatConnectors(redirectConnector());
         tomcat.addAdditionalTomcatConnectors(createSslConnector());
         return tomcat;
     }
@@ -64,14 +64,14 @@ public class EmbeddedTomcatWithSSLConfiguration {
         return "/" + this.env.getProperty("contextPath");
     }
 
-    private Connector redirectConnector() {
-        Connector connector = new Connector(TomcatServletWebServerFactory.DEFAULT_PROTOCOL);
-        connector.setScheme("http");
-        connector.setPort(8081);
-        connector.setSecure(false);
-        connector.setRedirectPort(getHTTPSPort());
-        return connector;
-    }
+    // private Connector redirectConnector() {
+    // Connector connector = new Connector(TomcatServletWebServerFactory.DEFAULT_PROTOCOL);
+    // connector.setScheme("http");
+    // connector.setPort(8081);
+    // connector.setSecure(false);
+    // connector.setRedirectPort(getHTTPSPort());
+    // return connector;
+    // }
 
     protected Connector createSslConnector() {
         Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");

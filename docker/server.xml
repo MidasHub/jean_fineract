@@ -71,7 +71,7 @@
          the SSLImplementation selected. JSSE style configuration is used below.
     -->
     <Connector protocol="org.apache.coyote.http11.Http11NioProtocol"
-    port="8443" maxThreads="200" scheme="https"
+    port="9443" maxThreads="200" scheme="https"
     secure="true" SSLEnabled="true"
     keystoreFile="/opt/bitnami/tomcat/tomcat.keystore"
     keystorePass="xyz123"
