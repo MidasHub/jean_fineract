@@ -620,7 +620,7 @@ public class ReadWriteNonCoreDataServiceImpl implements ReadWriteNonCoreDataServ
 
             sqlBuilder.append(constrainBuilder);
 
-            sqlBuilder = sqlBuilder.append(") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+            sqlBuilder = sqlBuilder.append(") ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;");
             this.jdbcTemplate.execute(sqlBuilder.toString());
 
             registerDatatable(datatableName, apptableName);
@@ -1811,8 +1811,8 @@ public class ReadWriteNonCoreDataServiceImpl implements ReadWriteNonCoreDataServ
         }
 
         if ("DECIMAL".equalsIgnoreCase(colType)) {
-            final BigDecimal currentDecimal = BigDecimal.valueOf(Double.valueOf(currValue));
-            final BigDecimal newDecimal = BigDecimal.valueOf(Double.valueOf(pValue));
+            final BigDecimal currentDecimal = BigDecimal.valueOf(Double.parseDouble(currValue));
+            final BigDecimal newDecimal = BigDecimal.valueOf(Double.parseDouble(pValue));
 
             return currentDecimal.compareTo(newDecimal) != 0;
         }
