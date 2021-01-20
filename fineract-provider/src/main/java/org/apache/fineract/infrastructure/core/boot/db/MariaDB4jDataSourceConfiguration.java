@@ -18,10 +18,9 @@
  */
 package org.apache.fineract.infrastructure.core.boot.db;
 
+import ch.vorburger.mariadb4j.springframework.MariaDB4jSpringService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import ch.vorburger.mariadb4j.springframework.MariaDB4jSpringService;
 
 @Configuration
 public class MariaDB4jDataSourceConfiguration extends DataSourceConfiguration {
