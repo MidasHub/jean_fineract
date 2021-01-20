@@ -56,6 +56,10 @@ public class AuthenticatedUserData {
     @SuppressWarnings("unused")
     private final boolean isTwoFactorAuthenticationRequired;
 
+    // Jean: add clientID field to authencatedUserData
+    @SuppressWarnings("unused")
+    private Long clientId;
+
     public AuthenticatedUserData(final String username, final Collection<String> permissions) {
         this.username = username;
         this.userId = null;
@@ -72,10 +76,10 @@ public class AuthenticatedUserData {
         this.isTwoFactorAuthenticationRequired = false;
     }
 
-    public AuthenticatedUserData(final String username, final Long officeId, final String officeName, final Long staffId,
-            final String staffDisplayName, final EnumOptionData organisationalRole, final Collection<RoleData> roles,
-            final Collection<String> permissions, final Long userId, final String base64EncodedAuthenticationKey,
-            final boolean isTwoFactorAuthenticationRequired) {
+    public AuthenticatedUserData(final String username, final Long officeId, final String officeName,
+            final Long staffId, final String staffDisplayName, final EnumOptionData organisationalRole,
+            final Collection<RoleData> roles, final Collection<String> permissions, final Long userId,
+            final String base64EncodedAuthenticationKey, final boolean isTwoFactorAuthenticationRequired) {
         this.username = username;
         this.officeId = officeId;
         this.officeName = officeName;
@@ -89,6 +93,27 @@ public class AuthenticatedUserData {
         this.permissions = permissions;
         this.shouldRenewPassword = false;
         this.isTwoFactorAuthenticationRequired = isTwoFactorAuthenticationRequired;
+    }
+
+    public AuthenticatedUserData(final String username, final Long officeId, final String officeName,
+            final Long staffId, final String staffDisplayName, final EnumOptionData organisationalRole,
+            final Collection<RoleData> roles, final Collection<String> permissions, final Long userId,
+            final String base64EncodedAuthenticationKey, final boolean isTwoFactorAuthenticationRequired,
+            Long clientId) {
+        this.username = username;
+        this.officeId = officeId;
+        this.officeName = officeName;
+        this.staffId = staffId;
+        this.staffDisplayName = staffDisplayName;
+        this.organisationalRole = organisationalRole;
+        this.userId = userId;
+        this.base64EncodedAuthenticationKey = base64EncodedAuthenticationKey;
+        this.authenticated = true;
+        this.roles = roles;
+        this.permissions = permissions;
+        this.shouldRenewPassword = false;
+        this.isTwoFactorAuthenticationRequired = isTwoFactorAuthenticationRequired;
+        this.clientId = clientId;
     }
 
     public AuthenticatedUserData(final String username, final Long userId, final String base64EncodedAuthenticationKey,

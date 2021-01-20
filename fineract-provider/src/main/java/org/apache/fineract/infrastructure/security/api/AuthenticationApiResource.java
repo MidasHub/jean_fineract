@@ -43,6 +43,10 @@ import org.apache.fineract.infrastructure.security.service.SpringSecurityPlatfor
 import org.apache.fineract.infrastructure.security.service.TwoFactorUtils;
 import org.apache.fineract.useradministration.data.RoleData;
 import org.apache.fineract.useradministration.domain.AppUser;
+//Jean: Import
+import org.apache.fineract.useradministration.domain.AppUserClientMapping;
+//import org.apache.fineract.portfolio.client.api.ClientsApiResource;
+//------------------
 import org.apache.fineract.useradministration.domain.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -76,7 +80,8 @@ public class AuthenticationApiResource {
     public AuthenticationApiResource(
             @Qualifier("customAuthenticationProvider") final DaoAuthenticationProvider customAuthenticationProvider,
             final ToApiJsonSerializer<AuthenticatedUserData> apiJsonSerializerService,
-            final SpringSecurityPlatformSecurityContext springSecurityPlatformSecurityContext, TwoFactorUtils twoFactorUtils) {
+            final SpringSecurityPlatformSecurityContext springSecurityPlatformSecurityContext,
+            TwoFactorUtils twoFactorUtils) {
         this.customAuthenticationProvider = customAuthenticationProvider;
         this.apiJsonSerializerService = apiJsonSerializerService;
         this.springSecurityPlatformSecurityContext = springSecurityPlatformSecurityContext;
@@ -96,14 +101,18 @@ public class AuthenticationApiResource {
         AuthenticateRequest request = new Gson().fromJson(apiRequestBodyAsJson, AuthenticateRequest.class);
         if (request == null) {
             throw new IllegalArgumentException(
-                    "Invalid JSON in BODY (no longer URL param; see FINERACT-726) of POST to /authentication: " + apiRequestBodyAsJson);
+                    "Invalid JSON in BODY (no longer URL param; see FINERACT-726) of POST to /authentication: "
+                            + apiRequestBodyAsJson);
         }
         if (request.username == null || request.password == null) {
-            throw new IllegalArgumentException("Username or Password is null in JSON (see FINERACT-726) of POST to /authentication: "
-                    + apiRequestBodyAsJson + "; username=" + request.username + ", password=" + request.password);
+            throw new IllegalArgumentException(
+                    "Username or Password is null in JSON (see FINERACT-726) of POST to /authentication: "
+                            + apiRequestBodyAsJson + "; username=" + request.username + ", password="
+                            + request.password);
         }
 
-        final Authentication authentication = new UsernamePasswordAuthenticationToken(request.username, request.password);
+        final Authentication authentication = new UsernamePasswordAuthenticationToken(request.username,
+                request.password);
         final Authentication authenticationCheck = this.customAuthenticationProvider.authenticate(authentication);
 
         final Collection<String> permissions = new ArrayList<>();
@@ -116,7 +125,6 @@ public class AuthenticationApiResource {
             }
 
             final byte[] base64EncodedAuthenticationKey = Base64.encode(request.username + ":" + request.password);
-
             final AppUser principal = (AppUser) authenticationCheck.getPrincipal();
             final Collection<RoleData> roles = new ArrayList<>();
             final Set<Role> userRoles = principal.getRoles();
@@ -138,10 +146,21 @@ public class AuthenticationApiResource {
                 authenticatedUserData = new AuthenticatedUserData(request.username, principal.getId(),
                         new String(base64EncodedAuthenticationKey, StandardCharsets.UTF_8), isTwoFactorRequired);
             } else {
+                if (!principal.isSelfServiceUser()) {
+                    authenticatedUserData = new AuthenticatedUserData(request.username, officeId, officeName, staffId,
+                            staffDisplayName, organisationalRole, roles, permissions, principal.getId(),
+                            new String(base64EncodedAuthenticationKey, StandardCharsets.UTF_8), isTwoFactorRequired);
+                } else {
+                    Long clientId = null;
+                    for (AppUserClientMapping anObject : principal.getAppUserClientMappings()) {
+                        clientId = anObject.getClient().getId();
+                    }
+                    authenticatedUserData = new AuthenticatedUserData(request.username, officeId, officeName, staffId,
+                            staffDisplayName, organisationalRole, roles, permissions, principal.getId(),
+                            new String(base64EncodedAuthenticationKey, StandardCharsets.UTF_8), isTwoFactorRequired,
+                            clientId);
+                }
 
-                authenticatedUserData = new AuthenticatedUserData(request.username, officeId, officeName, staffId, staffDisplayName,
-                        organisationalRole, roles, permissions, principal.getId(),
-                        new String(base64EncodedAuthenticationKey, StandardCharsets.UTF_8), isTwoFactorRequired);
             }
 
         }

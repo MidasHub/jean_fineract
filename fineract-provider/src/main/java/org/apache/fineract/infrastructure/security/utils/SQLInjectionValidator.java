@@ -37,7 +37,9 @@ public final class SQLInjectionValidator {
 
     // private static final String SQL_PATTERN = "[a-zA-Z_=,\\-'!><.?\"`% ()0-9*\n\r]*";
 
-    private static final String SQL_PATTERN = "[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ_=,\\-'!><.?\"`% ()0-9*\n\r]*";
+    // private static final String SQL_PATTERN = "[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ_=,\\-'!><.?\"`% ()0-9*\n\r]*";
+
+    private static final String SQL_PATTERN = "[a-zA-Z_=,\\-'!><.?\u0A00-\u0A7F\"`% ()0-9*\n\r]*";
 
     public static void validateSQLInput(final String sqlSearch) {
         if (StringUtils.isBlank(sqlSearch)) {
