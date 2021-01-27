@@ -46,7 +46,7 @@ Run the following commands:
 Instructions to build the JAR file
 ============
 1. Clone the repository or download and extract the archive file to your local directory.
-2. Run `./gradlew.bat :fineract-provider:spotlessApply` then `./gradlew clean bootJar` to build a modern cloud native fully self contained JAR file which will be created at `build/libs` directory.
+2. Run `./gradlew clean bootJar` to build a modern cloud native fully self contained JAR file which will be created at `build/libs` directory.
 3. Start it using `java -jar build/libs/fineract-provider.jar` (does not require external Tomcat)
 
 The tenants database connection details are configured [via environment variables (as with Docker container)](#instructions-to-run-using-docker-and-docker-compose), e.g. like this:
@@ -59,7 +59,7 @@ The tenants database connection details are configured [via environment variable
 Instructions to build a WAR file
 ============
 1. Clone the repository or download and extract the archive file to your local directory.
-2. Run `./gradlew.bat :fineract-provider:spotlessApply` then `./gradlew clean war` to build a traditional WAR file which will be created at `build/libs` directory.
+2. Run `./gradlew clean war` to build a traditional WAR file which will be created at `build/libs` directory.
 3. Deploy this WAR to your Tomcat v9 Servlet Container.
 
 We recommend using the JAR instead of the WAR file deployment, because it's much easier.
@@ -143,11 +143,11 @@ You can follow [this](https://cwiki.apache.org/confluence/display/FINERACT/Insta
 Now e.g. from your Google Cloud shell, run the following commands:
 
 1. `git clone https://github.com/apache/fineract.git ; cd fineract/kubernetes`
-1. `./kubectl-startup`
+1. `./kubectl-startup.sh`
 
 To shutdown and reset your Cluster, run:
 
-    ./kubectl-shutdown
+    ./kubectl-shutdown.sh
 
 Using Minikube
 --------------
@@ -176,7 +176,13 @@ You can check Fineract logs using:
 
 To shutdown and reset your cluster, run:
 
-    ./kubectl-shutdown
+    ./kubectl-shutdown.sh
+
+To shutdown and reset your cluster, run:
+
+    minikube ssh
+
+    sudo rm -rf /mnt/data/
 
 We have [some open issues in JIRA with Kubernetes related enhancement ideas](https://jira.apache.org/jira/browse/FINERACT-783?jql=labels%20%3D%20kubernetes%20AND%20project%20%3D%20%22Apache%20Fineract%22%20) which you are welcome to contribute to.
 
@@ -203,12 +209,6 @@ Instructions to run Apache RAT (Release Audit Tool)
 Instructions to enable ActiveMQ
 ============
 Messaging configuration is disabled by default. If you want to enable it and register some message listeners, application needs to be started with the proper Spring profile, ie `-Dspring.profiles.active=activeMqEnabled` (or one of the other Spring ways to configure it).
-**Configuration to enable ActiveMQ:**
-1. Go to ./fineract-provider/properties
-2. Depend on the securities method, choose the right 'application.properties' file then Open it.
-3. add 'activeMqEnabled' to the 'spring.profiles.active' and seperate with the existing element by comma ','
-4. To change the activeMQ server end point go to '.\fineract-provider\src\main\java\org\apache\fineract\notification\config\MessagingConfiguration.java' and change the DEFAULT_BROKER_URL variable. or change the 'brokerURL' in 'application.properties' file above
-
 
 
 Checkstyle and Spotless

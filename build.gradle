@@ -126,7 +126,7 @@ allprojects  {
             dependency 'jakarta.jms:jakarta.jms-api:2.0.3'
             dependency 'jakarta.xml.bind:jakarta.xml.bind-api:2.3.3'
             dependency 'jakarta.validation:jakarta.validation-api:3.0.0'
-            dependency 'org.apache.activemq:activemq-broker:5.16.0'
+            dependency 'org.apache.activemq:activemq-broker:5.16.1'
             dependency 'org.apache.bval:org.apache.bval.bundle:2.0.5'
 
             dependency 'io.github.classgraph:classgraph:4.8.90'
@@ -353,6 +353,7 @@ configure(project.fineractJavaProjects) {
 
     apply plugin: 'java-library'
     apply plugin: 'idea'
+    apply plugin: 'eclipse'
     apply plugin: 'checkstyle'
     apply plugin: 'jacoco'
     apply plugin: "net.ltgt.errorprone"
@@ -472,7 +473,7 @@ configure(project.fineractJavaProjects) {
     // Configuration for the Checkstyle plugin
     // https://docs.gradle.org/current/userguide/checkstyle_plugin.html
     dependencies {
-        checkstyle 'com.puppycrawl.tools:checkstyle:8.38'
+        checkstyle 'com.puppycrawl.tools:checkstyle:8.39'
         checkstyle 'com.github.sevntu-checkstyle:sevntu-checks:1.38.0'
     }
 
@@ -494,26 +495,25 @@ configure(project.fineractJavaProjects) {
     // Configuration for the errorprone plugin
     // https://github.com/tbroyer/gradle-errorprone-plugin
     dependencies {
-        errorprone "com.google.errorprone:error_prone_core:2.4.0"
+        errorprone "com.google.errorprone:error_prone_core:2.5.1"
     }
 
     tasks.withType(JavaCompile) {
         options.errorprone {
             disableWarningsInGeneratedCode = true
             excludedPaths = ".*/build/.*"
-            //Todo Remove necessary checks from this list
             disable(
+                    // TODO Remove disabled checks from this list, by fixing remaining usages
                     "UnusedVariable",
                     "TypeParameterUnusedInFormals",
-                    "JdkObsolete",
                     "EmptyBlockTag",
                     "MissingSummary",
                     "InvalidParam",
                     "ReturnFromVoid",
                     "AlmostJavadoc",
                     "InvalidBlockTag",
+                    "JavaUtilDate", // TODO FINERACT-1298
                     )
-            //TODO gradually enable these checks
             error(
                     "DefaultCharset",
                     "RemoveUnusedImports",
@@ -585,6 +585,7 @@ configure(project.fineractJavaProjects) {
                     "ModifiedButNotUsed",
                     "InconsistentCapitalization",
                     "MissingOverride",
+                    // TODO enable these remaining checks (one by one)
                     // "InvalidBlockTag",
                     // "InconsistentOverloads",
                     // "MethodCanBeStatic",
