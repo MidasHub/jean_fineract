@@ -214,6 +214,7 @@ Messaging configuration is disabled by default. If you want to enable it and reg
 2. Depend on the securities method, choose the right 'application.properties' file then Open it.
 3. add 'activeMqEnabled' to the 'spring.profiles.active' and seperate with the existing element by comma ','
 
+
 Checkstyle and Spotless
 ============
 
