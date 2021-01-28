@@ -102,15 +102,23 @@ public class SavingsAccountDomainServiceJpa implements SavingsAccountDomainServi
                 paymentDetail, new Date(), user, accountType);
         final SavingsAccountTransaction withdrawal = account.withdraw(transactionDTO, transactionBooleanValues.isApplyWithdrawFee());
         final MathContext mc = MathContext.DECIMAL64;
-        if (account.isBeforeLastPostingPeriod(transactionDate)) {
-            final LocalDate today = DateUtils.getLocalDateOfTenant();
-            account.postInterest(mc, today, transactionBooleanValues.isInterestTransfer(), isSavingsInterestPostingAtCurrentPeriodEnd,
-                    financialYearBeginningMonth, postInterestOnDate);
-        } else {
-            final LocalDate today = DateUtils.getLocalDateOfTenant();
-            account.calculateInterestUsing(mc, today, transactionBooleanValues.isInterestTransfer(),
-                    isSavingsInterestPostingAtCurrentPeriodEnd, financialYearBeginningMonth, postInterestOnDate);
+
+        //Jean: Cái dòng chạy đi tính lãi mỗi lần làm deposit là chỗ này.
+        //      nên quyết định thêm điều kiện nếu cả 2 loại lãi suất (deposit và overdraft) đều khác 0
+        //      thì mới cho chạy hàm tính lãi.
+        if (!(account.nominalAnnualInterestRate.compareTo(BigDecimal.ZERO) == 0 && account.nominalAnnualInterestRateOverdraft.compareTo(BigDecimal.ZERO) == 0))
+        {
+            if (account.isBeforeLastPostingPeriod(transactionDate)) {
+                final LocalDate today = DateUtils.getLocalDateOfTenant();
+                account.postInterest(mc, today, transactionBooleanValues.isInterestTransfer(), isSavingsInterestPostingAtCurrentPeriodEnd,
+                        financialYearBeginningMonth, postInterestOnDate);
+            } else {
+                final LocalDate today = DateUtils.getLocalDateOfTenant();
+                account.calculateInterestUsing(mc, today, transactionBooleanValues.isInterestTransfer(),
+                        isSavingsInterestPostingAtCurrentPeriodEnd, financialYearBeginningMonth, postInterestOnDate);
+            }
         }
+
         List<DepositAccountOnHoldTransaction> depositAccountOnHoldTransactions = null;
         if (account.getOnHoldFunds().compareTo(BigDecimal.ZERO) > 0) {
             depositAccountOnHoldTransactions = this.depositAccountOnHoldTransactionRepository
@@ -169,15 +177,23 @@ public class SavingsAccountDomainServiceJpa implements SavingsAccountDomainServi
         final SavingsAccountTransaction deposit = account.deposit(transactionDTO, savingsAccountTransactionType);
         final LocalDate postInterestOnDate = null;
         final MathContext mc = MathContext.DECIMAL64;
-        if (account.isBeforeLastPostingPeriod(transactionDate)) {
-            final LocalDate today = DateUtils.getLocalDateOfTenant();
-            account.postInterest(mc, today, isInterestTransfer, isSavingsInterestPostingAtCurrentPeriodEnd, financialYearBeginningMonth,
-                    postInterestOnDate);
-        } else {
-            final LocalDate today = DateUtils.getLocalDateOfTenant();
-            account.calculateInterestUsing(mc, today, isInterestTransfer, isSavingsInterestPostingAtCurrentPeriodEnd,
-                    financialYearBeginningMonth, postInterestOnDate);
+
+        //Jean: Cái dòng chạy đi tính lãi mỗi lần làm deposit là chỗ này.
+        //      nên quyết định thêm điều kiện nếu cả 2 loại lãi suất (deposit và overdraft) đều khác 0
+        //      thì mới cho chạy hàm tính lãi.
+        if (!(account.nominalAnnualInterestRate.compareTo(BigDecimal.ZERO) == 0 && account.nominalAnnualInterestRateOverdraft.compareTo(BigDecimal.ZERO) == 0))
+        {
+                if (account.isBeforeLastPostingPeriod(transactionDate)) {
+                    final LocalDate today = DateUtils.getLocalDateOfTenant();
+                    account.postInterest(mc, today, isInterestTransfer, isSavingsInterestPostingAtCurrentPeriodEnd, 
+                            financialYearBeginningMonth,postInterestOnDate);
+                } else {
+                    final LocalDate today = DateUtils.getLocalDateOfTenant();
+                    account.calculateInterestUsing(mc, today, isInterestTransfer, isSavingsInterestPostingAtCurrentPeriodEnd,
+                            financialYearBeginningMonth, postInterestOnDate);
+                }
         }
+
         saveTransactionToGenerateTransactionId(deposit);
 
         this.savingsAccountRepository.saveAndFlush(account);

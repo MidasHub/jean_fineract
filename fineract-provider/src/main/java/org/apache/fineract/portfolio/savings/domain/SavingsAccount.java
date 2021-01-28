@@ -678,8 +678,9 @@ public class SavingsAccount extends AbstractPersistableCustom {
      * Interest calculation is performed on-the-fly over all account transactions.
      *
      *
-     * 1. Calculate Interest From Beginning Of Account 1a. determine the 'crediting' periods that exist for this savings
-     * acccount 1b. determine the 'compounding' periods that exist within each 'crediting' period calculate the amount
+     * 1. Calculate Interest From Beginning Of Account 
+     *     1a. determine the 'crediting' periods that exist for this savings acccount 
+     *     1b. determine the 'compounding' periods that exist within each 'crediting' period calculate the amount
      * of interest due at the end of each 'crediting' period check if an existing 'interest posting' transaction exists
      * for date and matches the amount posted
      *
@@ -699,6 +700,7 @@ public class SavingsAccount extends AbstractPersistableCustom {
         // correct.
         recalculateDailyBalances(openingAccountBalance, upToInterestCalculationDate);
 
+        // Jean: how to set to case 2
         // 1. default to calculate interest based on entire history OR
         // 2. determine latest 'posting period' and find interest credited to
         // that period
@@ -805,6 +807,7 @@ public class SavingsAccount extends AbstractPersistableCustom {
         return orderedNonInterestPostingTransactions;
     }
 
+    //Jean: Đây là hàm lấy danh sách giao dịch của tài khoản vừa được thực hiện giao dịch
     protected List<SavingsAccountTransaction> retreiveListOfTransactions() {
         final List<SavingsAccountTransaction> listOfTransactionsSorted = new ArrayList<>();
         listOfTransactionsSorted.addAll(this.transactions);
@@ -814,6 +817,12 @@ public class SavingsAccount extends AbstractPersistableCustom {
         return listOfTransactionsSorted;
     }
 
+    // Jean: code tính lại daily balances ở đây.
+    // Nó liên quan đến 2 function là 
+    //   - Hàm recalculateDailyBalances: check lại toàn bộ các giao dịch lấy ra trong mảng SavingsAccountTransaction
+    //   - Sau đó nói gọi hàm resetAccountTransactionsEndOfDayBalances để cập nhật ending balance cho các giao dịch trong mảng SavingsAccountTransaction
+    //   --> Như vậy mình sẽ đi config lại hàm  retreiveListOfTransactions() để lấy các giao dịch từ các giao dịch thứ n-1 của giao dịch vừa thực hiện
+    //       để tính lại balance là sẽ đạt được yêu cầu (theo logic lý thuyết là vậy) 
     protected void recalculateDailyBalances(final Money openingAccountBalance, final LocalDate interestPostingUpToDate) {
 
         Money runningBalance = openingAccountBalance.copy();
@@ -845,6 +854,7 @@ public class SavingsAccount extends AbstractPersistableCustom {
 
                 runningBalance = runningBalance.plus(transactionAmount);
                 transaction.updateRunningBalance(runningBalance);
+                
                 if (overdraftAmount.isZero() && runningBalance.isLessThanZero()) {
                     overdraftAmount = overdraftAmount.plus(runningBalance.getAmount().negate());
                 }
