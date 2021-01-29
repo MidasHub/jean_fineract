@@ -958,11 +958,11 @@ public class SavingsAccount extends AbstractPersistableCustom {
         final List<SavingsAccountTransaction> listOfTransactionsSorted = new ArrayList<>();
 
         // Khúc này logic như sau: chưa biết cách xử lý
-           
+
         for (final SavingsAccountTransaction savingsAccountTransaction : this.transactions) {
-            // Jean : Xử lý data chỗ này để lấy các giao dịch từ đầu ngày transactionDate trở đi
-            }
-        
+            // Jean : Xử lý data chỗ này để lấy các giao dịch từ đầu ngày transactionDate
+            // trở đi
+        }
 
         final SavingsAccountTransactionComparator transactionComparator = new SavingsAccountTransactionComparator();
         Collections.sort(listOfTransactionsSorted, transactionComparator);
@@ -985,16 +985,24 @@ public class SavingsAccount extends AbstractPersistableCustom {
         Money runningBalance = openingAccountBalance.copy();
         // Mình bắt đầu xử lý số lượng giao dịch cần lấy ở đây
         // Trường hợp check all data thì ko cần bài cãi gì
-        // Trường hợp lấy data từ ngày transactionDate trở đi mình sẽ gọi hàm retrievePostingDateListOfTransactions để xử lý
-        //  truyền cho hàm này biến transactionDate
+        // Trường hợp lấy data từ ngày transactionDate trở đi mình sẽ gọi hàm
+        // retrievePostingDateListOfTransactions để xử lý
+        // truyền cho hàm này biến transactionDate
         List<SavingsAccountTransaction> accountTransactionsSorted;
         if (isCheckAll == true) {
             accountTransactionsSorted = retreiveListOfTransactions();
         } else {
-            accountTransactionsSorted = retrievePostingDateListOfTransactions(transactionDate);
-        };
-        //---------------------------------------------------------------------------------------------
+            accountTransactionsSorted = retrieveTransactionsBeginWith(transactionDate);
+        }
+        ;
+        // ---------------------------------------------------------------------------------------------
 
+        // Sau khi lấy được danh sách các giao dịch , hệ thống sẽ chạy đoạn code sau để check xem các giao dịch lấy được
+        // có số runningBalance có đúng không ?
+        // Nếu không sẽ tiến hành tính toán lại toàn bộ running balance
+        // Nếu có thấy có thay đổi sẽ set biến --isTransactionsModified-- thành true 
+        // và gọi hàm resetAccountTransactionsEndOfDayBalances để cập nhật lại toàn bộ running balance
+        // 
         boolean isTransactionsModified = false;
         for (final SavingsAccountTransaction transaction : accountTransactionsSorted) {
             if (transaction.isReversed()) {
@@ -1050,7 +1058,13 @@ public class SavingsAccount extends AbstractPersistableCustom {
         }
 
         if (isTransactionsModified) {
-            accountTransactionsSorted = retreiveListOfTransactions();
+            // accountTransactionsSorted = retreiveListOfTransactions();
+            if (isCheckAll == true) {
+                accountTransactionsSorted = retreiveListOfTransactions();
+            } else {
+                accountTransactionsSorted = retrieveTransactionsBeginWith(transactionDate);
+            }
+            ;
         }
         resetAccountTransactionsEndOfDayBalances(accountTransactionsSorted, interestPostingUpToDate);
     }
@@ -3314,7 +3328,7 @@ public class SavingsAccount extends AbstractPersistableCustom {
             }
         }
         // Jean: review sau, tạm check theo logic gốc của fineract
-        recalculateDailyBalances(Money.zero(this.currency), transactionDate,null, true);
+        recalculateDailyBalances(Money.zero(this.currency), transactionDate, null, true);
         this.summary.updateSummary(this.currency, this.savingsAccountTransactionSummaryWrapper, this.transactions);
     }
 
