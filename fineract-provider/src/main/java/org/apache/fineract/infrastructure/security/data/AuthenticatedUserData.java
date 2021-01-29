@@ -76,10 +76,10 @@ public class AuthenticatedUserData {
         this.isTwoFactorAuthenticationRequired = false;
     }
 
-    public AuthenticatedUserData(final String username, final Long officeId, final String officeName,
-            final Long staffId, final String staffDisplayName, final EnumOptionData organisationalRole,
-            final Collection<RoleData> roles, final Collection<String> permissions, final Long userId,
-            final String base64EncodedAuthenticationKey, final boolean isTwoFactorAuthenticationRequired) {
+    public AuthenticatedUserData(final String username, final Long officeId, final String officeName, final Long staffId,
+            final String staffDisplayName, final EnumOptionData organisationalRole, final Collection<RoleData> roles,
+            final Collection<String> permissions, final Long userId, final String base64EncodedAuthenticationKey,
+            final boolean isTwoFactorAuthenticationRequired) {
         this.username = username;
         this.officeId = officeId;
         this.officeName = officeName;
@@ -95,11 +95,10 @@ public class AuthenticatedUserData {
         this.isTwoFactorAuthenticationRequired = isTwoFactorAuthenticationRequired;
     }
 
-    public AuthenticatedUserData(final String username, final Long officeId, final String officeName,
-            final Long staffId, final String staffDisplayName, final EnumOptionData organisationalRole,
-            final Collection<RoleData> roles, final Collection<String> permissions, final Long userId,
-            final String base64EncodedAuthenticationKey, final boolean isTwoFactorAuthenticationRequired,
-            Long clientId) {
+    public AuthenticatedUserData(final String username, final Long officeId, final String officeName, final Long staffId,
+            final String staffDisplayName, final EnumOptionData organisationalRole, final Collection<RoleData> roles,
+            final Collection<String> permissions, final Long userId, final String base64EncodedAuthenticationKey,
+            final boolean isTwoFactorAuthenticationRequired, Long clientId) {
         this.username = username;
         this.officeId = officeId;
         this.officeName = officeName;
