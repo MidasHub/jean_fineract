@@ -25,6 +25,7 @@ import org.apache.fineract.notification.eventandlistener.NotificationEventListen
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -48,22 +49,30 @@ public class MessagingConfiguration {
         return LoggerFactory.getLogger(MessagingConfiguration.class);
     }
 
-    // private static final String DEFAULT_BROKER_URL = "tcp://localhost:61616";
-    private static final String DEFAULT_BROKER_URL = "tcp://203.205.21.236:61616";
+    @Value("${brokerUrl}")
+    String brokerUrl;
+
+    // private final String DEFAULT_BROKER_URL = "tcp://localhost:61616";
+    private String DEFAULT_BROKER_URL = "tcp://localhost:61616";
     // Cần check lại chỗ này. để make sure là hệ thống lấy biến mặc định hay biến kahi báo ở file application.properties
 
     @Bean
     public ActiveMQConnectionFactory amqConnectionFactory() {
-        String endPoint = this.env.getProperty("brokerUrl");
         ActiveMQConnectionFactory amqConnectionFactory = new ActiveMQConnectionFactory();
+        if (this.brokerUrl != null) {
+            DEFAULT_BROKER_URL = this.brokerUrl;
+        }
         try {
+            // loggerBean().info(this.brokerUrl);
             amqConnectionFactory.setBrokerURL(DEFAULT_BROKER_URL);
-            amqConnectionFactory.setTrustAllPackages(true); // Khi lên Production cần config lại chỗ này
+            amqConnectionFactory.setTrustAllPackages(true);
+            loggerBean().info(amqConnectionFactory.getBrokerURL() + ' ' + amqConnectionFactory.getUserName() + ' '
+                    + amqConnectionFactory.getPassword());
         } catch (Exception e) {
             // old code: amqConnectionFactory.setBrokerURL(this.env.getProperty("brokerUrl"));
-            amqConnectionFactory.setBrokerURL(endPoint);
-            amqConnectionFactory.setTrustAllPackages(true);// Khi lên Production cần config lại chỗ này
+            loggerBean().info(e.toString());
         }
+
         return amqConnectionFactory;
     }
 

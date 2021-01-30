@@ -44,7 +44,9 @@ import org.springframework.context.annotation.ImportResource;
 
 public class ServerApplication extends SpringBootServletInitializer {
 
+    // Jean: import configuration for embeded TomCat
     @Import({ EmbeddedTomcatWithSSLConfiguration.class })
+    // Jean: import configuration for hiraki , the lightning-fast JDBC connection
     @ImportResource({ "classpath*:META-INF/spring/hikariDataSource.xml" })
     private static class Configuration extends AbstractApplicationConfiguration {}
 

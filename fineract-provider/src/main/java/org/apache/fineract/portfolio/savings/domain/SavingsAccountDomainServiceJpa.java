@@ -87,10 +87,11 @@ public class SavingsAccountDomainServiceJpa implements SavingsAccountDomainServi
         AppUser user = getAppUserIfPresent();
         account.validateForAccountBlock();
         account.validateForDebitBlock();
-        // Lấy 2 biến từ phần config hệ thống: 
-        //    - biến isSavingsInterestPostingAtCurrentPeriodEnd - Ghi nhận lãi vào ngày cuối của kì tính lãi (boolean)
-        //    - Biến financialYearBeginningMonth - tháng bắt đàu của năm tài chính.
-        final boolean isSavingsInterestPostingAtCurrentPeriodEnd = this.configurationDomainService.isSavingsInterestPostingAtCurrentPeriodEnd();
+        // Lấy 2 biến từ phần config hệ thống:
+        // - biến isSavingsInterestPostingAtCurrentPeriodEnd - Ghi nhận lãi vào ngày cuối của kì tính lãi (boolean)
+        // - Biến financialYearBeginningMonth - tháng bắt đàu của năm tài chính.
+        final boolean isSavingsInterestPostingAtCurrentPeriodEnd = this.configurationDomainService
+                .isSavingsInterestPostingAtCurrentPeriodEnd();
         final Integer financialYearBeginningMonth = this.configurationDomainService.retrieveFinancialYearBeginningMonth();
 
         // Kiểm tra xem giao dịch có phải là giao dịch thường và tài khoản cho phép Rút tiền
@@ -102,15 +103,15 @@ public class SavingsAccountDomainServiceJpa implements SavingsAccountDomainServi
         final LocalDate postInterestOnDate = null;
         final Set<Long> existingReversedTransactionIds = new HashSet<>();
 
-        //Lấy tất cả ID của giao dịch thành công và hủy đang tồn tại
+        // Lấy tất cả ID của giao dịch thành công và hủy đang tồn tại
         updateExistingTransactionsDetails(account, existingTransactionIds, existingReversedTransactionIds);
 
         Integer accountType = null;
 
-        //Khởi tạo đối tượng transaction với biến truyền vào
+        // Khởi tạo đối tượng transaction với biến truyền vào
         final SavingsAccountTransactionDTO transactionDTO = new SavingsAccountTransactionDTO(fmt, transactionDate, transactionAmount,
                 paymentDetail, new Date(), user, accountType);
-        //Tạo đối tượng transaction withdrawal với đối tượng transaction tạo ở trên 
+        // Tạo đối tượng transaction withdrawal với đối tượng transaction tạo ở trên
         final SavingsAccountTransaction withdrawal = account.withdraw(transactionDTO, transactionBooleanValues.isApplyWithdrawFee());
 
         final MathContext mc = MathContext.DECIMAL64;
@@ -118,44 +119,46 @@ public class SavingsAccountDomainServiceJpa implements SavingsAccountDomainServi
         // Jean: Cái dòng chạy đi tính lãi mỗi lần làm deposit là chỗ này.
         // Bắt buộc phải chạy hàm tính lãi này để có thể tính Running Balance cho giao dịch đang được xử lý
         // Lệnh account.isBeforeLastPostingPeriod(transactionDate) sẽ kiểm tra ngày của giao dịch đang được xử lý
-        // nếu phát sinh trước ngày đã ghi nhận lãi (thường áp dụng cho giao dịch back date) thì tính lãi bằng hàm postInterest(...)
+        // nếu phát sinh trước ngày đã ghi nhận lãi (thường áp dụng cho giao dịch back date) thì tính lãi bằng hàm
+        // postInterest(...)
         // ngược lại thì dùng hàm calculateInterestUsing(...)
         // Mình sẽ cần điều chỉnh ở 2 hàm này để tối ưu hóa performance
-        // Phương án đưa là lấy cái ngày transactionDate truyền vào hàm này để hạn chế lại số lượng giao dịch cần tính toán.
-        
-            if (account.isBeforeLastPostingPeriod(transactionDate)) {
-                final LocalDate today = DateUtils.getLocalDateOfTenant();
-                account.postInterest(mc, today, transactionBooleanValues.isInterestTransfer(), isSavingsInterestPostingAtCurrentPeriodEnd,
-                        financialYearBeginningMonth, postInterestOnDate,transactionDate);
-            } else {
-                final LocalDate today = DateUtils.getLocalDateOfTenant();
-                account.calculateInterestUsing(mc, today, transactionBooleanValues.isInterestTransfer(),
-                        isSavingsInterestPostingAtCurrentPeriodEnd, financialYearBeginningMonth, postInterestOnDate,transactionDate);
-            }
-        
-        //Tính toán phần các giao dịch bị Hold
+        // Phương án đưa là lấy cái ngày transactionDate truyền vào hàm này để hạn chế lại số lượng giao dịch cần tính
+        // toán.
+
+        if (account.isBeforeLastPostingPeriod(transactionDate)) {
+            final LocalDate today = DateUtils.getLocalDateOfTenant();
+            account.postInterest(mc, today, transactionBooleanValues.isInterestTransfer(), isSavingsInterestPostingAtCurrentPeriodEnd,
+                    financialYearBeginningMonth, postInterestOnDate, transactionDate);
+        } else {
+            final LocalDate today = DateUtils.getLocalDateOfTenant();
+            account.calculateInterestUsing(mc, today, transactionBooleanValues.isInterestTransfer(),
+                    isSavingsInterestPostingAtCurrentPeriodEnd, financialYearBeginningMonth, postInterestOnDate, transactionDate);
+        }
+
+        // Tính toán phần các giao dịch bị Hold
         List<DepositAccountOnHoldTransaction> depositAccountOnHoldTransactions = null;
         if (account.getOnHoldFunds().compareTo(BigDecimal.ZERO) > 0) {
             depositAccountOnHoldTransactions = this.depositAccountOnHoldTransactionRepository
                     .findBySavingsAccountAndReversedFalseOrderByCreatedDateAsc(account);
         }
 
-        //Tinh toán bảo đảm số dư tài khoản không bị âm (trừ trường hợp có Thấu chi)
+        // Tinh toán bảo đảm số dư tài khoản không bị âm (trừ trường hợp có Thấu chi)
         account.validateAccountBalanceDoesNotBecomeNegative(transactionAmount, transactionBooleanValues.isExceptionForBalanceCheck(),
                 depositAccountOnHoldTransactions);
 
-        //Tạo ID cho giao dịch withdraw        
+        // Tạo ID cho giao dịch withdraw
         saveTransactionToGenerateTransactionId(withdrawal);
-        //Lưu giao dịch withdraw
+        // Lưu giao dịch withdraw
         this.savingsAccountRepository.save(account);
 
-        //Thực hiện bút toán kế toán.
-        //Jean: Cần coi lại chỗ này vì hiện tại phần kế toán theo paymentType không hoạt động
+        // Thực hiện bút toán kế toán.
+        // Jean: Cần coi lại chỗ này vì hiện tại phần kế toán theo paymentType không hoạt động
         postJournalEntries(account, existingTransactionIds, existingReversedTransactionIds, transactionBooleanValues.isAccountTransfer());
         this.businessEventNotifierService.notifyBusinessEventWasExecuted(BusinessEvents.SAVINGS_WITHDRAWAL,
                 constructEntityMap(BusinessEntity.SAVINGS_TRANSACTION, withdrawal));
-        
-        //trả kết quả của giao dịch withdraw        
+
+        // trả kết quả của giao dịch withdraw
         return withdrawal;
     }
 
@@ -210,11 +213,11 @@ public class SavingsAccountDomainServiceJpa implements SavingsAccountDomainServi
             if (account.isBeforeLastPostingPeriod(transactionDate)) {
                 final LocalDate today = DateUtils.getLocalDateOfTenant();
                 account.postInterest(mc, today, isInterestTransfer, isSavingsInterestPostingAtCurrentPeriodEnd, financialYearBeginningMonth,
-                        postInterestOnDate);
+                        postInterestOnDate, transactionDate);
             } else {
                 final LocalDate today = DateUtils.getLocalDateOfTenant();
                 account.calculateInterestUsing(mc, today, isInterestTransfer, isSavingsInterestPostingAtCurrentPeriodEnd,
-                        financialYearBeginningMonth, postInterestOnDate);
+                        financialYearBeginningMonth, postInterestOnDate, transactionDate);
             }
         }
 
@@ -245,7 +248,6 @@ public class SavingsAccountDomainServiceJpa implements SavingsAccountDomainServi
         return transaction.getId();
     }
 
-    
     private void updateExistingTransactionsDetails(SavingsAccount account, Set<Long> existingTransactionIds,
             Set<Long> existingReversedTransactionIds) {
         existingTransactionIds.addAll(account.findExistingTransactionIds());

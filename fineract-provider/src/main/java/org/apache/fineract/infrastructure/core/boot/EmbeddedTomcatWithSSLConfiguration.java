@@ -24,13 +24,11 @@ import java.net.URL;
 import org.apache.catalina.connector.Connector;
 import org.apache.commons.io.FileUtils;
 import org.apache.coyote.http11.Http11NioProtocol;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
@@ -38,39 +36,33 @@ import org.springframework.core.io.Resource;
 public class EmbeddedTomcatWithSSLConfiguration {
 
     // Load enviroment
-    @Autowired
-    private Environment env;
+    // @Autowired
+    // private Environment env;
+
+    // Get Defined Variables in application.properties file
+    @Value("${SSLPort}")
+    Integer httpsPort;
+    @Value("${keySource}")
+    String keySource;
+    @Value("${keyPass}")
+    String keyPass;
 
     // https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/html/howto.html#howto-enable-multiple-connectors-in-tomcat
 
     @Bean
     public ServletWebServerFactory servletContainer() {
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
-        tomcat.setContextPath(getContextPath());
-        // tomcat.addAdditionalTomcatConnectors(redirectConnector());
+        // Jean: comment mấy cái này do set ở bên file application.properties hết rồi
+        // tomcat.setContextPath( getContextPath());
+        // tomcat.setPort(8081);
         tomcat.addAdditionalTomcatConnectors(createSslConnector());
         return tomcat;
     }
 
-    @Value("${SSLPort}") // Defined in application.properties file
-    int httpPort;
-
-    // @Value("${server.port}") // Defined in application.properties file
-    // int httpsPort;
-
-    private String getContextPath() {
-        // return "/fineract-provider";
-        // Jean:change context path
-        return "/" + this.env.getProperty("contextPath");
-    }
-
-    // private Connector redirectConnector() {
-    // Connector connector = new Connector(TomcatServletWebServerFactory.DEFAULT_PROTOCOL);
-    // connector.setScheme("http");
-    // connector.setPort(8081);
-    // connector.setSecure(false);
-    // connector.setRedirectPort(getHTTPSPort());
-    // return connector;
+    // private String getContextPath() {
+    // // return "/fineract-provider";
+    // // Jean:change context path
+    // return "/" + this.env.getProperty("contextPath");
     // }
 
     protected Connector createSslConnector() {
@@ -80,7 +72,7 @@ public class EmbeddedTomcatWithSSLConfiguration {
             File keystore = getFile(getKeystore());
             connector.setScheme("https");
             connector.setSecure(true);
-            connector.setPort(getHTTPSPort());
+            connector.setPort(this.httpsPort);// getHTTPSPort());
             protocol.setSSLEnabled(true);
             protocol.setKeystoreFile(keystore.getAbsolutePath());
             protocol.setKeystorePass(getKeystorePass());
@@ -90,20 +82,20 @@ public class EmbeddedTomcatWithSSLConfiguration {
         }
     }
 
-    protected int getHTTPSPort() {
-        // TODO This shouldn't be hard-coded here, but configurable
-        // old code: return 8443;
-        return Integer.parseInt(this.env.getProperty("SSLPort"));
-    }
+    // protected int getHTTPSPort() {
+    // TODO This shouldn't be hard-coded here, but configurable
+    // old code: return 8443;
+    // return Integer.parseInt(this.env.getProperty("SSLPort"));
+    // }
 
     protected String getKeystorePass() {
         // old code: return "openmf";
-        return this.env.getProperty("keyPass");
+        return this.keyPass;// this.env.getProperty("keyPass");
     }
 
     protected Resource getKeystore() {
         // old code: return new ClassPathResource("/keystore.jks");
-        return new ClassPathResource("/jks/" + this.env.getProperty("keySource"));
+        return new ClassPathResource("/jks/" + this.keySource);// this.env.getProperty("keySource"));
     }
 
     public File getFile(Resource resource) throws IOException {
