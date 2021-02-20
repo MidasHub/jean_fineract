@@ -29,7 +29,7 @@ dependencies {
             //'ch.vorburger.mariaDB4j:mariaDB4j:2.4.0',
             //Jean: add two new connectors
             'mysql:mysql-connector-java:8.0.22',
-            'org.mariadb.jdbc:mariadb-java-client:2.7.0',
+            'org.mariadb.jdbc:mariadb-java-client:2.7.2',
 
             //Jean:
             'io.sentry:sentry:3.1.0',

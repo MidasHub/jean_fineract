@@ -54,6 +54,7 @@ public class GenericDataServiceImpl implements GenericDataService {
 
     }
 
+    // Jean add some log Info
     @Override
     public GenericResultsetData fillGenericResultSet(final String sql) {
         try {
@@ -64,15 +65,17 @@ public class GenericDataServiceImpl implements GenericDataService {
 
             final SqlRowSetMetaData rsmd = rs.getMetaData();
 
+            // LOG.info("START FOR LOOP: MetaData is " + rsmd);
             for (int i = 0; i < rsmd.getColumnCount(); i++) {
 
                 final String columnName = rsmd.getColumnName(i + 1);
                 final String columnType = rsmd.getColumnTypeName(i + 1);
-
+                // LOG.info("IN FOR LOOP: Data {} - ColName {} - ColType {}", i, columnName, columnType);
                 final ResultsetColumnHeaderData columnHeader = ResultsetColumnHeaderData.basic(columnName, columnType);
                 columnHeaders.add(columnHeader);
             }
 
+            // LOG.info("START WHILE LOOP:");
             while (rs.next()) {
                 final List<String> columnValues = new ArrayList<>();
                 for (int i = 0; i < rsmd.getColumnCount(); i++) {
@@ -87,6 +90,7 @@ public class GenericDataServiceImpl implements GenericDataService {
 
             return new GenericResultsetData(columnHeaders, resultsetDataRows);
         } catch (DataAccessException e) {
+            LOG.info("error.msg.report.unknown.data.integrity.issue - fillGenericResultSet:" + e);
             throw new PlatformDataIntegrityException("error.msg.report.unknown.data.integrity.issue", e.getClass().getName(), e);
         }
     }
